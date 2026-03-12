@@ -25,8 +25,8 @@
   "geometry": { "type": "Point", "coordinates": [4.813119, 45.78464104] },
   "properties": {
     "id_gares": 900001,
-    "nom_gares": "Vaise Industrie (NAV)",
-    "nom_zdc": "Vaise Industrie (NAV)",
+    "nom_gares": "Vaise Industrie",
+    "nom_zdc": "Vaise Industrie",
     "nom_iv": "Vaise Industrie",
     "trainline": "NAV1",
     "color": "#00A3A6",
@@ -39,8 +39,8 @@
   "geometry": { "type": "Point", "coordinates": [4.814237, 45.74256204] },
   "properties": {
     "id_gares": 900002,
-    "nom_gares": "Confluence (NAV)",
-    "nom_zdc": "Confluence (NAV)",
+    "nom_gares": "Confluence",
+    "nom_zdc": "Confluence",
     "nom_iv": "Confluence",
     "trainline": "NAV1",
     "color": "#00A3A6",
@@ -53,13 +53,13 @@
   "geometry": { "type": "Point", "coordinates": [4.830000, 45.763000] },
   "properties": {
     "id_gares": 900003,
-    "nom_gares": "Escale Intermédiaire (NAV)",
-    "nom_zdc": "Escale Intermédiaire (NAV)",
+    "nom_gares": "Terrasses Presqu'île",
+    "nom_zdc": "Terrasses Presqu'île",
     "nom_iv": "Escale Intermédiaire",
     "trainline": "NAV1",
     "color": "#00A3A6",
     "logo": "data/images/NAV1.svg",
-    "aliases": ["NAV1 escale", "Bateau NAV1"]
+    "aliases": [Terrasses Presqu'île, Terrasses]
   }
 },
     {
