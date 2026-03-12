@@ -1,44 +1,16 @@
-Memory pour le Grand Paris
+Memory pour la Métropole de Lyon
 ==========================
 
-![Screenshot from the game](images/screenshot.png)
 
-[**Jouer**](https://eliemichel.github.io/MemoryIDF) | [**Code Source**](https://github.com/eliemichel/MemoryIDF)
+[**Jouer**](https://aymenbayoudh.github.io/memory-lyon/) | [**Code Source**](https://github.com/aymenbayoudh/memory-lyon)
 
 *(English description below)*
 
-Inspiré par le [Memory pour Paris](https://memory.pour.paris) de [Benjamin TD](https://twitter.com/_benjamintd), lui-même inspiré par [Chris Arvin](https://carvin.github.io/sf-street-names/) pour San Fransisco, voici une version étendue à toute l'Île de France !
+Inspiré par le [Memory pour le Grand Paris](https://eliemichel.github.io/MemoryIDF/) de [Elie TD](https://github.com/eliemichel/MemoryIDF/blob/prod/about.md), lui-même inspiré par le [Memory pour Paris](https://memory.pour.paris) de [Benjamin TD](https://twitter.com/_benjamintd), lui-même inspiré par [Chris Arvin](https://carvin.github.io/sf-street-names/) pour San Fransisco.
 
-Un grand merci à eux pour l'inspiration, amusez-vous bien et n'hésitez pas à faire des retours via [le système d'issues de GitHub](https://github.com/eliemichel/MemoryIDF/issues) et à partager.
+Un grand merci à eux pour l'inspiration, amusez-vous bien et n'hésitez pas à faire des retours via [le système d'issues de GitHub](h[ttps://github.com/eliemichel/MemoryIDF/](https://github.com/aymenbayoudh/memory-lyon)issues) et à partager.
 
-Crédits
 -------
-
-*Merci à:*
-
- - [Élie Michel](http://eliemichel.fr) pour le développement.
- - [Benjamin TD](https://twitter.com/_benjamintd) pour l'inspiration.
- - [Chris Arvin](https://twitter.com/chrisarvinsf) pour l'inspiration de Benjamin.
- - [IDFM](https://data.iledefrance-mobilites.fr) pour ses données ouvertes.
- - Toutes celles et ceux qui ont fait des retours pour améliorer le jeu!
-
-What is this?
--------------
-
-Inspired by the [Memory pour Paris](https://memory.pour.paris) from [Benjamin TD](https://twitter.com/_benjamintd), itself inspired by [Chris Arvin](https://carvin.github.io/sf-street-names/) and their San Fransisco game, here is an extended version where the whole Île-de-France (Paris metropolitan area) is available!
-
-A warm thank to them for the inspiration, please enjoy the game and feel free to provide feedback through [GitHub issues](https://github.com/eliemichel/MemoryIDF/issues) and to share around.
-
-Hacking
--------
-
-If you want to update data, you need to first get them:
-
-```
-python scripts\download_raw_data.py
-python scripts\preprocess_data.py
-```
-
 If you want to run this game locally, all you need is to serve a local server from this directory:
 
 ```
@@ -53,7 +25,7 @@ License
 This project is shared under the terms of the simple MIT license:
 
 ```
-Copyright 2023 Élie Michel
+Copyright 2026 Aymen Bayoudh
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 and associated documentation files (the “Software”), to deal in the Software without
