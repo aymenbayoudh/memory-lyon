@@ -4,22 +4,22 @@
   "trainlines": {
     "MA": {
       "station-count": 14,
-      "logo": "A.svg",
+      "logo": "MA.svg",
       "logo-style": { "text-color": "white", "shape": "square" }
     },
     "MB": {
       "station-count": 12,
-      "logo": "B.svg",
+      "logo": "MB.svg",
       "logo-style": { "text-color": "white", "shape": "square" }
     },
     "MC": {
       "station-count": 5,
-      "logo": "C.svg",
+      "logo": "MC.svg",
       "logo-style": { "text-color": "white", "shape": "square" }
     },
     "MD": {
       "station-count": 15,
-      "logo": "D.svg",
+      "logo": "MD.svg",
       "logo-style": { "text-color": "white", "shape": "square" }
     },
 
