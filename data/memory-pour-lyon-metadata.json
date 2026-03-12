@@ -453,7 +453,7 @@
       "logo": "F2.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "rounded-square"
+        "shape": "square"
       }
     },
     "MA": {
@@ -461,7 +461,7 @@
       "logo": "MA.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "circle"
+        "shape": "square"
       }
     },
     "MB": {
@@ -469,7 +469,7 @@
       "logo": "MB.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "circle"
+        "shape": "square"
       }
     },
     "MC": {
@@ -477,7 +477,7 @@
       "logo": "MC.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "circle"
+        "shape": "square"
       }
     },
     "MD": {
@@ -485,7 +485,7 @@
       "logo": "MD.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "circle"
+        "shape": "square"
       }
     },
     "T1": {
@@ -566,6 +566,8 @@
     "MB",
     "MC",
     "MD",
+    "F1",
+    "F2",
     "T1",
     "T2",
     "T3",
@@ -573,8 +575,6 @@
     "T5",
     "T6",
     "T7",
-    "F1",
-    "F2",
     "TB11",
     "TB12"
   ],
