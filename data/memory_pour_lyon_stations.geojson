@@ -1,0 +1,4280 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.825839624081273,
+          45.759937778984174
+        ]
+      },
+      "properties": {
+        "id_gares": 30211,
+        "nom_gares": "Vieux Lyon Cathédrale St-Jean",
+        "nom_zdc": "Vieux Lyon Cathédrale St-Jean",
+        "trainline": "F1",
+        "color": "#90EE90",
+        "logo": "data/images/F1.svg",
+        "nom_iv": "Vieux Lyon Cathédrale St-Jean"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.821435856487,
+          45.758611772743
+        ]
+      },
+      "properties": {
+        "id_gares": 30212,
+        "nom_gares": "Minimes Théatres Romains",
+        "nom_zdc": "Minimes Théatres Romains",
+        "trainline": "F1",
+        "color": "#90EE90",
+        "logo": "data/images/F1.svg",
+        "nom_iv": "Minimes Théatres Romains"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.816139440422,
+          45.756959141802
+        ]
+      },
+      "properties": {
+        "id_gares": 30214,
+        "nom_gares": "Saint-Just",
+        "nom_zdc": "Saint-Just",
+        "trainline": "F1",
+        "color": "#90EE90",
+        "logo": "data/images/F1.svg",
+        "nom_iv": "Saint-Just"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.82138703295,
+          45.762108827525
+        ]
+      },
+      "properties": {
+        "id_gares": 30215,
+        "nom_gares": "Fourvière",
+        "nom_zdc": "Fourvière",
+        "trainline": "F2",
+        "color": "#90EE90",
+        "logo": "data/images/F2.svg",
+        "nom_iv": "Fourvière"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.831821139394,
+          45.774596830126
+        ]
+      },
+      "properties": {
+        "id_gares": 643,
+        "nom_gares": "Croix-Rousse",
+        "nom_zdc": "Croix-Rousse",
+        "trainline": "MC",
+        "color": "#FFA500",
+        "logo": "data/images/MC.svg",
+        "nom_iv": "Croix-Rousse"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.836168033611,
+          45.770921357628
+        ]
+      },
+      "properties": {
+        "id_gares": 10787,
+        "nom_gares": "Croix-Paquet",
+        "nom_zdc": "Croix-Paquet",
+        "trainline": "MC",
+        "color": "#FFA500",
+        "logo": "data/images/MC.svg",
+        "nom_iv": "Croix-Paquet"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.826903659845,
+          45.749805456199
+        ]
+      },
+      "properties": {
+        "id_gares": 30101,
+        "nom_gares": "Perrache",
+        "nom_zdc": "Perrache",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Perrache"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.833019296345,
+          45.757627341368
+        ]
+      },
+      "properties": {
+        "id_gares": 30103,
+        "nom_gares": "Bellecour",
+        "nom_zdc": "Bellecour",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Bellecour"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.84695136221,
+          45.753687383736
+        ]
+      },
+      "properties": {
+        "id_gares": 30133,
+        "nom_gares": "Saxe - Gambetta",
+        "nom_zdc": "Saxe - Gambetta",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Saxe - Gambetta"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.835952218174,
+          45.768139370968
+        ]
+      },
+      "properties": {
+        "id_gares": 30156,
+        "nom_gares": "Hôtel de Ville L. Pradel",
+        "nom_zdc": "Hôtel de Ville L. Pradel",
+        "trainline": "MC",
+        "color": "#FFA500",
+        "logo": "data/images/MC.svg",
+        "nom_iv": "Hôtel de Ville L. Pradel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.82744202168,
+          45.779254873128
+        ]
+      },
+      "properties": {
+        "id_gares": 30157,
+        "nom_gares": "Hénon",
+        "nom_zdc": "Hénon",
+        "trainline": "MC",
+        "color": "#FFA500",
+        "logo": "data/images/MC.svg",
+        "nom_iv": "Hénon"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.832498299107,
+          45.785257727111
+        ]
+      },
+      "properties": {
+        "id_gares": 30159,
+        "nom_gares": "Cuire",
+        "nom_zdc": "Cuire",
+        "trainline": "MC",
+        "color": "#FFA500",
+        "logo": "data/images/MC.svg",
+        "nom_iv": "Cuire"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.887500390971,
+          45.719782204262
+        ]
+      },
+      "properties": {
+        "id_gares": 30183,
+        "nom_gares": "Parilly",
+        "nom_zdc": "Parilly",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Parilly"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.86488876045,
+          45.747784859949
+        ]
+      },
+      "properties": {
+        "id_gares": 30193,
+        "nom_gares": "Sans Souci",
+        "nom_zdc": "Sans Souci",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Sans Souci"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.847149586832,
+          45.753891960918
+        ]
+      },
+      "properties": {
+        "id_gares": 30197,
+        "nom_gares": "Saxe - Gambetta",
+        "nom_zdc": "Saxe - Gambetta",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Saxe - Gambetta"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.842574199224,
+          45.755473090779
+        ]
+      },
+      "properties": {
+        "id_gares": 30199,
+        "nom_gares": "Guillotière Gabriel Péri",
+        "nom_zdc": "Guillotière Gabriel Péri",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Guillotière Gabriel Péri"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.833760215762,
+          45.756575722669
+        ]
+      },
+      "properties": {
+        "id_gares": 30201,
+        "nom_gares": "Bellecour",
+        "nom_zdc": "Bellecour",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Bellecour"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.805547205471,
+          45.766432864943
+        ]
+      },
+      "properties": {
+        "id_gares": 30205,
+        "nom_gares": "Gorge de Loup",
+        "nom_zdc": "Gorge de Loup",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Gorge de Loup"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.805528973365,
+          45.774785883524
+        ]
+      },
+      "properties": {
+        "id_gares": 30207,
+        "nom_gares": "Valmy",
+        "nom_zdc": "Valmy",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Valmy"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.803853678035,
+          45.779791874942
+        ]
+      },
+      "properties": {
+        "id_gares": 30209,
+        "nom_gares": "Gare de Vaise-G.Collomb",
+        "nom_zdc": "Gare de Vaise-G.Collomb",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Gare de Vaise-G.Collomb"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.854206412954,
+          45.751466954361
+        ]
+      },
+      "properties": {
+        "id_gares": 30445,
+        "nom_gares": "Garibaldi",
+        "nom_zdc": "Garibaldi",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Garibaldi"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.888079226112,
+          45.705568107938
+        ]
+      },
+      "properties": {
+        "id_gares": 30447,
+        "nom_gares": "Gare de Vénissieux",
+        "nom_zdc": "Gare de Vénissieux",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Gare de Vénissieux"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.862825366329,
+          45.7701685119
+        ]
+      },
+      "properties": {
+        "id_gares": 30472,
+        "nom_gares": "Charpennes Charles Hernu",
+        "nom_zdc": "Charpennes Charles Hernu",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Charpennes Charles Hernu"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.827112617066,
+          45.749567419463
+        ]
+      },
+      "properties": {
+        "id_gares": 32103,
+        "nom_gares": "Perrache",
+        "nom_zdc": "Perrache",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Perrache"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.835304876608,
+          45.749617694782
+        ]
+      },
+      "properties": {
+        "id_gares": 32104,
+        "nom_gares": "Quai Claude Bernard",
+        "nom_zdc": "Quai Claude Bernard",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Quai Claude Bernard"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.83896016637,
+          45.751123284685
+        ]
+      },
+      "properties": {
+        "id_gares": 32106,
+        "nom_gares": "Rue de l'Université",
+        "nom_zdc": "Rue de l'Université",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Rue de l'Université"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.841081951243,
+          45.752885942222
+        ]
+      },
+      "properties": {
+        "id_gares": 32108,
+        "nom_gares": "Saint-André",
+        "nom_zdc": "Saint-André",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Saint-André"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.84254653226,
+          45.754902397972
+        ]
+      },
+      "properties": {
+        "id_gares": 32110,
+        "nom_gares": "Guillotière Gabriel Péri",
+        "nom_zdc": "Guillotière Gabriel Péri",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Guillotière Gabriel Péri"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.84248582279,
+          45.758865571055
+        ]
+      },
+      "properties": {
+        "id_gares": 32112,
+        "nom_gares": "Liberté",
+        "nom_zdc": "Liberté",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Liberté"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.845187113321,
+          45.760086942032
+        ]
+      },
+      "properties": {
+        "id_gares": 32114,
+        "nom_gares": "Saxe - Préfecture",
+        "nom_zdc": "Saxe - Préfecture",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Saxe - Préfecture"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.848463314899,
+          45.76031001943
+        ]
+      },
+      "properties": {
+        "id_gares": 32116,
+        "nom_gares": "Palais Justice Mairie 3e",
+        "nom_zdc": "Palais Justice Mairie 3e",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Palais Justice Mairie 3e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.852387158420759,
+          45.75995590954131
+        ]
+      },
+      "properties": {
+        "id_gares": 32118,
+        "nom_gares": "Part-Dieu Servient",
+        "nom_zdc": "Part-Dieu Servient",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Part-Dieu Servient"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.857910001199,
+          45.761738959473
+        ]
+      },
+      "properties": {
+        "id_gares": 32121,
+        "nom_gares": "Gare Part-Dieu V.Merle",
+        "nom_zdc": "Gare Part-Dieu V.Merle",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Gare Part-Dieu V.Merle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.861966571367,
+          45.764328307342
+        ]
+      },
+      "properties": {
+        "id_gares": 32123,
+        "nom_gares": "Thiers - Lafayette",
+        "nom_zdc": "Thiers - Lafayette",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Thiers - Lafayette"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.836314418043,
+          45.747016545946
+        ]
+      },
+      "properties": {
+        "id_gares": 32140,
+        "nom_gares": "Centre Berthelot",
+        "nom_zdc": "Centre Berthelot",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Centre Berthelot"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.842258322675,
+          45.745115821548
+        ]
+      },
+      "properties": {
+        "id_gares": 32142,
+        "nom_gares": "Jean Macé",
+        "nom_zdc": "Jean Macé",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Jean Macé"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.84686054833,
+          45.743645703329
+        ]
+      },
+      "properties": {
+        "id_gares": 32144,
+        "nom_gares": "Garibaldi - Berthelot",
+        "nom_zdc": "Garibaldi - Berthelot",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Garibaldi - Berthelot"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.851658692003,
+          45.742113213229
+        ]
+      },
+      "properties": {
+        "id_gares": 32146,
+        "nom_gares": "Route de Vienne",
+        "nom_zdc": "Route de Vienne",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Route de Vienne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.858712921218,
+          45.739850870923
+        ]
+      },
+      "properties": {
+        "id_gares": 32148,
+        "nom_gares": "Jet d'Eau - M. France",
+        "nom_zdc": "Jet d'Eau - M. France",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Jet d'Eau - M. France"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.863302779289,
+          45.738384658523
+        ]
+      },
+      "properties": {
+        "id_gares": 32150,
+        "nom_gares": "Villon",
+        "nom_zdc": "Villon",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Villon"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.868188264676,
+          45.736819591625
+        ]
+      },
+      "properties": {
+        "id_gares": 32152,
+        "nom_gares": "Bachut - Mairie du 8ème",
+        "nom_zdc": "Bachut - Mairie du 8ème",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Bachut - Mairie du 8ème"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.898118634144,
+          45.737205605675
+        ]
+      },
+      "properties": {
+        "id_gares": 32162,
+        "nom_gares": "Essarts - Iris",
+        "nom_zdc": "Essarts - Iris",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Essarts - Iris"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.904448437955,
+          45.734899255997
+        ]
+      },
+      "properties": {
+        "id_gares": 32164,
+        "nom_gares": "Boutasse - C. Rousset",
+        "nom_zdc": "Boutasse - C. Rousset",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Boutasse - C. Rousset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.909042648035,
+          45.733380449277
+        ]
+      },
+      "properties": {
+        "id_gares": 32166,
+        "nom_gares": "Bron Hôtel de Ville",
+        "nom_zdc": "Bron Hôtel de Ville",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Bron Hôtel de Ville"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.914717656211,
+          45.731506089135
+        ]
+      },
+      "properties": {
+        "id_gares": 32168,
+        "nom_gares": "Les Alizés",
+        "nom_zdc": "Les Alizés",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Les Alizés"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.915646266304,
+          45.727505636759
+        ]
+      },
+      "properties": {
+        "id_gares": 32170,
+        "nom_gares": "Rebufer",
+        "nom_zdc": "Rebufer",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Rebufer"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.915185508586,
+          45.722087513528
+        ]
+      },
+      "properties": {
+        "id_gares": 32172,
+        "nom_gares": "Parilly - Université",
+        "nom_zdc": "Parilly - Université",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Parilly - Université"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.918175866441,
+          45.719596175327
+        ]
+      },
+      "properties": {
+        "id_gares": 32174,
+        "nom_gares": "Europe - Université",
+        "nom_zdc": "Europe - Université",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Europe - Université"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.92583295153,
+          45.718472046185
+        ]
+      },
+      "properties": {
+        "id_gares": 32583,
+        "nom_gares": "Porte des Alpes",
+        "nom_zdc": "Porte des Alpes",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Porte des Alpes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.931191870182,
+          45.714362718722
+        ]
+      },
+      "properties": {
+        "id_gares": 33203,
+        "nom_gares": "Parc Technologique",
+        "nom_zdc": "Parc Technologique",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Parc Technologique"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.937561267119,
+          45.708147093704
+        ]
+      },
+      "properties": {
+        "id_gares": 33205,
+        "nom_gares": "Hauts de Feuilly",
+        "nom_zdc": "Hauts de Feuilly",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Hauts de Feuilly"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.934843351618,
+          45.70343395241
+        ]
+      },
+      "properties": {
+        "id_gares": 33207,
+        "nom_gares": "Salvador Allende",
+        "nom_zdc": "Salvador Allende",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Salvador Allende"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.936097332637,
+          45.699620828105
+        ]
+      },
+      "properties": {
+        "id_gares": 33209,
+        "nom_gares": "Alfred de Vigny",
+        "nom_zdc": "Alfred de Vigny",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Alfred de Vigny"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.936851029975,
+          45.6950232828
+        ]
+      },
+      "properties": {
+        "id_gares": 33211,
+        "nom_gares": "St-Priest Hôtel de Ville",
+        "nom_zdc": "St-Priest Hôtel de Ville",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "St-Priest Hôtel de Ville"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.940618875692,
+          45.694457783978
+        ]
+      },
+      "properties": {
+        "id_gares": 33213,
+        "nom_gares": "Esplanade des Arts",
+        "nom_zdc": "Esplanade des Arts",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Esplanade des Arts"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.946860228447,
+          45.694692460068
+        ]
+      },
+      "properties": {
+        "id_gares": 33215,
+        "nom_gares": "Saint-Priest Jules Ferry",
+        "nom_zdc": "Saint-Priest Jules Ferry",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Saint-Priest Jules Ferry"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.949697459845,
+          45.693628559211
+        ]
+      },
+      "properties": {
+        "id_gares": 33217,
+        "nom_gares": "Cordière",
+        "nom_zdc": "Cordière",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Cordière"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.955829045828,
+          45.692620010305
+        ]
+      },
+      "properties": {
+        "id_gares": 33219,
+        "nom_gares": "Saint-Priest Bel Air",
+        "nom_zdc": "Saint-Priest Bel Air",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Saint-Priest Bel Air"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.925699235904,
+          45.718399519217
+        ]
+      },
+      "properties": {
+        "id_gares": 33222,
+        "nom_gares": "Porte des Alpes",
+        "nom_zdc": "Porte des Alpes",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Porte des Alpes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.826536331225,
+          45.760133038336
+        ]
+      },
+      "properties": {
+        "id_gares": 33264,
+        "nom_gares": "Vieux Lyon Cathédrale St-Jean",
+        "nom_zdc": "Vieux Lyon Cathédrale St-Jean",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Vieux Lyon Cathédrale St-Jean"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.818912774513,
+          45.733665486632
+        ]
+      },
+      "properties": {
+        "id_gares": 35094,
+        "nom_gares": "Musée des Confluences",
+        "nom_zdc": "Musée des Confluences",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Musée des Confluences"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.955939030297,
+          45.771815211458
+        ]
+      },
+      "properties": {
+        "id_gares": 35670,
+        "nom_gares": "Décines Centre",
+        "nom_zdc": "Décines Centre",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Décines Centre"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.975943701892,
+          45.774691980812
+        ]
+      },
+      "properties": {
+        "id_gares": 35672,
+        "nom_gares": "Décines Grand Large",
+        "nom_zdc": "Décines Grand Large",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Décines Grand Large"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.998895868943,
+          45.771578921302
+        ]
+      },
+      "properties": {
+        "id_gares": 35674,
+        "nom_gares": "Meyzieu Gare",
+        "nom_zdc": "Meyzieu Gare",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Meyzieu Gare"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.031550669936,
+          45.767626613648
+        ]
+      },
+      "properties": {
+        "id_gares": 35676,
+        "nom_gares": "Meyzieu Z.i.",
+        "nom_zdc": "Meyzieu Z.i.",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Meyzieu Z.i."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.921040363072,
+          45.761025427934
+        ]
+      },
+      "properties": {
+        "id_gares": 36394,
+        "nom_gares": "Vaulx-en-Velin La Soie",
+        "nom_zdc": "Vaulx-en-Velin La Soie",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Vaulx-en-Velin La Soie"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.861753920277,
+          45.736785507854
+        ]
+      },
+      "properties": {
+        "id_gares": 39376,
+        "nom_gares": "Lycée Lumière",
+        "nom_zdc": "Lycée Lumière",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Lycée Lumière"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.864742900378,
+          45.732969977851
+        ]
+      },
+      "properties": {
+        "id_gares": 39378,
+        "nom_gares": "Etats-Unis Tony Garnier",
+        "nom_zdc": "Etats-Unis Tony Garnier",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Etats-Unis Tony Garnier"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.867224486325,
+          45.729779064669
+        ]
+      },
+      "properties": {
+        "id_gares": 39380,
+        "nom_gares": "Beauvisage CISL",
+        "nom_zdc": "Beauvisage CISL",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Beauvisage CISL"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.871039111939,
+          45.724872491646
+        ]
+      },
+      "properties": {
+        "id_gares": 39382,
+        "nom_gares": "Etats-Unis Viviani",
+        "nom_zdc": "Etats-Unis Viviani",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Etats-Unis Viviani"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.882118788351,
+          45.711113972049
+        ]
+      },
+      "properties": {
+        "id_gares": 39386,
+        "nom_gares": "La Borelle",
+        "nom_zdc": "La Borelle",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "La Borelle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.878356895922,
+          45.715484540835
+        ]
+      },
+      "properties": {
+        "id_gares": 39406,
+        "nom_gares": "Joliot-Curie - M. Sembat",
+        "nom_zdc": "Joliot-Curie - M. Sembat",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Joliot-Curie - M. Sembat"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.859110022013,
+          45.740064099272
+        ]
+      },
+      "properties": {
+        "id_gares": 39455,
+        "nom_gares": "Jet d'Eau - M. France",
+        "nom_zdc": "Jet d'Eau - M. France",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Jet d'Eau - M. France"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.922184354897,
+          45.737981035368
+        ]
+      },
+      "properties": {
+        "id_gares": 45260,
+        "nom_gares": "Lycee J.P. Sartre",
+        "nom_zdc": "Lycee J.P. Sartre",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Lycee J.P. Sartre"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.926645504182,
+          45.738981672684
+        ]
+      },
+      "properties": {
+        "id_gares": 45262,
+        "nom_gares": "Parc du Chêne",
+        "nom_zdc": "Parc du Chêne",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Parc du Chêne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.917061008537,
+          45.735786008117
+        ]
+      },
+      "properties": {
+        "id_gares": 45265,
+        "nom_gares": "De Tassigny - Curial",
+        "nom_zdc": "De Tassigny - Curial",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "De Tassigny - Curial"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.947946236806,
+          45.732067853063
+        ]
+      },
+      "properties": {
+        "id_gares": 45268,
+        "nom_gares": "Eurexpo Entrée Princ.",
+        "nom_zdc": "Eurexpo Entrée Princ.",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Eurexpo Entrée Princ."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.860301601999,
+          45.750153084459
+        ]
+      },
+      "properties": {
+        "id_gares": 45861,
+        "nom_gares": "Manufacture Montluc",
+        "nom_zdc": "Manufacture Montluc",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Manufacture Montluc"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.861745322521,
+          45.754351245376
+        ]
+      },
+      "properties": {
+        "id_gares": 45863,
+        "nom_gares": "Archives Departementales",
+        "nom_zdc": "Archives Departementales",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Archives Departementales"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.858989559476,
+          45.745597301767
+        ]
+      },
+      "properties": {
+        "id_gares": 45869,
+        "nom_gares": "Lycee Colbert",
+        "nom_zdc": "Lycee Colbert",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Lycee Colbert"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.861930798144,
+          45.760801034258
+        ]
+      },
+      "properties": {
+        "id_gares": 45883,
+        "nom_gares": "Gare Part-Dieu Villette",
+        "nom_zdc": "Gare Part-Dieu Villette",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Gare Part-Dieu Villette"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.859494139096,
+          45.766920912977
+        ]
+      },
+      "properties": {
+        "id_gares": 46022,
+        "nom_gares": "Brotteaux",
+        "nom_zdc": "Brotteaux",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Brotteaux"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.858110192888931,
+          45.76191609549858
+        ]
+      },
+      "properties": {
+        "id_gares": 46025,
+        "nom_gares": "Gare Part-Dieu V.Merle",
+        "nom_zdc": "Gare Part-Dieu V.Merle",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Gare Part-Dieu V.Merle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.84765099166,
+          45.759364240977
+        ]
+      },
+      "properties": {
+        "id_gares": 46026,
+        "nom_gares": "Place Guichard",
+        "nom_zdc": "Place Guichard",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Place Guichard"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.842470968218,
+          45.746149099233
+        ]
+      },
+      "properties": {
+        "id_gares": 46028,
+        "nom_gares": "Jean Macé",
+        "nom_zdc": "Jean Macé",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Jean Macé"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.837554238512,
+          45.737824596527
+        ]
+      },
+      "properties": {
+        "id_gares": 46030,
+        "nom_gares": "Place Jean Jaurès",
+        "nom_zdc": "Place Jean Jaurès",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Place Jean Jaurès"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.833920419977,
+          45.731964712319
+        ]
+      },
+      "properties": {
+        "id_gares": 46031,
+        "nom_gares": "Debourg",
+        "nom_zdc": "Debourg",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Debourg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.831334248726,
+          45.727368615962
+        ]
+      },
+      "properties": {
+        "id_gares": 46033,
+        "nom_gares": "Stade de Gerland Le LOU",
+        "nom_zdc": "Stade de Gerland Le LOU",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Stade de Gerland Le LOU"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.814492349912,
+          45.716679396198
+        ]
+      },
+      "properties": {
+        "id_gares": 46035,
+        "nom_gares": "Gare d'Oullins",
+        "nom_zdc": "Gare d'Oullins",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Gare d'Oullins"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.829171864361,
+          45.753124090916
+        ]
+      },
+      "properties": {
+        "id_gares": 46049,
+        "nom_gares": "Ampère - Victor Hugo",
+        "nom_zdc": "Ampère - Victor Hugo",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Ampère - Victor Hugo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.835734704117,
+          45.763428634848
+        ]
+      },
+      "properties": {
+        "id_gares": 46050,
+        "nom_gares": "Cordeliers",
+        "nom_zdc": "Cordeliers",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Cordeliers"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.83598870592,
+          45.767320524594
+        ]
+      },
+      "properties": {
+        "id_gares": 46052,
+        "nom_gares": "Hôtel de Ville L. Pradel",
+        "nom_zdc": "Hôtel de Ville L. Pradel",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Hôtel de Ville L. Pradel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.844455818462,
+          45.768823992647
+        ]
+      },
+      "properties": {
+        "id_gares": 46053,
+        "nom_gares": "Foch",
+        "nom_zdc": "Foch",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Foch"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.853315731119,
+          45.769624928947
+        ]
+      },
+      "properties": {
+        "id_gares": 46054,
+        "nom_gares": "Masséna",
+        "nom_zdc": "Masséna",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Masséna"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.864217624916,
+          45.770631268896
+        ]
+      },
+      "properties": {
+        "id_gares": 46055,
+        "nom_gares": "Charpennes Charles Hernu",
+        "nom_zdc": "Charpennes Charles Hernu",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Charpennes Charles Hernu"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.873672471064,
+          45.77065210163
+        ]
+      },
+      "properties": {
+        "id_gares": 46056,
+        "nom_gares": "République Villeurbanne",
+        "nom_zdc": "République Villeurbanne",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "République Villeurbanne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.882166244105,
+          45.769082671832
+        ]
+      },
+      "properties": {
+        "id_gares": 46057,
+        "nom_gares": "Gratte-Ciel",
+        "nom_zdc": "Gratte-Ciel",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Gratte-Ciel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.890047408428,
+          45.767625536797
+        ]
+      },
+      "properties": {
+        "id_gares": 46058,
+        "nom_gares": "Flachet - Alain Gilles",
+        "nom_zdc": "Flachet - Alain Gilles",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Flachet - Alain Gilles"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.900274981399,
+          45.76574523263
+        ]
+      },
+      "properties": {
+        "id_gares": 46059,
+        "nom_gares": "Cusset",
+        "nom_zdc": "Cusset",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Cusset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.909506075302,
+          45.76402184209
+        ]
+      },
+      "properties": {
+        "id_gares": 46060,
+        "nom_gares": "Laurent Bonnevay",
+        "nom_zdc": "Laurent Bonnevay",
+        "trainline": "MA",
+        "color": "#FF0000",
+        "logo": "data/images/MA.svg",
+        "nom_iv": "Laurent Bonnevay"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.034974806937,
+          45.766144928427
+        ]
+      },
+      "properties": {
+        "id_gares": 46207,
+        "nom_gares": "Meyzieu les Panettes",
+        "nom_zdc": "Meyzieu les Panettes",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Meyzieu les Panettes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.834707007573,
+          45.731241961061
+        ]
+      },
+      "properties": {
+        "id_gares": 47287,
+        "nom_gares": "Debourg",
+        "nom_zdc": "Debourg",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Debourg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.843526971456,
+          45.729679971218
+        ]
+      },
+      "properties": {
+        "id_gares": 47289,
+        "nom_gares": "Challemel Lacour Artill.",
+        "nom_zdc": "Challemel Lacour Artill.",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Challemel Lacour Artill."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.853167048892,
+          45.729545032576
+        ]
+      },
+      "properties": {
+        "id_gares": 47291,
+        "nom_gares": "Moulin à Vent",
+        "nom_zdc": "Moulin à Vent",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Moulin à Vent"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.858906039091,
+          45.731059011347
+        ]
+      },
+      "properties": {
+        "id_gares": 47293,
+        "nom_gares": "Petite Guille",
+        "nom_zdc": "Petite Guille",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Petite Guille"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.862752968816,
+          45.727729040041
+        ]
+      },
+      "properties": {
+        "id_gares": 47295,
+        "nom_gares": "Beauvisage - Pressensé",
+        "nom_zdc": "Beauvisage - Pressensé",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Beauvisage - Pressensé"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.867072980631,
+          45.729187043636
+        ]
+      },
+      "properties": {
+        "id_gares": 47297,
+        "nom_gares": "Beauvisage CISL",
+        "nom_zdc": "Beauvisage CISL",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Beauvisage CISL"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.89679402727,
+          45.747500003317
+        ]
+      },
+      "properties": {
+        "id_gares": 47314,
+        "nom_gares": "Hôpitaux Est - Pinel",
+        "nom_zdc": "Hôpitaux Est - Pinel",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Hôpitaux Est - Pinel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.981401042365,
+          45.76848503128
+        ]
+      },
+      "properties": {
+        "id_gares": 47684,
+        "nom_gares": "Décines OL Vallée",
+        "nom_zdc": "Décines OL Vallée",
+        "trainline": "T7",
+        "color": "#4B0082",
+        "logo": "data/images/T7.svg",
+        "nom_iv": "Décines OL Vallée"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.923403226847,
+          45.761435855998
+        ]
+      },
+      "properties": {
+        "id_gares": 47685,
+        "nom_gares": "Vaulx-en-Velin La Soie",
+        "nom_zdc": "Vaulx-en-Velin La Soie",
+        "trainline": "T7",
+        "color": "#4B0082",
+        "logo": "data/images/T7.svg",
+        "nom_iv": "Vaulx-en-Velin La Soie"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.805413254887,
+          45.714358164512
+        ]
+      },
+      "properties": {
+        "id_gares": 48136,
+        "nom_gares": "Oullins Centre",
+        "nom_zdc": "Oullins Centre",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "Oullins Centre"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.804671043894,
+          45.701212235275
+        ]
+      },
+      "properties": {
+        "id_gares": 48138,
+        "nom_gares": "St-Genis-Laval Hôp. Sud",
+        "nom_zdc": "St-Genis-Laval Hôp. Sud",
+        "trainline": "MB",
+        "color": "#0000FF",
+        "logo": "data/images/MB.svg",
+        "nom_iv": "St-Genis-Laval Hôp. Sud"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.887669287503,
+          45.705671136227
+        ]
+      },
+      "properties": {
+        "id_gares": 39388,
+        "nom_gares": "Gare de Vénissieux",
+        "nom_zdc": "Gare de Vénissieux",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Gare de Vénissieux"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.887574983474,
+          45.700074883219
+        ]
+      },
+      "properties": {
+        "id_gares": 39390,
+        "nom_gares": "Croizat - Paul Bert",
+        "nom_zdc": "Croizat - Paul Bert",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Croizat - Paul Bert"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.884572810187,
+          45.696547718687
+        ]
+      },
+      "properties": {
+        "id_gares": 39392,
+        "nom_gares": "M. Houël Hôtel de Ville",
+        "nom_zdc": "M. Houël Hôtel de Ville",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "M. Houël Hôtel de Ville"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.879845377983,
+          45.694953592154
+        ]
+      },
+      "properties": {
+        "id_gares": 39394,
+        "nom_gares": "Lycée Jacques Brel",
+        "nom_zdc": "Lycée Jacques Brel",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Lycée Jacques Brel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.872053218502,
+          45.696011165932
+        ]
+      },
+      "properties": {
+        "id_gares": 39398,
+        "nom_gares": "Venissy Frida Kahlo",
+        "nom_zdc": "Venissy Frida Kahlo",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Venissy Frida Kahlo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.868242169707,
+          45.69844362477
+        ]
+      },
+      "properties": {
+        "id_gares": 39400,
+        "nom_gares": "Division Leclerc",
+        "nom_zdc": "Division Leclerc",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Division Leclerc"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.863296669019,
+          45.699894717626
+        ]
+      },
+      "properties": {
+        "id_gares": 39402,
+        "nom_gares": "Maurice Thorez",
+        "nom_zdc": "Maurice Thorez",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Maurice Thorez"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.861704429888,
+          45.696807588726
+        ]
+      },
+      "properties": {
+        "id_gares": 39404,
+        "nom_gares": "Lenine - Corsiere",
+        "nom_zdc": "Lenine - Corsiere",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Lenine - Corsiere"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.875526259586,
+          45.693790553452
+        ]
+      },
+      "properties": {
+        "id_gares": 39408,
+        "nom_gares": "Herriot - Cagne",
+        "nom_zdc": "Herriot - Cagne",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Herriot - Cagne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.864280720472,
+          45.692619413204
+        ]
+      },
+      "properties": {
+        "id_gares": 39410,
+        "nom_gares": "Darnaise",
+        "nom_zdc": "Darnaise",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Darnaise"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.86510885006,
+          45.688239542681
+        ]
+      },
+      "properties": {
+        "id_gares": 39413,
+        "nom_gares": "Hôp. Feyzin Vénissieux",
+        "nom_zdc": "Hôp. Feyzin Vénissieux",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Hôp. Feyzin Vénissieux"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.861872865697,
+          45.76666014402
+        ]
+      },
+      "properties": {
+        "id_gares": 32125,
+        "nom_gares": "Collège Bellecombe",
+        "nom_zdc": "Collège Bellecombe",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Collège Bellecombe"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.863070704671,
+          45.77086410861
+        ]
+      },
+      "properties": {
+        "id_gares": 32126,
+        "nom_gares": "Charpennes Charles Hernu",
+        "nom_zdc": "Charpennes Charles Hernu",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Charpennes Charles Hernu"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.864049522242,
+          45.774051790769
+        ]
+      },
+      "properties": {
+        "id_gares": 32128,
+        "nom_gares": "Le Tonkin",
+        "nom_zdc": "Le Tonkin",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Le Tonkin"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.866279355758,
+          45.780905915661
+        ]
+      },
+      "properties": {
+        "id_gares": 32133,
+        "nom_gares": "Université Lyon 1",
+        "nom_zdc": "Université Lyon 1",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Université Lyon 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.872102113724,
+          45.781564499479
+        ]
+      },
+      "properties": {
+        "id_gares": 32135,
+        "nom_gares": "La Doua - Gaston Berger",
+        "nom_zdc": "La Doua - Gaston Berger",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "La Doua - Gaston Berger"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.877646355872,
+          45.78242054611
+        ]
+      },
+      "properties": {
+        "id_gares": 32136,
+        "nom_gares": "INSA - Einstein",
+        "nom_zdc": "INSA - Einstein",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "INSA - Einstein"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.82287984032,
+          45.731723881009
+        ]
+      },
+      "properties": {
+        "id_gares": 46155,
+        "nom_gares": "Halle Tony Garnier",
+        "nom_zdc": "Halle Tony Garnier",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Halle Tony Garnier"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.828847141001,
+          45.731462441908
+        ]
+      },
+      "properties": {
+        "id_gares": 46157,
+        "nom_gares": "ENS Lyon",
+        "nom_zdc": "ENS Lyon",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "ENS Lyon"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.83460107668,
+          45.731165018435
+        ]
+      },
+      "properties": {
+        "id_gares": 46160,
+        "nom_gares": "Debourg",
+        "nom_zdc": "Debourg",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Debourg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.014185964874,
+          45.769788041206
+        ]
+      },
+      "properties": {
+        "id_gares": 48356,
+        "nom_gares": "Meyzieu Lycée Beltrame",
+        "nom_zdc": "Meyzieu Lycée Beltrame",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Meyzieu Lycée Beltrame"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.938411991829,
+          45.765189039838
+        ]
+      },
+      "properties": {
+        "id_gares": 48358,
+        "nom_gares": "Décines Roosevelt",
+        "nom_zdc": "Décines Roosevelt",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Décines Roosevelt"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.861875081282,
+          45.760220440539
+        ]
+      },
+      "properties": {
+        "id_gares": 35659,
+        "nom_gares": "Gare Part-Dieu Villette",
+        "nom_zdc": "Gare Part-Dieu Villette",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Gare Part-Dieu Villette"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.868812920189,
+          45.75287047792
+        ]
+      },
+      "properties": {
+        "id_gares": 35660,
+        "nom_gares": "Dauphiné -Lacassagne",
+        "nom_zdc": "Dauphiné -Lacassagne",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Dauphiné -Lacassagne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.885150556913,
+          45.754496755403
+        ]
+      },
+      "properties": {
+        "id_gares": 35662,
+        "nom_gares": "Reconnaissance - Balzac",
+        "nom_zdc": "Reconnaissance - Balzac",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Reconnaissance - Balzac"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.892603224829,
+          45.75591905346
+        ]
+      },
+      "properties": {
+        "id_gares": 35664,
+        "nom_gares": "Gare de Villeurbanne",
+        "nom_zdc": "Gare de Villeurbanne",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Gare de Villeurbanne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.91047155737,
+          45.758387444285
+        ]
+      },
+      "properties": {
+        "id_gares": 35666,
+        "nom_gares": "Bel Air - Les Brosses",
+        "nom_zdc": "Bel Air - Les Brosses",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Bel Air - Les Brosses"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.922196288867,
+          45.760976761087
+        ]
+      },
+      "properties": {
+        "id_gares": 35668,
+        "nom_gares": "Vaulx-en-Velin La Soie",
+        "nom_zdc": "Vaulx-en-Velin La Soie",
+        "trainline": "T3",
+        "color": "#87CEFA",
+        "logo": "data/images/T3.svg",
+        "nom_iv": "Vaulx-en-Velin La Soie"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.934651976616,
+          45.739357959452
+        ]
+      },
+      "properties": {
+        "id_gares": 60002,
+        "nom_gares": "Chassieu ZAC du Chêne",
+        "nom_zdc": "Chassieu ZAC du Chêne",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Chassieu ZAC du Chêne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.881982140462,
+          45.78689106079
+        ]
+      },
+      "properties": {
+        "id_gares": 32138,
+        "nom_gares": "IUT Feyssine",
+        "nom_zdc": "IUT Feyssine",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "IUT Feyssine"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.883144874335,
+          45.783627066038
+        ]
+      },
+      "properties": {
+        "id_gares": 34067,
+        "nom_gares": "Croix-Luizet",
+        "nom_zdc": "Croix-Luizet",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Croix-Luizet"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.830667965863,
+          45.766118971809
+        ]
+      },
+      "properties": {
+        "id_gares": 1377,
+        "nom_gares": "La Feuillée",
+        "nom_zdc": "La Feuillée",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "La Feuillée"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.908851425582,
+          45.764873982362
+        ]
+      },
+      "properties": {
+        "id_gares": 1508,
+        "nom_gares": "Laurent Bonnevay",
+        "nom_zdc": "Laurent Bonnevay",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Laurent Bonnevay"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.906202019432,
+          45.760687009908
+        ]
+      },
+      "properties": {
+        "id_gares": 227,
+        "nom_gares": "Bon Coin - Médipôle",
+        "nom_zdc": "Bon Coin - Médipôle",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Bon Coin - Médipôle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.845648039191,
+          45.763626029928
+        ]
+      },
+      "properties": {
+        "id_gares": 2708,
+        "nom_gares": "Saxe - Lafayette",
+        "nom_zdc": "Saxe - Lafayette",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Saxe - Lafayette"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.827918498239,
+          45.7660506569
+        ]
+      },
+      "properties": {
+        "id_gares": 3305,
+        "nom_gares": "Gare Saint-Paul",
+        "nom_zdc": "Gare Saint-Paul",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Gare Saint-Paul"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.857703056327,
+          45.761513982289
+        ]
+      },
+      "properties": {
+        "id_gares": 44038,
+        "nom_gares": "Gare Part-Dieu V.Merle",
+        "nom_zdc": "Gare Part-Dieu V.Merle",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Gare Part-Dieu V.Merle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.857037989839,
+          45.76369904335
+        ]
+      },
+      "properties": {
+        "id_gares": 46191,
+        "nom_gares": "Part-Dieu Jules Favre",
+        "nom_zdc": "Part-Dieu Jules Favre",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Part-Dieu Jules Favre"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.872973057687,
+          45.763777964525
+        ]
+      },
+      "properties": {
+        "id_gares": 47000,
+        "nom_gares": "Instit. Art Contemporain",
+        "nom_zdc": "Instit. Art Contemporain",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Instit. Art Contemporain"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.850348951652,
+          45.763653029514
+        ]
+      },
+      "properties": {
+        "id_gares": 47002,
+        "nom_gares": "Halles Paul Bocuse",
+        "nom_zdc": "Halles Paul Bocuse",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Halles Paul Bocuse"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.863490977164,
+          45.763746010701
+        ]
+      },
+      "properties": {
+        "id_gares": 47004,
+        "nom_gares": "Thiers - Lafayette",
+        "nom_zdc": "Thiers - Lafayette",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Thiers - Lafayette"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.883970061124,
+          45.761152014204
+        ]
+      },
+      "properties": {
+        "id_gares": 47005,
+        "nom_gares": "Blanqui - Le Rize",
+        "nom_zdc": "Blanqui - Le Rize",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Blanqui - Le Rize"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.889529044491,
+          45.759708035688
+        ]
+      },
+      "properties": {
+        "id_gares": 47007,
+        "nom_gares": "Grandclément",
+        "nom_zdc": "Grandclément",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Grandclément"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.852775791014,
+          45.757260221944
+        ]
+      },
+      "properties": {
+        "id_gares": 47060,
+        "nom_gares": "Garibaldi Paul Bert",
+        "nom_zdc": "Garibaldi Paul Bert",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Garibaldi Paul Bert"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.867678023064,
+          45.763759004316
+        ]
+      },
+      "properties": {
+        "id_gares": 47119,
+        "nom_gares": "Charmettes",
+        "nom_zdc": "Charmettes",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Charmettes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.896579997307,
+          45.759961019878
+        ]
+      },
+      "properties": {
+        "id_gares": 47120,
+        "nom_gares": "Bernaix",
+        "nom_zdc": "Bernaix",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Bernaix"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.880441045142,
+          45.762096968732
+        ]
+      },
+      "properties": {
+        "id_gares": 47207,
+        "nom_gares": "Verlaine",
+        "nom_zdc": "Verlaine",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Verlaine"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.901287043423,
+          45.760325006805
+        ]
+      },
+      "properties": {
+        "id_gares": 667,
+        "nom_gares": "Cyprian - Léon Blum",
+        "nom_zdc": "Cyprian - Léon Blum",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Cyprian - Léon Blum"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.837874944317,
+          45.763580988094
+        ]
+      },
+      "properties": {
+        "id_gares": 48351,
+        "nom_gares": "Cordeliers",
+        "nom_zdc": "Cordeliers",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Cordeliers"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.831963948168,
+          45.763526987306
+        ]
+      },
+      "properties": {
+        "id_gares": 50200,
+        "nom_gares": "Terrasses Presqu'île",
+        "nom_zdc": "Terrasses Presqu'île",
+        "trainline": "TB11",
+        "color": "#C6002B",
+        "logo": "data/images/TB11.svg",
+        "nom_iv": "Terrasses Presqu'île"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.89118954563,
+          45.755214010706
+        ]
+      },
+      "properties": {
+        "id_gares": 48283,
+        "nom_gares": "Gare de Villeurbanne",
+        "nom_zdc": "Gare de Villeurbanne",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Gare de Villeurbanne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.872027856429,
+          45.779825663984
+        ]
+      },
+      "properties": {
+        "id_gares": 48285,
+        "nom_gares": "La Doua - Gaston Berger",
+        "nom_zdc": "La Doua - Gaston Berger",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "La Doua - Gaston Berger"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.888227024847,
+          45.759071526364
+        ]
+      },
+      "properties": {
+        "id_gares": 48288,
+        "nom_gares": "Grandclément",
+        "nom_zdc": "Grandclément",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Grandclément"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.880762338728,
+          45.762328586741
+        ]
+      },
+      "properties": {
+        "id_gares": 48290,
+        "nom_gares": "Verlaine - Tolstoï",
+        "nom_zdc": "Verlaine - Tolstoï",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Verlaine - Tolstoï"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.88029899601,
+          45.765988978501
+        ]
+      },
+      "properties": {
+        "id_gares": 48292,
+        "nom_gares": "Hôtel de Ville - TNP",
+        "nom_zdc": "Hôtel de Ville - TNP",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Hôtel de Ville - TNP"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.880262008437,
+          45.768876931748
+        ]
+      },
+      "properties": {
+        "id_gares": 48294,
+        "nom_gares": "Gratte-Ciel",
+        "nom_zdc": "Gratte-Ciel",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Gratte-Ciel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.879089362946,
+          45.772290721523
+        ]
+      },
+      "properties": {
+        "id_gares": 48296,
+        "nom_gares": "Geneviève de Gaulle",
+        "nom_zdc": "Geneviève de Gaulle",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Geneviève de Gaulle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.877052156935,
+          45.776451281422
+        ]
+      },
+      "properties": {
+        "id_gares": 48298,
+        "nom_gares": "Roger Planchon",
+        "nom_zdc": "Roger Planchon",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Roger Planchon"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.881591251995,
+          45.758007305135
+        ]
+      },
+      "properties": {
+        "id_gares": 48279,
+        "nom_gares": "Saint-Exupéry - Jaurès",
+        "nom_zdc": "Saint-Exupéry - Jaurès",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Saint-Exupéry - Jaurès"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.898006957015,
+          45.752432319821
+        ]
+      },
+      "properties": {
+        "id_gares": 48281,
+        "nom_gares": "Kimmerling - Genêts",
+        "nom_zdc": "Kimmerling - Genêts",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Kimmerling - Genêts"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.85346799996,
+          45.753178996898
+        ]
+      },
+      "properties": {
+        "id_gares": 50396,
+        "nom_gares": "Bir Hakeim",
+        "nom_zdc": "Bir Hakeim",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Bir Hakeim"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.862360002542,
+          45.753959992196
+        ]
+      },
+      "properties": {
+        "id_gares": 50238,
+        "nom_gares": "Archives - Parc Mandela",
+        "nom_zdc": "Archives - Parc Mandela",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Archives - Parc Mandela"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.858919947772,
+          45.753550001015
+        ]
+      },
+      "properties": {
+        "id_gares": 50244,
+        "nom_gares": "Félix Faure Vivier Merle",
+        "nom_zdc": "Félix Faure Vivier Merle",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Félix Faure Vivier Merle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.867159996318,
+          45.754519981136
+        ]
+      },
+      "properties": {
+        "id_gares": 50246,
+        "nom_gares": "Rouget de Lisle",
+        "nom_zdc": "Rouget de Lisle",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Rouget de Lisle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.875379989479,
+          45.755550036007
+        ]
+      },
+      "properties": {
+        "id_gares": 50248,
+        "nom_gares": "Maisons Neuves",
+        "nom_zdc": "Maisons Neuves",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Maisons Neuves"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.878720053562,
+          45.75487001297
+        ]
+      },
+      "properties": {
+        "id_gares": 50250,
+        "nom_gares": "Cyrano",
+        "nom_zdc": "Cyrano",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Cyrano"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.885300012368,
+          45.754219989366
+        ]
+      },
+      "properties": {
+        "id_gares": 50252,
+        "nom_gares": "Reconnaissance - Balzac",
+        "nom_zdc": "Reconnaissance - Balzac",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Reconnaissance - Balzac"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.899027999691,
+          45.753325998827
+        ]
+      },
+      "properties": {
+        "id_gares": 50260,
+        "nom_gares": "Kimmerling - Genêts",
+        "nom_zdc": "Kimmerling - Genêts",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Kimmerling - Genêts"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.890840066619,
+          45.754139988787
+        ]
+      },
+      "properties": {
+        "id_gares": 50240,
+        "nom_gares": "Montchat Place Ronde",
+        "nom_zdc": "Montchat Place Ronde",
+        "trainline": "TB12",
+        "color": "#C6002B",
+        "logo": "data/images/TB12.svg",
+        "nom_iv": "Montchat Place Ronde"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.853826157655,
+          45.76065564564
+        ]
+      },
+      "properties": {
+        "id_gares": 32118,
+        "nom_gares": "Part-Dieu Auditorium",
+        "nom_zdc": "Part-Dieu Auditorium",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Part-Dieu Auditorium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.824597656987,
+          45.747063607189
+        ]
+      },
+      "properties": {
+        "id_gares": 34834,
+        "nom_gares": "Place des Archives",
+        "nom_zdc": "Place des Archives",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Place des Archives"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.822145229881,
+          45.744188681502
+        ]
+      },
+      "properties": {
+        "id_gares": 34836,
+        "nom_gares": "Sainte-Blandine",
+        "nom_zdc": "Sainte-Blandine",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Sainte-Blandine"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.824597656987,
+          45.747063607189
+        ]
+      },
+      "properties": {
+        "id_gares": 34834,
+        "nom_gares": "Place des Archives",
+        "nom_zdc": "Place des Archives",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Place des Archives"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.822145229881,
+          45.744188681502
+        ]
+      },
+      "properties": {
+        "id_gares": 34836,
+        "nom_gares": "Sainte-Blandine",
+        "nom_zdc": "Sainte-Blandine",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Sainte-Blandine"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.8190955847063774,
+          45.74061526192254
+        ]
+      },
+      "properties": {
+        "id_gares": 34836,
+        "nom_gares": "Hôtel de Région - Montrochet",
+        "nom_zdc": "Hôtel de Région - Montrochet",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Hôtel de Région - Montrochet"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.8190955847063774,
+          45.74061526192254
+        ]
+      },
+      "properties": {
+        "id_gares": 34836,
+        "nom_gares": "Hôtel de Région - Montrochet",
+        "nom_zdc": "Hôtel de Région - Montrochet",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Hôtel de Région - Montrochet"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.827112617066,
+          45.749567419463
+        ]
+      },
+      "properties": {
+        "id_gares": 32103,
+        "nom_gares": "Perrache",
+        "nom_zdc": "Perrache",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Perrache"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.861966571367,
+          45.764328307342
+        ]
+      },
+      "properties": {
+        "id_gares": 32123,
+        "nom_gares": "Thiers - Lafayette",
+        "nom_zdc": "Thiers - Lafayette",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Thiers - Lafayette"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.887290590596,
+          45.730466585756
+        ]
+      },
+      "properties": {
+        "id_gares": 30185,
+        "nom_gares": "Mermoz - Pinel",
+        "nom_zdc": "Mermoz - Pinel",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Mermoz - Pinel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.886335946712,
+          45.738717001151
+        ]
+      },
+      "properties": {
+        "id_gares": 30187,
+        "nom_gares": "Laennec",
+        "nom_zdc": "Laennec",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Laennec"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.878990787773,
+          45.742953780373
+        ]
+      },
+      "properties": {
+        "id_gares": 30189,
+        "nom_gares": "Grange Blanche",
+        "nom_zdc": "Grange Blanche",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Grange Blanche"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.871873230781,
+          45.745387703661
+        ]
+      },
+      "properties": {
+        "id_gares": 30191,
+        "nom_gares": "Monplaisir Lumière",
+        "nom_zdc": "Monplaisir Lumière",
+        "trainline": "MD",
+        "color": "#00FF00",
+        "logo": "data/images/MD.svg",
+        "nom_iv": "Monplaisir Lumière"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.868188264676,
+          45.736819591625
+        ]
+      },
+      "properties": {
+        "id_gares": 32152,
+        "nom_gares": "Bachut - Mairie du 8ème",
+        "nom_zdc": "Bachut - Mairie du 8ème",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Bachut - Mairie du 8ème"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.87455215494,
+          45.740192155086
+        ]
+      },
+      "properties": {
+        "id_gares": 32154,
+        "nom_gares": "Jean XXIII - M. Bastié",
+        "nom_zdc": "Jean XXIII - M. Bastié",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Jean XXIII - M. Bastié"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.879572788153,
+          45.742414285218
+        ]
+      },
+      "properties": {
+        "id_gares": 32157,
+        "nom_gares": "Grange Blanche",
+        "nom_zdc": "Grange Blanche",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Grange Blanche"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.883904980749,
+          45.741492513591
+        ]
+      },
+      "properties": {
+        "id_gares": 32158,
+        "nom_gares": "Ambroise Paré",
+        "nom_zdc": "Ambroise Paré",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Ambroise Paré"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.883904980749,
+          45.741492513591
+        ]
+      },
+      "properties": {
+        "id_gares": 32158,
+        "nom_gares": "Ambroise Paré",
+        "nom_zdc": "Ambroise Paré",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Ambroise Paré"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.89325020833,
+          45.738803380352
+        ]
+      },
+      "properties": {
+        "id_gares": 32160,
+        "nom_gares": "Desgenettes",
+        "nom_zdc": "Desgenettes",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Desgenettes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.879317332342,
+          45.742458598431
+        ]
+      },
+      "properties": {
+        "id_gares": 45270,
+        "nom_gares": "Grange Blanche",
+        "nom_zdc": "Grange Blanche",
+        "trainline": "T5",
+        "color": "#FFA500",
+        "logo": "data/images/T5.svg",
+        "nom_iv": "Grange Blanche"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.873397956257,
+          45.731353983895
+        ]
+      },
+      "properties": {
+        "id_gares": 47299,
+        "nom_gares": "Grange Rouge - Santy",
+        "nom_zdc": "Grange Rouge - Santy",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Grange Rouge - Santy"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.87847802186,
+          45.733078011789
+        ]
+      },
+      "properties": {
+        "id_gares": 47301,
+        "nom_gares": "Mermoz - Californie",
+        "nom_zdc": "Mermoz - Californie",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Mermoz - Californie"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.882407028789,
+          45.73222797415
+        ]
+      },
+      "properties": {
+        "id_gares": 47303,
+        "nom_gares": "Mermoz - Moselle",
+        "nom_zdc": "Mermoz - Moselle",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Mermoz - Moselle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.886843061318,
+          45.730785955037
+        ]
+      },
+      "properties": {
+        "id_gares": 47305,
+        "nom_gares": "Mermoz - Pinel",
+        "nom_zdc": "Mermoz - Pinel",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Mermoz - Pinel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.890004992558,
+          45.735552043337
+        ]
+      },
+      "properties": {
+        "id_gares": 47307,
+        "nom_gares": "Essarts - Laennec",
+        "nom_zdc": "Essarts - Laennec",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Essarts - Laennec"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.892448033359,
+          45.739578040634
+        ]
+      },
+      "properties": {
+        "id_gares": 47309,
+        "nom_gares": "Desgenettes",
+        "nom_zdc": "Desgenettes",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Desgenettes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.887959997273,
+          45.73112404319
+        ]
+      },
+      "properties": {
+        "id_gares": 47323,
+        "nom_gares": "Mermoz - Pinel",
+        "nom_zdc": "Mermoz - Pinel",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Mermoz - Pinel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.894127055086,
+          45.742543033501
+        ]
+      },
+      "properties": {
+        "id_gares": 47377,
+        "nom_gares": "Vinatier",
+        "nom_zdc": "Vinatier",
+        "trainline": "T6",
+        "color": "#FFB6C1",
+        "logo": "data/images/T6.svg",
+        "nom_iv": "Vinatier"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.975943701892,
+          45.774691980812
+        ]
+      },
+      "properties": {
+        "id_gares": 35672,
+        "nom_gares": "Décines Grand Large",
+        "nom_zdc": "Décines Grand Large",
+        "trainline": "T7",
+        "color": "#4B0082",
+        "logo": "data/images/T7.svg",
+        "nom_iv": "Décines Grand Large"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.955939030297,
+          45.771815211458
+        ]
+      },
+      "properties": {
+        "id_gares": 35670,
+        "nom_gares": "Décines Centre",
+        "nom_zdc": "Décines Centre",
+        "trainline": "T7",
+        "color": "#4B0082",
+        "logo": "data/images/T7.svg",
+        "nom_iv": "Décines Centre"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.938411991829,
+          45.765189039838
+        ]
+      },
+      "properties": {
+        "id_gares": 48358,
+        "nom_gares": "Décines Roosevelt",
+        "nom_zdc": "Décines Roosevelt",
+        "trainline": "T7",
+        "color": "#4B0082",
+        "logo": "data/images/T7.svg",
+        "nom_iv": "Décines Roosevelt"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.898118634144,
+          45.737205605675
+        ]
+      },
+      "properties": {
+        "id_gares": 32162,
+        "nom_gares": "Essarts - Iris",
+        "nom_zdc": "Essarts - Iris",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Essarts - Iris"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.89325020833,
+          45.738803380352
+        ]
+      },
+      "properties": {
+        "id_gares": 32160,
+        "nom_gares": "Desgenettes",
+        "nom_zdc": "Desgenettes",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Desgenettes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.909042648035,
+          45.733380449277
+        ]
+      },
+      "properties": {
+        "id_gares": 32166,
+        "nom_gares": "Bron Hôtel de Ville",
+        "nom_zdc": "Bron Hôtel de Ville",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Bron Hôtel de Ville"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.904448437955,
+          45.734899255997
+        ]
+      },
+      "properties": {
+        "id_gares": 32164,
+        "nom_gares": "Boutasse - C. Rousset",
+        "nom_zdc": "Boutasse - C. Rousset",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Boutasse - C. Rousset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.914717656211,
+          45.731506089135
+        ]
+      },
+      "properties": {
+        "id_gares": 32168,
+        "nom_gares": "Les Alizés",
+        "nom_zdc": "Les Alizés",
+        "trainline": "T2",
+        "color": "#7FFF00",
+        "logo": "data/images/T2.svg",
+        "nom_iv": "Les Alizés"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.866279355758,
+          45.780905915661
+        ]
+      },
+      "properties": {
+        "id_gares": 32133,
+        "nom_gares": "Université Lyon 1",
+        "nom_zdc": "Université Lyon 1",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Université Lyon 1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.864049522242,
+          45.774051790769
+        ]
+      },
+      "properties": {
+        "id_gares": 32128,
+        "nom_gares": "Le Tonkin",
+        "nom_zdc": "Le Tonkin",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Le Tonkin"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.863070704671,
+          45.77086410861
+        ]
+      },
+      "properties": {
+        "id_gares": 32126,
+        "nom_gares": "Charpennes Charles Hernu",
+        "nom_zdc": "Charpennes Charles Hernu",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Charpennes Charles Hernu"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.872102113724,
+          45.781564499479
+        ]
+      },
+      "properties": {
+        "id_gares": 32135,
+        "nom_gares": "La Doua - Gaston Berger",
+        "nom_zdc": "La Doua - Gaston Berger",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "La Doua - Gaston Berger"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.866925529159065,
+          45.77793430754244
+        ]
+      },
+      "properties": {
+        "id_gares": 32131,
+        "nom_gares": "Condorcet",
+        "nom_zdc": "Condorcet",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Condorcet"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.866925529159065,
+          45.77793430754244
+        ]
+      },
+      "properties": {
+        "id_gares": 32131,
+        "nom_gares": "Condorcet",
+        "nom_zdc": "Condorcet",
+        "trainline": "T4",
+        "color": "#800080",
+        "logo": "data/images/T4.svg",
+        "nom_iv": "Condorcet"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.861872865697,
+          45.76666014402
+        ]
+      },
+      "properties": {
+        "id_gares": 32125,
+        "nom_gares": "Collège Bellecombe",
+        "nom_zdc": "Collège Bellecombe",
+        "trainline": "T1",
+        "color": "#00008B",
+        "logo": "data/images/T1.svg",
+        "nom_iv": "Collège Bellecombe"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.825827816350331,
+          45.76005409113162
+        ]
+      },
+      "properties": {
+        "id_gares": 30211,
+        "nom_gares": "Vieux Lyon Cathédrale St-Jean",
+        "nom_zdc": "Vieux Lyon Cathédrale St-Jean",
+        "trainline": "F2",
+        "color": "#90EE90",
+        "logo": "data/images/F2.svg",
+        "nom_iv": "Vieux Lyon Cathédrale St-Jean"
+      }
+    }
+  ]
+}
