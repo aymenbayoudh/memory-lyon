@@ -10173,7 +10173,7 @@
       },
       "properties": {
         "trainline": "T1A",
-        "color": "#8A3589",
+        "color": "#0059a9",
         "line-offset": 0.0
       }
     },
@@ -20688,7 +20688,7 @@
       },
       "properties": {
         "trainline": "T1A",
-        "color": "#8A3589",
+        "color": "#0059a9",
         "line-offset": 0.0
       }
     },
@@ -42012,7 +42012,7 @@
       "properties": {
         "trainline": "T2",
         "color": "#6aa745",
-        "line-offset": 0.4
+        "line-offset": 0
       }
     },
     {
@@ -61631,7 +61631,7 @@
       "properties": {
         "trainline": "T2",
         "color": "#6aa745",
-        "line-offset": 0.4
+        "line-offset": 0
       }
     },
     {
