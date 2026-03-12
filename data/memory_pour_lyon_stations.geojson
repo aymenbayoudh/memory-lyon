@@ -91,7 +91,7 @@
         "nom_gares": "Croix-Rousse",
         "nom_zdc": "Croix-Rousse",
         "trainline": "MC",
-        "color": "#FFA500",
+        "color": "#EF9D1E",
         "logo": "data/images/MC.svg",
         "nom_iv": "Croix-Rousse"
       }
@@ -110,7 +110,7 @@
         "nom_gares": "Croix-Paquet",
         "nom_zdc": "Croix-Paquet",
         "trainline": "MC",
-        "color": "#FFA500",
+        "color": "#EF9D1E",
         "logo": "data/images/MC.svg",
         "nom_iv": "Croix-Paquet"
       }
@@ -129,7 +129,7 @@
         "nom_gares": "Perrache",
         "nom_zdc": "Perrache",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Perrache"
       }
@@ -148,7 +148,7 @@
         "nom_gares": "Bellecour",
         "nom_zdc": "Bellecour",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Bellecour"
       }
@@ -167,7 +167,7 @@
         "nom_gares": "Saxe - Gambetta",
         "nom_zdc": "Saxe - Gambetta",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Saxe - Gambetta"
       }
@@ -186,7 +186,7 @@
         "nom_gares": "Hôtel de Ville L. Pradel",
         "nom_zdc": "Hôtel de Ville L. Pradel",
         "trainline": "MC",
-        "color": "#FFA500",
+        "color": "#EF9D1E",
         "logo": "data/images/MC.svg",
         "nom_iv": "Hôtel de Ville L. Pradel"
       }
@@ -205,7 +205,7 @@
         "nom_gares": "Hénon",
         "nom_zdc": "Hénon",
         "trainline": "MC",
-        "color": "#FFA500",
+        "color": "#EF9D1E",
         "logo": "data/images/MC.svg",
         "nom_iv": "Hénon"
       }
@@ -224,7 +224,7 @@
         "nom_gares": "Cuire",
         "nom_zdc": "Cuire",
         "trainline": "MC",
-        "color": "#FFA500",
+        "color": "#EF9D1E",
         "logo": "data/images/MC.svg",
         "nom_iv": "Cuire"
       }
@@ -243,7 +243,7 @@
         "nom_gares": "Parilly",
         "nom_zdc": "Parilly",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Parilly"
       }
@@ -262,7 +262,7 @@
         "nom_gares": "Sans Souci",
         "nom_zdc": "Sans Souci",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Sans Souci"
       }
@@ -281,7 +281,7 @@
         "nom_gares": "Saxe - Gambetta",
         "nom_zdc": "Saxe - Gambetta",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Saxe - Gambetta"
       }
@@ -300,7 +300,7 @@
         "nom_gares": "Guillotière Gabriel Péri",
         "nom_zdc": "Guillotière Gabriel Péri",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Guillotière Gabriel Péri"
       }
@@ -319,7 +319,7 @@
         "nom_gares": "Bellecour",
         "nom_zdc": "Bellecour",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Bellecour"
       }
@@ -338,7 +338,7 @@
         "nom_gares": "Gorge de Loup",
         "nom_zdc": "Gorge de Loup",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Gorge de Loup"
       }
@@ -357,7 +357,7 @@
         "nom_gares": "Valmy",
         "nom_zdc": "Valmy",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Valmy"
       }
@@ -373,13 +373,17 @@
       },
       "properties": {
         "id_gares": 30209,
-        "nom_gares": "Gare de Vaise-G. Collomb",
-        "nom_zdc": "Gare de Vaise-G. Collomb",
+        "nom_gares": "Gare de Vaise-Gérard Collomb",
+        "nom_zdc": "Gare de Vaise-Gérard Collomb",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
-        "nom_iv": "Gare de Vaise-G. Collomb",
-        "aliases": ["Vaise", "Vaise Collomb", "Gare de Vaise"]
+        "nom_iv": "Gare de Vaise-Gérard Collomb",
+        "aliases": [
+          "Vaise",
+          "Vaise Collomb",
+          "Gare de Vaise"
+        ]
       }
     },
     {
@@ -396,7 +400,7 @@
         "nom_gares": "Garibaldi",
         "nom_zdc": "Garibaldi",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Garibaldi"
       }
@@ -415,7 +419,7 @@
         "nom_gares": "Gare de Vénissieux",
         "nom_zdc": "Gare de Vénissieux",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Gare de Vénissieux"
       }
@@ -434,7 +438,7 @@
         "nom_gares": "Charpennes Charles Hernu",
         "nom_zdc": "Charpennes Charles Hernu",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Charpennes Charles Hernu"
       }
@@ -453,7 +457,7 @@
         "nom_gares": "Perrache",
         "nom_zdc": "Perrache",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Perrache"
       }
@@ -472,7 +476,7 @@
         "nom_gares": "Quai Claude Bernard",
         "nom_zdc": "Quai Claude Bernard",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Quai Claude Bernard"
       }
@@ -491,7 +495,7 @@
         "nom_gares": "Rue de l'Université",
         "nom_zdc": "Rue de l'Université",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Rue de l'Université"
       }
@@ -510,7 +514,7 @@
         "nom_gares": "Saint-André",
         "nom_zdc": "Saint-André",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Saint-André"
       }
@@ -529,7 +533,7 @@
         "nom_gares": "Guillotière Gabriel Péri",
         "nom_zdc": "Guillotière Gabriel Péri",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Guillotière Gabriel Péri"
       }
@@ -548,7 +552,7 @@
         "nom_gares": "Liberté",
         "nom_zdc": "Liberté",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Liberté"
       }
@@ -567,7 +571,7 @@
         "nom_gares": "Saxe - Préfecture",
         "nom_zdc": "Saxe - Préfecture",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Saxe - Préfecture"
       }
@@ -586,7 +590,7 @@
         "nom_gares": "Palais Justice Mairie 3e",
         "nom_zdc": "Palais Justice Mairie 3e",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Palais Justice Mairie 3e"
       }
@@ -605,7 +609,7 @@
         "nom_gares": "Part-Dieu Servient",
         "nom_zdc": "Part-Dieu Servient",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Part-Dieu Servient"
       }
@@ -624,7 +628,7 @@
         "nom_gares": "Gare Part-Dieu V.Merle",
         "nom_zdc": "Gare Part-Dieu V.Merle",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Gare Part-Dieu V.Merle"
       }
@@ -643,7 +647,7 @@
         "nom_gares": "Thiers - Lafayette",
         "nom_zdc": "Thiers - Lafayette",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Thiers - Lafayette"
       }
@@ -662,7 +666,7 @@
         "nom_gares": "Centre Berthelot",
         "nom_zdc": "Centre Berthelot",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Centre Berthelot"
       }
@@ -681,7 +685,7 @@
         "nom_gares": "Jean Macé",
         "nom_zdc": "Jean Macé",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Jean Macé"
       }
@@ -700,7 +704,7 @@
         "nom_gares": "Garibaldi - Berthelot",
         "nom_zdc": "Garibaldi - Berthelot",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Garibaldi - Berthelot"
       }
@@ -719,7 +723,7 @@
         "nom_gares": "Route de Vienne",
         "nom_zdc": "Route de Vienne",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Route de Vienne"
       }
@@ -738,7 +742,7 @@
         "nom_gares": "Jet d'Eau - M. France",
         "nom_zdc": "Jet d'Eau - M. France",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Jet d'Eau - M. France"
       }
@@ -757,7 +761,7 @@
         "nom_gares": "Villon",
         "nom_zdc": "Villon",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Villon"
       }
@@ -776,7 +780,7 @@
         "nom_gares": "Bachut - Mairie du 8ème",
         "nom_zdc": "Bachut - Mairie du 8ème",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Bachut - Mairie du 8ème"
       }
@@ -795,7 +799,7 @@
         "nom_gares": "Essarts - Iris",
         "nom_zdc": "Essarts - Iris",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Essarts - Iris"
       }
@@ -814,7 +818,7 @@
         "nom_gares": "Boutasse - C. Rousset",
         "nom_zdc": "Boutasse - C. Rousset",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Boutasse - C. Rousset"
       }
@@ -833,7 +837,7 @@
         "nom_gares": "Bron Hôtel de Ville",
         "nom_zdc": "Bron Hôtel de Ville",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Bron Hôtel de Ville"
       }
@@ -852,7 +856,7 @@
         "nom_gares": "Les Alizés",
         "nom_zdc": "Les Alizés",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Les Alizés"
       }
@@ -871,7 +875,7 @@
         "nom_gares": "Rebufer",
         "nom_zdc": "Rebufer",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Rebufer"
       }
@@ -890,7 +894,7 @@
         "nom_gares": "Parilly - Université",
         "nom_zdc": "Parilly - Université",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Parilly - Université"
       }
@@ -909,7 +913,7 @@
         "nom_gares": "Europe - Université",
         "nom_zdc": "Europe - Université",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Europe - Université"
       }
@@ -928,7 +932,7 @@
         "nom_gares": "Porte des Alpes",
         "nom_zdc": "Porte des Alpes",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Porte des Alpes"
       }
@@ -947,7 +951,7 @@
         "nom_gares": "Parc Technologique",
         "nom_zdc": "Parc Technologique",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Parc Technologique"
       }
@@ -966,7 +970,7 @@
         "nom_gares": "Hauts de Feuilly",
         "nom_zdc": "Hauts de Feuilly",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Hauts de Feuilly"
       }
@@ -985,7 +989,7 @@
         "nom_gares": "Salvador Allende",
         "nom_zdc": "Salvador Allende",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Salvador Allende"
       }
@@ -1004,7 +1008,7 @@
         "nom_gares": "Alfred de Vigny",
         "nom_zdc": "Alfred de Vigny",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Alfred de Vigny"
       }
@@ -1023,7 +1027,7 @@
         "nom_gares": "St-Priest Hôtel de Ville",
         "nom_zdc": "St-Priest Hôtel de Ville",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "St-Priest Hôtel de Ville"
       }
@@ -1042,7 +1046,7 @@
         "nom_gares": "Esplanade des Arts",
         "nom_zdc": "Esplanade des Arts",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Esplanade des Arts"
       }
@@ -1061,7 +1065,7 @@
         "nom_gares": "Saint-Priest Jules Ferry",
         "nom_zdc": "Saint-Priest Jules Ferry",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Saint-Priest Jules Ferry"
       }
@@ -1080,7 +1084,7 @@
         "nom_gares": "Cordière",
         "nom_zdc": "Cordière",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Cordière"
       }
@@ -1099,7 +1103,7 @@
         "nom_gares": "Saint-Priest Bel Air",
         "nom_zdc": "Saint-Priest Bel Air",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Saint-Priest Bel Air"
       }
@@ -1118,7 +1122,7 @@
         "nom_gares": "Porte des Alpes",
         "nom_zdc": "Porte des Alpes",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Porte des Alpes"
       }
@@ -1137,7 +1141,7 @@
         "nom_gares": "Vieux Lyon Cathédrale St-Jean",
         "nom_zdc": "Vieux Lyon Cathédrale St-Jean",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Vieux Lyon Cathédrale St-Jean"
       }
@@ -1156,7 +1160,7 @@
         "nom_gares": "Musée des Confluences",
         "nom_zdc": "Musée des Confluences",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Musée des Confluences"
       }
@@ -1175,7 +1179,7 @@
         "nom_gares": "Décines Centre",
         "nom_zdc": "Décines Centre",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Décines Centre"
       }
@@ -1194,7 +1198,7 @@
         "nom_gares": "Décines Grand Large",
         "nom_zdc": "Décines Grand Large",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Décines Grand Large"
       }
@@ -1213,7 +1217,7 @@
         "nom_gares": "Meyzieu Gare",
         "nom_zdc": "Meyzieu Gare",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Meyzieu Gare"
       }
@@ -1232,7 +1236,7 @@
         "nom_gares": "Meyzieu Z.i.",
         "nom_zdc": "Meyzieu Z.i.",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Meyzieu Z.i."
       }
@@ -1251,7 +1255,7 @@
         "nom_gares": "Vaulx-en-Velin La Soie",
         "nom_zdc": "Vaulx-en-Velin La Soie",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Vaulx-en-Velin La Soie"
       }
@@ -1270,7 +1274,7 @@
         "nom_gares": "Lycée Lumière",
         "nom_zdc": "Lycée Lumière",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Lycée Lumière"
       }
@@ -1289,7 +1293,7 @@
         "nom_gares": "Etats-Unis Tony Garnier",
         "nom_zdc": "Etats-Unis Tony Garnier",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Etats-Unis Tony Garnier"
       }
@@ -1308,7 +1312,7 @@
         "nom_gares": "Beauvisage CISL",
         "nom_zdc": "Beauvisage CISL",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Beauvisage CISL"
       }
@@ -1327,7 +1331,7 @@
         "nom_gares": "Etats-Unis Viviani",
         "nom_zdc": "Etats-Unis Viviani",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Etats-Unis Viviani"
       }
@@ -1346,7 +1350,7 @@
         "nom_gares": "La Borelle",
         "nom_zdc": "La Borelle",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "La Borelle"
       }
@@ -1365,7 +1369,7 @@
         "nom_gares": "Joliot-Curie - M. Sembat",
         "nom_zdc": "Joliot-Curie - M. Sembat",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Joliot-Curie - M. Sembat"
       }
@@ -1384,7 +1388,7 @@
         "nom_gares": "Jet d'Eau - M. France",
         "nom_zdc": "Jet d'Eau - M. France",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Jet d'Eau - M. France"
       }
@@ -1403,7 +1407,7 @@
         "nom_gares": "Lycee J.P. Sartre",
         "nom_zdc": "Lycee J.P. Sartre",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Lycee J.P. Sartre"
       }
@@ -1422,7 +1426,7 @@
         "nom_gares": "Parc du Chêne",
         "nom_zdc": "Parc du Chêne",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Parc du Chêne"
       }
@@ -1441,7 +1445,7 @@
         "nom_gares": "De Tassigny - Curial",
         "nom_zdc": "De Tassigny - Curial",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "De Tassigny - Curial"
       }
@@ -1460,7 +1464,7 @@
         "nom_gares": "Eurexpo Entrée Princ.",
         "nom_zdc": "Eurexpo Entrée Princ.",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Eurexpo Entrée Princ."
       }
@@ -1479,7 +1483,7 @@
         "nom_gares": "Manufacture Montluc",
         "nom_zdc": "Manufacture Montluc",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Manufacture Montluc"
       }
@@ -1498,7 +1502,7 @@
         "nom_gares": "Archives Departementales",
         "nom_zdc": "Archives Departementales",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Archives Departementales"
       }
@@ -1517,7 +1521,7 @@
         "nom_gares": "Lycee Colbert",
         "nom_zdc": "Lycee Colbert",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Lycee Colbert"
       }
@@ -1536,7 +1540,7 @@
         "nom_gares": "Gare Part-Dieu Villette",
         "nom_zdc": "Gare Part-Dieu Villette",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Gare Part-Dieu Villette"
       }
@@ -1555,7 +1559,7 @@
         "nom_gares": "Brotteaux",
         "nom_zdc": "Brotteaux",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Brotteaux"
       }
@@ -1574,7 +1578,7 @@
         "nom_gares": "Gare Part-Dieu V.Merle",
         "nom_zdc": "Gare Part-Dieu V.Merle",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Gare Part-Dieu V.Merle"
       }
@@ -1593,7 +1597,7 @@
         "nom_gares": "Place Guichard",
         "nom_zdc": "Place Guichard",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Place Guichard"
       }
@@ -1612,7 +1616,7 @@
         "nom_gares": "Jean Macé",
         "nom_zdc": "Jean Macé",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Jean Macé"
       }
@@ -1631,7 +1635,7 @@
         "nom_gares": "Place Jean Jaurès",
         "nom_zdc": "Place Jean Jaurès",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Place Jean Jaurès"
       }
@@ -1650,7 +1654,7 @@
         "nom_gares": "Debourg",
         "nom_zdc": "Debourg",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Debourg"
       }
@@ -1669,7 +1673,7 @@
         "nom_gares": "Stade de Gerland Le LOU",
         "nom_zdc": "Stade de Gerland Le LOU",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Stade de Gerland Le LOU"
       }
@@ -1688,7 +1692,7 @@
         "nom_gares": "Gare d'Oullins",
         "nom_zdc": "Gare d'Oullins",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Gare d'Oullins"
       }
@@ -1707,7 +1711,7 @@
         "nom_gares": "Ampère - Victor Hugo",
         "nom_zdc": "Ampère - Victor Hugo",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Ampère - Victor Hugo"
       }
@@ -1726,7 +1730,7 @@
         "nom_gares": "Cordeliers",
         "nom_zdc": "Cordeliers",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Cordeliers"
       }
@@ -1745,7 +1749,7 @@
         "nom_gares": "Hôtel de Ville L. Pradel",
         "nom_zdc": "Hôtel de Ville L. Pradel",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Hôtel de Ville L. Pradel"
       }
@@ -1764,7 +1768,7 @@
         "nom_gares": "Foch",
         "nom_zdc": "Foch",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Foch"
       }
@@ -1783,7 +1787,7 @@
         "nom_gares": "Masséna",
         "nom_zdc": "Masséna",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Masséna"
       }
@@ -1802,7 +1806,7 @@
         "nom_gares": "Charpennes Charles Hernu",
         "nom_zdc": "Charpennes Charles Hernu",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Charpennes Charles Hernu"
       }
@@ -1821,7 +1825,7 @@
         "nom_gares": "République Villeurbanne",
         "nom_zdc": "République Villeurbanne",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "République Villeurbanne"
       }
@@ -1840,7 +1844,7 @@
         "nom_gares": "Gratte-Ciel",
         "nom_zdc": "Gratte-Ciel",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Gratte-Ciel"
       }
@@ -1859,7 +1863,7 @@
         "nom_gares": "Flachet - Alain Gilles",
         "nom_zdc": "Flachet - Alain Gilles",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Flachet - Alain Gilles"
       }
@@ -1878,7 +1882,7 @@
         "nom_gares": "Cusset",
         "nom_zdc": "Cusset",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Cusset"
       }
@@ -1897,7 +1901,7 @@
         "nom_gares": "Laurent Bonnevay",
         "nom_zdc": "Laurent Bonnevay",
         "trainline": "MA",
-        "color": "#FF0000",
+        "color": "#E03389",
         "logo": "data/images/MA.svg",
         "nom_iv": "Laurent Bonnevay"
       }
@@ -1916,7 +1920,7 @@
         "nom_gares": "Meyzieu les Panettes",
         "nom_zdc": "Meyzieu les Panettes",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Meyzieu les Panettes"
       }
@@ -1935,7 +1939,7 @@
         "nom_gares": "Debourg",
         "nom_zdc": "Debourg",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Debourg"
       }
@@ -1954,7 +1958,7 @@
         "nom_gares": "Challemel Lacour Artill.",
         "nom_zdc": "Challemel Lacour Artill.",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Challemel Lacour Artill."
       }
@@ -1973,7 +1977,7 @@
         "nom_gares": "Moulin à Vent",
         "nom_zdc": "Moulin à Vent",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Moulin à Vent"
       }
@@ -1992,7 +1996,7 @@
         "nom_gares": "Petite Guille",
         "nom_zdc": "Petite Guille",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Petite Guille"
       }
@@ -2011,7 +2015,7 @@
         "nom_gares": "Beauvisage - Pressensé",
         "nom_zdc": "Beauvisage - Pressensé",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Beauvisage - Pressensé"
       }
@@ -2030,7 +2034,7 @@
         "nom_gares": "Beauvisage CISL",
         "nom_zdc": "Beauvisage CISL",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Beauvisage CISL"
       }
@@ -2049,7 +2053,7 @@
         "nom_gares": "Hôpitaux Est - Pinel",
         "nom_zdc": "Hôpitaux Est - Pinel",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Hôpitaux Est - Pinel"
       }
@@ -2068,7 +2072,7 @@
         "nom_gares": "Décines OL Vallée",
         "nom_zdc": "Décines OL Vallée",
         "trainline": "T7",
-        "color": "#4B0082",
+        "color": "#972964",
         "logo": "data/images/T7.svg",
         "nom_iv": "Décines OL Vallée"
       }
@@ -2087,7 +2091,7 @@
         "nom_gares": "Vaulx-en-Velin La Soie",
         "nom_zdc": "Vaulx-en-Velin La Soie",
         "trainline": "T7",
-        "color": "#4B0082",
+        "color": "#972964",
         "logo": "data/images/T7.svg",
         "nom_iv": "Vaulx-en-Velin La Soie"
       }
@@ -2106,7 +2110,7 @@
         "nom_gares": "Oullins Centre",
         "nom_zdc": "Oullins Centre",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "Oullins Centre"
       }
@@ -2125,7 +2129,7 @@
         "nom_gares": "St-Genis-Laval Hôp. Sud",
         "nom_zdc": "St-Genis-Laval Hôp. Sud",
         "trainline": "MB",
-        "color": "#0000FF",
+        "color": "#0075BC",
         "logo": "data/images/MB.svg",
         "nom_iv": "St-Genis-Laval Hôp. Sud"
       }
@@ -2144,7 +2148,7 @@
         "nom_gares": "Gare de Vénissieux",
         "nom_zdc": "Gare de Vénissieux",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Gare de Vénissieux"
       }
@@ -2163,7 +2167,7 @@
         "nom_gares": "Croizat - Paul Bert",
         "nom_zdc": "Croizat - Paul Bert",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Croizat - Paul Bert"
       }
@@ -2182,7 +2186,7 @@
         "nom_gares": "M. Houël Hôtel de Ville",
         "nom_zdc": "M. Houël Hôtel de Ville",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "M. Houël Hôtel de Ville"
       }
@@ -2201,7 +2205,7 @@
         "nom_gares": "Lycée Jacques Brel",
         "nom_zdc": "Lycée Jacques Brel",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Lycée Jacques Brel"
       }
@@ -2220,7 +2224,7 @@
         "nom_gares": "Venissy Frida Kahlo",
         "nom_zdc": "Venissy Frida Kahlo",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Venissy Frida Kahlo"
       }
@@ -2239,7 +2243,7 @@
         "nom_gares": "Division Leclerc",
         "nom_zdc": "Division Leclerc",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Division Leclerc"
       }
@@ -2258,7 +2262,7 @@
         "nom_gares": "Maurice Thorez",
         "nom_zdc": "Maurice Thorez",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Maurice Thorez"
       }
@@ -2277,7 +2281,7 @@
         "nom_gares": "Lenine - Corsiere",
         "nom_zdc": "Lenine - Corsiere",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Lenine - Corsiere"
       }
@@ -2296,7 +2300,7 @@
         "nom_gares": "Herriot - Cagne",
         "nom_zdc": "Herriot - Cagne",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Herriot - Cagne"
       }
@@ -2315,7 +2319,7 @@
         "nom_gares": "Darnaise",
         "nom_zdc": "Darnaise",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Darnaise"
       }
@@ -2334,7 +2338,7 @@
         "nom_gares": "Hôp. Feyzin Vénissieux",
         "nom_zdc": "Hôp. Feyzin Vénissieux",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Hôp. Feyzin Vénissieux"
       }
@@ -2353,7 +2357,7 @@
         "nom_gares": "Collège Bellecombe",
         "nom_zdc": "Collège Bellecombe",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Collège Bellecombe"
       }
@@ -2372,7 +2376,7 @@
         "nom_gares": "Charpennes Charles Hernu",
         "nom_zdc": "Charpennes Charles Hernu",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Charpennes Charles Hernu"
       }
@@ -2391,7 +2395,7 @@
         "nom_gares": "Le Tonkin",
         "nom_zdc": "Le Tonkin",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Le Tonkin"
       }
@@ -2410,7 +2414,7 @@
         "nom_gares": "Université Lyon 1",
         "nom_zdc": "Université Lyon 1",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Université Lyon 1"
       }
@@ -2429,7 +2433,7 @@
         "nom_gares": "La Doua - Gaston Berger",
         "nom_zdc": "La Doua - Gaston Berger",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "La Doua - Gaston Berger"
       }
@@ -2448,7 +2452,7 @@
         "nom_gares": "INSA - Einstein",
         "nom_zdc": "INSA - Einstein",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "INSA - Einstein"
       }
@@ -2467,7 +2471,7 @@
         "nom_gares": "Halle Tony Garnier",
         "nom_zdc": "Halle Tony Garnier",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Halle Tony Garnier"
       }
@@ -2486,7 +2490,7 @@
         "nom_gares": "ENS Lyon",
         "nom_zdc": "ENS Lyon",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "ENS Lyon"
       }
@@ -2505,7 +2509,7 @@
         "nom_gares": "Debourg",
         "nom_zdc": "Debourg",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Debourg"
       }
@@ -2524,7 +2528,7 @@
         "nom_gares": "Meyzieu Lycée Beltrame",
         "nom_zdc": "Meyzieu Lycée Beltrame",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Meyzieu Lycée Beltrame"
       }
@@ -2543,7 +2547,7 @@
         "nom_gares": "Décines Roosevelt",
         "nom_zdc": "Décines Roosevelt",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Décines Roosevelt"
       }
@@ -2562,7 +2566,7 @@
         "nom_gares": "Gare Part-Dieu Villette",
         "nom_zdc": "Gare Part-Dieu Villette",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Gare Part-Dieu Villette"
       }
@@ -2581,7 +2585,7 @@
         "nom_gares": "Dauphiné -Lacassagne",
         "nom_zdc": "Dauphiné -Lacassagne",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Dauphiné -Lacassagne"
       }
@@ -2600,7 +2604,7 @@
         "nom_gares": "Reconnaissance - Balzac",
         "nom_zdc": "Reconnaissance - Balzac",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Reconnaissance - Balzac"
       }
@@ -2619,7 +2623,7 @@
         "nom_gares": "Gare de Villeurbanne",
         "nom_zdc": "Gare de Villeurbanne",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Gare de Villeurbanne"
       }
@@ -2638,7 +2642,7 @@
         "nom_gares": "Bel Air - Les Brosses",
         "nom_zdc": "Bel Air - Les Brosses",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Bel Air - Les Brosses"
       }
@@ -2657,7 +2661,7 @@
         "nom_gares": "Vaulx-en-Velin La Soie",
         "nom_zdc": "Vaulx-en-Velin La Soie",
         "trainline": "T3",
-        "color": "#87CEFA",
+        "color": "#01b0af",
         "logo": "data/images/T3.svg",
         "nom_iv": "Vaulx-en-Velin La Soie"
       }
@@ -2676,7 +2680,7 @@
         "nom_gares": "Chassieu ZAC du Chêne",
         "nom_zdc": "Chassieu ZAC du Chêne",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Chassieu ZAC du Chêne"
       }
@@ -2695,7 +2699,7 @@
         "nom_gares": "IUT Feyssine",
         "nom_zdc": "IUT Feyssine",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "IUT Feyssine"
       }
@@ -2714,7 +2718,7 @@
         "nom_gares": "Croix-Luizet",
         "nom_zdc": "Croix-Luizet",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Croix-Luizet"
       }
@@ -2733,7 +2737,7 @@
         "nom_gares": "La Feuillée",
         "nom_zdc": "La Feuillée",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "La Feuillée"
       }
@@ -2752,7 +2756,7 @@
         "nom_gares": "Laurent Bonnevay",
         "nom_zdc": "Laurent Bonnevay",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Laurent Bonnevay"
       }
@@ -2771,7 +2775,7 @@
         "nom_gares": "Bon Coin - Médipôle",
         "nom_zdc": "Bon Coin - Médipôle",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Bon Coin - Médipôle"
       }
@@ -2790,7 +2794,7 @@
         "nom_gares": "Saxe - Lafayette",
         "nom_zdc": "Saxe - Lafayette",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Saxe - Lafayette"
       }
@@ -2809,7 +2813,7 @@
         "nom_gares": "Gare Saint-Paul",
         "nom_zdc": "Gare Saint-Paul",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Gare Saint-Paul"
       }
@@ -2828,7 +2832,7 @@
         "nom_gares": "Gare Part-Dieu V.Merle",
         "nom_zdc": "Gare Part-Dieu V.Merle",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Gare Part-Dieu V.Merle"
       }
@@ -2847,7 +2851,7 @@
         "nom_gares": "Part-Dieu Jules Favre",
         "nom_zdc": "Part-Dieu Jules Favre",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Part-Dieu Jules Favre"
       }
@@ -2866,7 +2870,7 @@
         "nom_gares": "Instit. Art Contemporain",
         "nom_zdc": "Instit. Art Contemporain",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Instit. Art Contemporain"
       }
@@ -2885,7 +2889,7 @@
         "nom_gares": "Halles Paul Bocuse",
         "nom_zdc": "Halles Paul Bocuse",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Halles Paul Bocuse"
       }
@@ -2904,7 +2908,7 @@
         "nom_gares": "Thiers - Lafayette",
         "nom_zdc": "Thiers - Lafayette",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Thiers - Lafayette"
       }
@@ -2923,7 +2927,7 @@
         "nom_gares": "Blanqui - Le Rize",
         "nom_zdc": "Blanqui - Le Rize",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Blanqui - Le Rize"
       }
@@ -2942,7 +2946,7 @@
         "nom_gares": "Grandclément",
         "nom_zdc": "Grandclément",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Grandclément"
       }
@@ -2961,7 +2965,7 @@
         "nom_gares": "Garibaldi Paul Bert",
         "nom_zdc": "Garibaldi Paul Bert",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Garibaldi Paul Bert"
       }
@@ -2980,7 +2984,7 @@
         "nom_gares": "Charmettes",
         "nom_zdc": "Charmettes",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Charmettes"
       }
@@ -2999,7 +3003,7 @@
         "nom_gares": "Bernaix",
         "nom_zdc": "Bernaix",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Bernaix"
       }
@@ -3018,7 +3022,7 @@
         "nom_gares": "Verlaine",
         "nom_zdc": "Verlaine",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Verlaine"
       }
@@ -3037,7 +3041,7 @@
         "nom_gares": "Cyprian - Léon Blum",
         "nom_zdc": "Cyprian - Léon Blum",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Cyprian - Léon Blum"
       }
@@ -3056,7 +3060,7 @@
         "nom_gares": "Cordeliers",
         "nom_zdc": "Cordeliers",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Cordeliers"
       }
@@ -3075,7 +3079,7 @@
         "nom_gares": "Terrasses Presqu'île",
         "nom_zdc": "Terrasses Presqu'île",
         "trainline": "TB11",
-        "color": "#C6002B",
+        "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Terrasses Presqu'île"
       }
@@ -3094,7 +3098,7 @@
         "nom_gares": "Gare de Villeurbanne",
         "nom_zdc": "Gare de Villeurbanne",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Gare de Villeurbanne"
       }
@@ -3113,7 +3117,7 @@
         "nom_gares": "La Doua - Gaston Berger",
         "nom_zdc": "La Doua - Gaston Berger",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "La Doua - Gaston Berger"
       }
@@ -3132,7 +3136,7 @@
         "nom_gares": "Grandclément",
         "nom_zdc": "Grandclément",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Grandclément"
       }
@@ -3151,7 +3155,7 @@
         "nom_gares": "Verlaine - Tolstoï",
         "nom_zdc": "Verlaine - Tolstoï",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Verlaine - Tolstoï"
       }
@@ -3170,7 +3174,7 @@
         "nom_gares": "Hôtel de Ville - TNP",
         "nom_zdc": "Hôtel de Ville - TNP",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Hôtel de Ville - TNP"
       }
@@ -3189,7 +3193,7 @@
         "nom_gares": "Gratte-Ciel",
         "nom_zdc": "Gratte-Ciel",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Gratte-Ciel"
       }
@@ -3208,7 +3212,7 @@
         "nom_gares": "Geneviève de Gaulle",
         "nom_zdc": "Geneviève de Gaulle",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Geneviève de Gaulle"
       }
@@ -3227,7 +3231,7 @@
         "nom_gares": "Roger Planchon",
         "nom_zdc": "Roger Planchon",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Roger Planchon"
       }
@@ -3246,7 +3250,7 @@
         "nom_gares": "Saint-Exupéry - Jaurès",
         "nom_zdc": "Saint-Exupéry - Jaurès",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Saint-Exupéry - Jaurès"
       }
@@ -3265,7 +3269,7 @@
         "nom_gares": "Kimmerling - Genêts",
         "nom_zdc": "Kimmerling - Genêts",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Kimmerling - Genêts"
       }
@@ -3284,7 +3288,7 @@
         "nom_gares": "Bir Hakeim",
         "nom_zdc": "Bir Hakeim",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Bir Hakeim"
       }
@@ -3303,7 +3307,7 @@
         "nom_gares": "Archives - Parc Mandela",
         "nom_zdc": "Archives - Parc Mandela",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Archives - Parc Mandela"
       }
@@ -3322,7 +3326,7 @@
         "nom_gares": "Félix Faure Vivier Merle",
         "nom_zdc": "Félix Faure Vivier Merle",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Félix Faure Vivier Merle"
       }
@@ -3341,7 +3345,7 @@
         "nom_gares": "Rouget de Lisle",
         "nom_zdc": "Rouget de Lisle",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Rouget de Lisle"
       }
@@ -3360,7 +3364,7 @@
         "nom_gares": "Maisons Neuves",
         "nom_zdc": "Maisons Neuves",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Maisons Neuves"
       }
@@ -3379,7 +3383,7 @@
         "nom_gares": "Cyrano",
         "nom_zdc": "Cyrano",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Cyrano"
       }
@@ -3398,7 +3402,7 @@
         "nom_gares": "Reconnaissance - Balzac",
         "nom_zdc": "Reconnaissance - Balzac",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Reconnaissance - Balzac"
       }
@@ -3417,7 +3421,7 @@
         "nom_gares": "Kimmerling - Genêts",
         "nom_zdc": "Kimmerling - Genêts",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Kimmerling - Genêts"
       }
@@ -3436,7 +3440,7 @@
         "nom_gares": "Montchat Place Ronde",
         "nom_zdc": "Montchat Place Ronde",
         "trainline": "TB12",
-        "color": "#C6002B",
+        "color": "#80692D",
         "logo": "data/images/TB12.svg",
         "nom_iv": "Montchat Place Ronde"
       }
@@ -3451,11 +3455,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32118,
+        "id_gares": 1000000,
         "nom_gares": "Part-Dieu Auditorium",
         "nom_zdc": "Part-Dieu Auditorium",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Part-Dieu Auditorium"
       }
@@ -3474,7 +3478,7 @@
         "nom_gares": "Place des Archives",
         "nom_zdc": "Place des Archives",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Place des Archives"
       }
@@ -3493,7 +3497,7 @@
         "nom_gares": "Sainte-Blandine",
         "nom_zdc": "Sainte-Blandine",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Sainte-Blandine"
       }
@@ -3508,11 +3512,11 @@
         ]
       },
       "properties": {
-        "id_gares": 34834,
+        "id_gares": 1000001,
         "nom_gares": "Place des Archives",
         "nom_zdc": "Place des Archives",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Place des Archives"
       }
@@ -3527,11 +3531,11 @@
         ]
       },
       "properties": {
-        "id_gares": 34836,
+        "id_gares": 1000002,
         "nom_gares": "Sainte-Blandine",
         "nom_zdc": "Sainte-Blandine",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Sainte-Blandine"
       }
@@ -3546,11 +3550,11 @@
         ]
       },
       "properties": {
-        "id_gares": 348362,
+        "id_gares": 1000003,
         "nom_gares": "Hôtel de Région - Montrochet",
         "nom_zdc": "Hôtel de Région - Montrochet",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Hôtel de Région - Montrochet"
       }
@@ -3565,11 +3569,11 @@
         ]
       },
       "properties": {
-        "id_gares": 34836,
+        "id_gares": 1000004,
         "nom_gares": "Hôtel de Région - Montrochet",
         "nom_zdc": "Hôtel de Région - Montrochet",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Hôtel de Région - Montrochet"
       }
@@ -3584,11 +3588,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32103,
+        "id_gares": 1000005,
         "nom_gares": "Perrache",
         "nom_zdc": "Perrache",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Perrache"
       }
@@ -3603,11 +3607,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32123,
+        "id_gares": 1000006,
         "nom_gares": "Thiers - Lafayette",
         "nom_zdc": "Thiers - Lafayette",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Thiers - Lafayette"
       }
@@ -3626,7 +3630,7 @@
         "nom_gares": "Mermoz - Pinel",
         "nom_zdc": "Mermoz - Pinel",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Mermoz - Pinel"
       }
@@ -3645,7 +3649,7 @@
         "nom_gares": "Laennec",
         "nom_zdc": "Laennec",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Laennec"
       }
@@ -3664,7 +3668,7 @@
         "nom_gares": "Grange Blanche",
         "nom_zdc": "Grange Blanche",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Grange Blanche"
       }
@@ -3683,7 +3687,7 @@
         "nom_gares": "Monplaisir Lumière",
         "nom_zdc": "Monplaisir Lumière",
         "trainline": "MD",
-        "color": "#00FF00",
+        "color": "#009D42",
         "logo": "data/images/MD.svg",
         "nom_iv": "Monplaisir Lumière"
       }
@@ -3698,11 +3702,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32152,
+        "id_gares": 1000007,
         "nom_gares": "Bachut - Mairie du 8ème",
         "nom_zdc": "Bachut - Mairie du 8ème",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Bachut - Mairie du 8ème"
       }
@@ -3721,7 +3725,7 @@
         "nom_gares": "Jean XXIII - M. Bastié",
         "nom_zdc": "Jean XXIII - M. Bastié",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Jean XXIII - M. Bastié"
       }
@@ -3740,7 +3744,7 @@
         "nom_gares": "Grange Blanche",
         "nom_zdc": "Grange Blanche",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Grange Blanche"
       }
@@ -3759,7 +3763,7 @@
         "nom_gares": "Ambroise Paré",
         "nom_zdc": "Ambroise Paré",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Ambroise Paré"
       }
@@ -3774,11 +3778,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32158,
+        "id_gares": 1000008,
         "nom_gares": "Ambroise Paré",
         "nom_zdc": "Ambroise Paré",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Ambroise Paré"
       }
@@ -3797,7 +3801,7 @@
         "nom_gares": "Desgenettes",
         "nom_zdc": "Desgenettes",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Desgenettes"
       }
@@ -3816,7 +3820,7 @@
         "nom_gares": "Grange Blanche",
         "nom_zdc": "Grange Blanche",
         "trainline": "T5",
-        "color": "#FFA500",
+        "color": "#f46f22",
         "logo": "data/images/T5.svg",
         "nom_iv": "Grange Blanche"
       }
@@ -3835,7 +3839,7 @@
         "nom_gares": "Grange Rouge - Santy",
         "nom_zdc": "Grange Rouge - Santy",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Grange Rouge - Santy"
       }
@@ -3854,7 +3858,7 @@
         "nom_gares": "Mermoz - Californie",
         "nom_zdc": "Mermoz - Californie",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Mermoz - Californie"
       }
@@ -3873,7 +3877,7 @@
         "nom_gares": "Mermoz - Moselle",
         "nom_zdc": "Mermoz - Moselle",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Mermoz - Moselle"
       }
@@ -3892,7 +3896,7 @@
         "nom_gares": "Mermoz - Pinel",
         "nom_zdc": "Mermoz - Pinel",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Mermoz - Pinel"
       }
@@ -3911,7 +3915,7 @@
         "nom_gares": "Essarts - Laennec",
         "nom_zdc": "Essarts - Laennec",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Essarts - Laennec"
       }
@@ -3930,7 +3934,7 @@
         "nom_gares": "Desgenettes",
         "nom_zdc": "Desgenettes",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Desgenettes"
       }
@@ -3949,7 +3953,7 @@
         "nom_gares": "Mermoz - Pinel",
         "nom_zdc": "Mermoz - Pinel",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Mermoz - Pinel"
       }
@@ -3968,7 +3972,7 @@
         "nom_gares": "Vinatier",
         "nom_zdc": "Vinatier",
         "trainline": "T6",
-        "color": "#FFB6C1",
+        "color": "#f38fa7",
         "logo": "data/images/T6.svg",
         "nom_iv": "Vinatier"
       }
@@ -3983,11 +3987,11 @@
         ]
       },
       "properties": {
-        "id_gares": 35672,
+        "id_gares": 1000009,
         "nom_gares": "Décines Grand Large",
         "nom_zdc": "Décines Grand Large",
         "trainline": "T7",
-        "color": "#4B0082",
+        "color": "#972964",
         "logo": "data/images/T7.svg",
         "nom_iv": "Décines Grand Large"
       }
@@ -4002,11 +4006,11 @@
         ]
       },
       "properties": {
-        "id_gares": 35670,
+        "id_gares": 1000010,
         "nom_gares": "Décines Centre",
         "nom_zdc": "Décines Centre",
         "trainline": "T7",
-        "color": "#4B0082",
+        "color": "#972964",
         "logo": "data/images/T7.svg",
         "nom_iv": "Décines Centre"
       }
@@ -4021,11 +4025,11 @@
         ]
       },
       "properties": {
-        "id_gares": 48358,
+        "id_gares": 1000011,
         "nom_gares": "Décines Roosevelt",
         "nom_zdc": "Décines Roosevelt",
         "trainline": "T7",
-        "color": "#4B0082",
+        "color": "#972964",
         "logo": "data/images/T7.svg",
         "nom_iv": "Décines Roosevelt"
       }
@@ -4040,11 +4044,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32162,
+        "id_gares": 1000012,
         "nom_gares": "Essarts - Iris",
         "nom_zdc": "Essarts - Iris",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Essarts - Iris"
       }
@@ -4059,11 +4063,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32160,
+        "id_gares": 1000013,
         "nom_gares": "Desgenettes",
         "nom_zdc": "Desgenettes",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Desgenettes"
       }
@@ -4078,11 +4082,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32166,
+        "id_gares": 1000014,
         "nom_gares": "Bron Hôtel de Ville",
         "nom_zdc": "Bron Hôtel de Ville",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Bron Hôtel de Ville"
       }
@@ -4097,11 +4101,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32164,
+        "id_gares": 1000015,
         "nom_gares": "Boutasse - C. Rousset",
         "nom_zdc": "Boutasse - C. Rousset",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Boutasse - C. Rousset"
       }
@@ -4116,11 +4120,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32168,
+        "id_gares": 1000016,
         "nom_gares": "Les Alizés",
         "nom_zdc": "Les Alizés",
         "trainline": "T2",
-        "color": "#7FFF00",
+        "color": "#6aa745",
         "logo": "data/images/T2.svg",
         "nom_iv": "Les Alizés"
       }
@@ -4135,11 +4139,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32133,
+        "id_gares": 1000017,
         "nom_gares": "Université Lyon 1",
         "nom_zdc": "Université Lyon 1",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Université Lyon 1"
       }
@@ -4154,11 +4158,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32128,
+        "id_gares": 1000018,
         "nom_gares": "Le Tonkin",
         "nom_zdc": "Le Tonkin",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Le Tonkin"
       }
@@ -4173,11 +4177,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32126,
+        "id_gares": 1000019,
         "nom_gares": "Charpennes Charles Hernu",
         "nom_zdc": "Charpennes Charles Hernu",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Charpennes Charles Hernu"
       }
@@ -4192,11 +4196,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32135,
+        "id_gares": 1000020,
         "nom_gares": "La Doua - Gaston Berger",
         "nom_zdc": "La Doua - Gaston Berger",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "La Doua - Gaston Berger"
       }
@@ -4215,7 +4219,7 @@
         "nom_gares": "Condorcet",
         "nom_zdc": "Condorcet",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Condorcet"
       }
@@ -4230,11 +4234,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32131,
+        "id_gares": 1000021,
         "nom_gares": "Condorcet",
         "nom_zdc": "Condorcet",
         "trainline": "T4",
-        "color": "#800080",
+        "color": "#652b90",
         "logo": "data/images/T4.svg",
         "nom_iv": "Condorcet"
       }
@@ -4249,11 +4253,11 @@
         ]
       },
       "properties": {
-        "id_gares": 32125,
+        "id_gares": 1000022,
         "nom_gares": "Collège Bellecombe",
         "nom_zdc": "Collège Bellecombe",
         "trainline": "T1",
-        "color": "#00008B",
+        "color": "#0059a9",
         "logo": "data/images/T1.svg",
         "nom_iv": "Collège Bellecombe"
       }
@@ -4268,7 +4272,7 @@
         ]
       },
       "properties": {
-        "id_gares": 30211,
+        "id_gares": 1000023,
         "nom_gares": "Vieux Lyon Cathédrale St-Jean",
         "nom_zdc": "Vieux Lyon Cathédrale St-Jean",
         "trainline": "F2",
