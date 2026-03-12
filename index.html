@@ -1134,7 +1134,7 @@ const dataLoader = {
 		.then(response => response.json()),
 
 	$stations:
-		fetch('data/memory-pour-idf-stations.geojson')
+		fetch('data/memory-pour-lyon-stations.geojson')
 		.then(response => response.json()),
 
 	$communes:
@@ -1142,7 +1142,7 @@ const dataLoader = {
 		.then(response => response.json()),
 
 	$meta:
-		fetch('data/memory-pour-idf-metadata.json')
+		fetch('data/memory-pour-lyon-metadat.json')
 		.then(response => response.json()),
 
 	// Post-operations are populated below because the rely on other members of
