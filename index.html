@@ -1243,6 +1243,13 @@ dataLoader.$stationMemory = dataLoader.$stations.then(stations => {
 		engine.insert(props.nom_iv, payload);
 		// nom + sous titre (possible de deviner mais bon courage):
 		engine.insert(props.nom_zdc, payload);
+		if (Array.isArray(props.aliases)) {
+			for (const alias of props.aliases) {
+				if (alias && typeof alias === 'string') {
+					engine.insert(alias, payload);
+				}
+			}
+		}
 	});
 
 	engine.freeze();
