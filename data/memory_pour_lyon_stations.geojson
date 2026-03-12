@@ -1,4 +1,26 @@
 {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.825839624081273,
+          45.759937778984174
+        ]
+      },
+      "properties": {
+        "id_gares": 30211,
+        "nom_gares": "Vieux Lyon Cathédrale St-Jean",
+        "nom_zdc": "Vieux Lyon Cathédrale St-Jean",
+        "trainline": "F1",
+        "color": "#90EE90",
+        "logo": "data/images/F1.svg",
+        "nom_iv": "Vieux Lyon Cathédrale St-Jean"
+      }
+    },
+{
   "type": "Feature",
   "geometry": { "type": "Point", "coordinates": [4.813119, 45.78464104] },
   "properties": {
@@ -40,28 +62,6 @@
     "aliases": ["NAV1 escale", "Bateau NAV1"]
   }
 },
-{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          4.825839624081273,
-          45.759937778984174
-        ]
-      },
-      "properties": {
-        "id_gares": 30211,
-        "nom_gares": "Vieux Lyon Cathédrale St-Jean",
-        "nom_zdc": "Vieux Lyon Cathédrale St-Jean",
-        "trainline": "F1",
-        "color": "#90EE90",
-        "logo": "data/images/F1.svg",
-        "nom_iv": "Vieux Lyon Cathédrale St-Jean"
-      }
-    },
     {
       "type": "Feature",
       "geometry": {
