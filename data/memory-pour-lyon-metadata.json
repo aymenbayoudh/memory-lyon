@@ -820,7 +820,7 @@
       "logo": "F1.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "rounded-square"
+        "shape": "square"
       }
     },
     "F2": {
@@ -828,7 +828,7 @@
       "logo": "F2.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "rounded-square"
+        "shape": "square"
       }
     },
     "MA": {
@@ -844,7 +844,7 @@
       "logo": "MB.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "circle"
+        "shape": "square"
       }
     },
     "MC": {
@@ -852,7 +852,7 @@
       "logo": "MC.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "circle"
+        "shape": "square"
       }
     },
     "MD": {
@@ -860,7 +860,7 @@
       "logo": "MD.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "circle"
+        "shape": "square"
       }
     },
     "T1": {
