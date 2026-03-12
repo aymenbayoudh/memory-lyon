@@ -373,12 +373,12 @@
       },
       "properties": {
         "id_gares": 30209,
-        "nom_gares": "Gare de Vaise-Gérard Collomb",
-        "nom_zdc": "Gare de Vaise-Gérard Collomb",
+        "nom_gares": "Gare de Vaise-G. Collomb",
+        "nom_zdc": "Gare de Vaise-G. Collomb",
         "trainline": "MD",
         "color": "#00FF00",
         "logo": "data/images/MD.svg",
-        "nom_iv": "Gare de Vaise-Gérard Collomb",
+        "nom_iv": "Gare de Vaise-G. Collomb",
         "aliases": ["Vaise", "Vaise Collomb", "Gare de Vaise"]
       }
     },
