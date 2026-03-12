@@ -42012,7 +42012,7 @@
       "properties": {
         "trainline": "T2",
         "color": "#8A3589",
-        "line-offset": 0.4
+        "line-offset": 0.0
       }
     },
     {
@@ -61631,7 +61631,7 @@
       "properties": {
         "trainline": "T2",
         "color": "#8A3589",
-        "line-offset": 0.4
+        "line-offset": 0.0
       }
     },
     {
@@ -65146,7 +65146,7 @@
       "properties": {
         "trainline": "T3",
         "color": "#8A3589",
-        "line-offset": -0.4
+        "line-offset": -0.0
       }
     },
     {
@@ -67685,7 +67685,7 @@
       "properties": {
         "trainline": "T3",
         "color": "#8A3589",
-        "line-offset": -0.4
+        "line-offset": -0.0
       }
     },
     {
@@ -100958,7 +100958,7 @@
       "properties": {
         "trainline": "T5",
         "color": "#8A3589",
-        "line-offset": -0.8
+        "line-offset": -0.0
       }
     },
     {
@@ -114637,7 +114637,7 @@
       "properties": {
         "trainline": "T5",
         "color": "#8A3589",
-        "line-offset": -0.8
+        "line-offset": -0.0
       }
     },
     {
@@ -116348,7 +116348,7 @@
       "properties": {
         "trainline": "T6",
         "color": "#8A3589",
-        "line-offset": 1.2
+        "line-offset": 0.0
       }
     },
     {
@@ -118291,7 +118291,7 @@
       "properties": {
         "trainline": "T6",
         "color": "#8A3589",
-        "line-offset": 1.2
+        "line-offset": 0.0
       }
     },
     {
@@ -120854,7 +120854,7 @@
       "properties": {
         "trainline": "T7",
         "color": "#8A3589",
-        "line-offset": -1.2
+        "line-offset": 0.0
       }
     },
     {
@@ -124293,7 +124293,7 @@
       "properties": {
         "trainline": "T7",
         "color": "#8A3589",
-        "line-offset": -1.2
+        "line-offset": 0.0
       }
     },
     {
