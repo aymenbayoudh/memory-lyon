@@ -1,0 +1,87 @@
+{
+  "connected-stations": {},
+
+  "trainlines": {
+    "M A": {
+      "station-count": 14,
+      "logo": "A.svg",
+      "logo-style": { "text-color": "white", "shape": "square" }
+    },
+    "M B": {
+      "station-count": 12,
+      "logo": "B.svg",
+      "logo-style": { "text-color": "white", "shape": "square" }
+    },
+    "M C": {
+      "station-count": 5,
+      "logo": "C.svg",
+      "logo-style": { "text-color": "white", "shape": "square" }
+    },
+    "M D": {
+      "station-count": 15,
+      "logo": "D.svg",
+      "logo-style": { "text-color": "white", "shape": "square" }
+    },
+
+    "T 1": {
+      "station-count": 26,
+      "logo": "T1.svg",
+      "logo-style": { "text-color": "black", "shape": "square" }
+    },
+    "T 2": {
+      "station-count": 33,
+      "logo": "T2.svg",
+      "logo-style": { "text-color": "black", "shape": "square" }
+    },
+    "T 3": {
+      "station-count": 14,
+      "logo": "T3.svg",
+      "logo-style": { "text-color": "black", "shape": "square" }
+    },
+    "T 4": {
+      "station-count": 24,
+      "logo": "T4.svg",
+      "logo-style": { "text-color": "black", "shape": "square" }
+    },
+    "T 5": {
+      "station-count": 10,
+      "logo": "T5.svg",
+      "logo-style": { "text-color": "black", "shape": "square" }
+    },
+    "T 6": {
+      "station-count": 22,
+      "logo": "T6.svg",
+      "logo-style": { "text-color": "black", "shape": "square" }
+    },
+    "T 7": {
+      "station-count": 15,
+      "logo": "T7.svg",
+      "logo-style": { "text-color": "black", "shape": "square" }
+    },
+
+    "F 1": {
+      "station-count": 4,
+      "logo": "F1.svg",
+      "logo-style": { "text-color": "white", "shape": "square" }
+    },
+    "F 2": {
+      "station-count": 2,
+      "logo": "F2.svg",
+      "logo-style": { "text-color": "white", "shape": "square" }
+    }
+  },
+
+  "ordered-trainlines": [
+    "M A", "M B", "M C", "M D",
+    "T 1", "T 2", "T 3", "T 4", "T 5", "T 6", "T 7",
+    "F 1", "F 2"
+  ],
+
+  "communes": {
+    "total-communes": 59,
+    "total-inhabitants": 1400000,
+    "total-surface": 534
+  },
+
+  "from-memory-paris": {}
+}
