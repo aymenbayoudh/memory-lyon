@@ -379,6 +379,7 @@
         "color": "#00FF00",
         "logo": "data/images/MD.svg",
         "nom_iv": "Gare de Vaise-G.Collomb"
+        "aliases": ["Vaise", "Vaise Collomb", "Gare de Vaise"]
       }
     },
     {
