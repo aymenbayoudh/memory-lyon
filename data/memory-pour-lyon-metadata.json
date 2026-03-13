@@ -922,6 +922,14 @@
         "shape": "square"
       }
     },
+     "NAVI1": {
+      "station-count": 3,
+      "logo": "NAVI1.svg",
+      "logo-style": {
+        "text-color": "black",
+        "shape": "square"
+      }
+    },
     "TB11": {
       "station-count": 17,
       "logo": "TB11.svg",
@@ -954,7 +962,8 @@
     "T6",
     "T7",
     "TB11",
-    "TB12"
+    "TB12",
+    "NAVI1"
   ],
   "communes": {
     "total-communes": 0,
