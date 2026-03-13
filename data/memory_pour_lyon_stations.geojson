@@ -50,7 +50,7 @@
 },
 {
   "type": "Feature",
-  "geometry": { "type": "Point", "coordinates": [4.830000, 45.763000] },
+  "geometry": { "type": "Point", "coordinates": [4,83112700000000039324, 45,76218800000000186401] },
   "properties": {
     "id_gares": 900003,
     "nom_gares": "Terrasses Presqu'île",
