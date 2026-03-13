@@ -792,33 +792,43 @@ const Action = {
 	},
 
 	_appendStationItemWithoutRender: (item, geoFeature, state) => {
-		if (state.cache.foundKeys[item.id]) return false;
-		state.cache.foundKeys[item.id] = true;
+    if (state.cache.foundKeys[item.id]) return false;
+    state.cache.foundKeys[item.id] = true;
 
-		state.found = [
-			item,
-			...state.found
-		];
-		++state.cache.counts.stations;
+    state.found = [
+        item,
+        ...state.found
+    ];
 
-		// Update map data
-		state.cache.foundStationsGeojson.features.push({
-			...geoFeature,
-			id: item.id[1]
-		});
+    ++state.cache.counts.stations;
 
-		return true;
-	},
+    // ✅ Incrément du compteur de ligne (manquait)
+    const trainline = geoFeature.properties.trainline;
+    if (trainline !== undefined) {
+        if (state.cache.counts.stationsPerLine[trainline] === undefined) {
+            state.cache.counts.stationsPerLine[trainline] = 0;
+        }
+        ++state.cache.counts.stationsPerLine[trainline];
+    }
+
+    // Update map data
+    state.cache.foundStationsGeojson.features.push({
+        ...geoFeature,
+        id: item.id[1]
+    });
+
+    return true;
+},
 
 	_renderAfterNewStationItem: (dom, state) => {
-		Action._updateStationStats(state);
-
-		$map.then(map => {
-			map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
-		});
-
-		localStorage.setItem("savedState", JSON.stringify(state));
-	},
+        Action._updateStationStats(state);
+        join($map, dataLoader.$stationData, (map, stationData) => {
+            map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
+            renderFoundStationCamemberts(map, stationData, state);
+        });
+        renderScoreboard(dom, state);
+        localStorage.setItem("savedState", JSON.stringify(state));
+    },
 
 	AppendFoundStationItem: (item, geoFeature) => (dom, state) => {
 		if (!Action._appendStationItemWithoutRender(item, geoFeature, state)) return;
@@ -968,10 +978,11 @@ const Action = {
 
 		Action._initializeTotalCounts(stationData, state);
 
-		$map.then(map => {
-			map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
-			map.getSource('found-communes').setData(state.cache.foundCommunesGeojson);
-		});
+		join($map, dataLoader.$stationData, (map, stationData) => {
+            map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
+            map.getSource('found-communes').setData(state.cache.foundCommunesGeojson);
+            renderFoundStationCamemberts(map, stationData, state);
+        });
 
 
 		state.loading = false;
@@ -1272,6 +1283,226 @@ function importJsonFile() {
 	});
 }
 
+//cam
+// Stations de tram superposées à afficher en camembert.
+// angleDeg = direction de l'axe de séparation.
+// 90 = séparation verticale (gauche/droite)
+// 0  = séparation horizontale (haut/bas)
+const FOUND_STATION_CAMEMBERTS = {
+    32168: {
+        angleDeg: 22,
+        left: "T2",
+        right: "T5",
+    },
+    // T2 / T5
+    32166: { // Bron Hôtel de Ville
+        angleDeg: 22,
+        left: "T2",
+        right: "T5",
+    },
+    32164: { // Boutasse - C. Rousset
+        angleDeg: 22,
+        left: "T2",
+        right: "T5",
+    },
+    32162: { // Essarts - Iris
+        angleDeg: 22,
+        left: "T2",
+        right: "T5",
+    },
+    32160: { // Desgenettes
+        angleDeg: 22,
+        left: "T2",
+        right: "T5",
+    },
+    32158: { // Ambroise Paré
+        angleDeg: 22,
+        left: "T2",
+        right: "T5",
+    },
+   // 32157: { // Grange Blanche (T2)
+   //    angleDeg: 22,
+   //    left: "T2",
+   //     right: "T5",
+  //  },
+ //   45270: { // Grange Blanche (T5)
+  //      angleDeg: 22,
+  //      left: "T2",
+  //      right: "T5",
+  //  },
+
+    // T1 / T2 (Confluence)
+    32103: { // Perrache
+        angleDeg: 125,
+        left: "T1",
+        right: "T2",
+    },
+    34834: { // Place des Archives
+        angleDeg: 125,
+        left: "T1",
+        right: "T2",
+    },
+    34836: { // Sainte-Blandine / Hôtel de Région - Montrochet (même id dans ton export)
+        angleDeg: 125,
+        left: "T1",
+        right: "T2",
+    },
+
+    // T3 / T7
+    48358: { // Décines Roosevelt
+        angleDeg: 340,
+        left: "T7",
+        right: "T3",
+    },
+    35670: { // Décines Centre
+        angleDeg: 142,
+        left: "T3",
+        right: "T7",
+    },
+    35672: { // Décines Grand Large
+        angleDeg: 210,
+        left: "T3",
+        right: "T7",
+    },
+	// T1 / T4
+32123: { // Thiers - Lafayette
+    angleDeg: 87,
+    left: "T1",
+    right: "T4",
+},
+32125: { // Collège Bellecombe
+    angleDeg: 87,
+    left: "T1",
+    right: "T4",
+},
+32126: { // Charpennes Charles Hernu (tram T1/T4)
+    angleDeg: 95,
+    left: "T1",
+    right: "T4",
+},
+32128: { // Le Tonkin
+    angleDeg: 185,
+    left: "T1",
+    right: "T4",
+},
+32131: { // Condorcet
+    angleDeg: 82,
+    left: "T1",
+    right: "T4",
+},
+32133: { // Université Lyon 1
+    angleDeg: 165,
+    left: "T1",
+    right: "T4",
+},
+32135: { // La Doua - Gaston Berger
+    angleDeg: 195,
+    left: "T1",
+    right: "T4",
+},
+};
+
+``
+
+   
+
+function makeFoundStationCamembertSVG(leftColor, rightColor, angleDeg = 90, visibleSize = 7, coverSize = 9.5) {
+    const outerR = coverSize / 2;   // disque blanc de couverture
+    const innerR = visibleSize / 2; // vrai camembert visibl
+
+    const cx = outerR;
+    const cy = outerR;
+
+    // séparation gauche/droite par défaut, qu'on rotate ensuite
+    const rotation = angleDeg - 90;
+
+    return `
+    <svg width="${coverSize}" height="${coverSize}" viewBox="0 0 ${coverSize} ${coverSize}" xmlns="http://www.w3.org/2000/svg">
+        <!-- disque blanc de couverture pour masquer le cercle de base dessous -->
+        <circle cx="${cx}" cy="${cy}" r="${outerR}" fill="#ffffff"/>
+
+        <g transform="rotate(${rotation} ${cx} ${cy})">
+            <!-- moitié gauche -->
+            <path d="
+                M ${cx} ${cy}
+                L ${cx} ${cy - innerR}
+                A ${innerR} ${innerR} 0 0 0 ${cx} ${cy + innerR}
+                Z"
+                fill="${leftColor}" />
+
+            <!-- moitié droite -->
+            <path d="
+                M ${cx} ${cy}
+                L ${cx} ${cy + innerR}
+                A ${innerR} ${innerR} 0 0 0 ${cx} ${cy - innerR}
+                Z"
+                fill="${rightColor}" />
+        </g>
+
+        <!-- contour noir final -->
+        <circle cx="${cx}" cy="${cy}" r="${innerR}" fill="none" stroke="#000000" stroke-width="1"/>
+    </svg>
+    `;
+}
+
+function renderFoundStationCamemberts(map, stationData, state) {
+    // Nettoyage anciens marqueurs
+    if (!map.__foundCamembertMarkers) {
+        map.__foundCamembertMarkers = [];
+    }
+    for (const marker of map.__foundCamembertMarkers) {
+        marker.remove();
+    }
+    map.__foundCamembertMarkers = [];
+
+    // Grouper les stations trouvées par coordonnée exacte
+    const buckets = new Map();
+
+    for (const ft of state.cache.foundStationsGeojson.features) {
+        if (!ft || !ft.geometry || ft.geometry.type !== "Point") continue;
+        const coords = ft.geometry.coordinates;
+        const props = ft.properties || {};
+        const key = `${coords[0].toFixed(6)}|${coords[1].toFixed(6)}`;
+
+        if (!buckets.has(key)) buckets.set(key, []);
+        buckets.get(key).push(ft);
+    }
+
+    for (const entries of buckets.values()) {
+        if (entries.length < 2) continue;
+
+        const props = entries[0].properties || {};
+		const stationIds = entries.map(ft => Number(ft.properties.id_gares));
+		const config = stationIds
+		.map(id => FOUND_STATION_CAMEMBERTS[id])
+		.find(Boolean);
+
+        if (!config) continue;
+
+        // On ne traite que les stations qui ont explicitement une config
+        const leftFt = entries.find(ft => ft.properties.trainline === config.left);
+        const rightFt = entries.find(ft => ft.properties.trainline === config.right);
+        if (!leftFt || !rightFt) continue;
+
+        const leftColor = leftFt.properties.color;
+        const rightColor = rightFt.properties.color;
+
+        const el = document.createElement("div");
+        el.className = "found-camembert-marker";
+        el.style.pointerEvents = "none"; // laisse les clics passer à la couche found-stations
+        el.innerHTML = makeFoundStationCamembertSVG(leftColor, rightColor, config.angleDeg, 7, 9.5);
+
+        const marker = new mapboxgl.Marker({
+            element: el,
+            anchor: "center"
+        })
+            .setLngLat(entries[0].geometry.coordinates)
+            .addTo(map);
+
+        map.__foundCamembertMarkers.push(marker);
+    }
+}
+``
 
 ///////////////////////////////////////////////////////////
 // Data loader
