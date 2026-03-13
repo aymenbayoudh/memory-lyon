@@ -28,9 +28,9 @@
     "nom_gares": "Vaise Industrie",
     "nom_zdc": "Vaise Industrie",
     "nom_iv": "Vaise Industrie",
-    "trainline": "NAV1",
+    "trainline": "NAVI1",
     "color": "#00A3A6",
-    "logo": "data/images/NAV1.svg",
+    "logo": "data/images/NAVI1.svg",
     "aliases": ["Vaise Industrie NAV", "Vaise (bateau)"]
   }
 },
@@ -42,9 +42,9 @@
     "nom_gares": "Confluence",
     "nom_zdc": "Confluence",
     "nom_iv": "Confluence",
-    "trainline": "NAV1",
+    "trainline": "NAVI1",
     "color": "#00A3A6",
-    "logo": "data/images/NAV1.svg",
+    "logo": "data/images/NAVI1.svg",
     "aliases": ["Confluence NAV", "Confluence (bateau)"]
   }
 },
@@ -56,9 +56,9 @@
     "nom_gares": "Terrasses Presqu'île",
     "nom_zdc": "Terrasses Presqu'île",
     "nom_iv": "Terrasses Presqu'île",
-    "trainline": "NAV1",
+    "trainline": "NAVI1",
     "color": "#00A3A6",
-    "logo": "data/images/NAV1.svg",
+    "logo": "data/images/NAVI1.svg",
     "aliases": ["Terrasses Presqu'île", "Terrasses"]
   }
 },
