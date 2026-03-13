@@ -463,6 +463,11 @@
 			align-content: flex-start;
 			gap: 0.1em;
 		}
+		.station-popup img.trainline.section-group {
+    height: 1.5em;
+    width: auto;
+    margin-right: 0.1em;
+}
 		.station-popup img.trainline {
 			width: 1.5em;
 		}
@@ -1895,6 +1900,9 @@ join($map, dataLoader.$stations, (map, stations) => {
 join($map, dataLoader.$communes, (map, communes) => {
 	//map.getSource('communes').setData(communes);
 });
+function renderPopupSectionIcon(filename, alt) {
+    return `<img src="data/images/${filename}" alt="${alt}" class="trainline section-group" />`;
+}
 
 join($map, dataLoader.$stationData, (map, stationData) => {
 	// Popups
@@ -1928,12 +1936,55 @@ join($map, dataLoader.$stationData, (map, stationData) => {
 			connectedTrainlines.add(props.trainline);
 		}
 		const logos = [];
-		for (const trainline of stationData.meta["ordered-trainlines"]) {
-			if (connectedTrainlines.has(trainline)) {
-				const url = stationData.meta.trainlines[trainline].logo;
-				logos.push(`<img src="data/images/${url}" alt="${trainline}" class="trainline" />`)
-			}
-		}
+
+// ordre/familles fixes
+const metroLines = ["MA", "MB", "MC", "MD"];
+const funiLines  = ["F1", "F2"];
+const tramLines  = ["T1", "T2", "T3", "T4", "T5", "T6", "T7"];
+const tbLines    = ["TB11", "TB12"];
+const naviLines  = ["NAV1", "NAVI1"];
+
+// helper pour ajouter une ligne si présente
+function pushTrainlineLogo(trainline) {
+    const trainlineMeta = stationData.meta.trainlines[trainline];
+    if (!trainlineMeta) return;
+    logos.push(`<img src="data/images/${trainlineMeta.logo}" alt="${trainline}" class="trainline" />`);
+}
+
+// Métro
+const metrosPresent = metroLines.filter(tl => connectedTrainlines.has(tl));
+if (metrosPresent.length > 0) {
+    logos.push(renderPopupSectionIcon("logo_M.svg", "Métro"));
+    metrosPresent.forEach(pushTrainlineLogo);
+}
+
+// Funi
+const funisPresent = funiLines.filter(tl => connectedTrainlines.has(tl));
+if (funisPresent.length > 0) {
+    logos.push(renderPopupSectionIcon("logo_F.svg", "Funiculaire"));
+    funisPresent.forEach(pushTrainlineLogo);
+}
+
+// Tram
+const tramsPresent = tramLines.filter(tl => connectedTrainlines.has(tl));
+if (tramsPresent.length > 0) {
+    logos.push(renderPopupSectionIcon("logo_T.svg", "Tram"));
+    tramsPresent.forEach(pushTrainlineLogo);
+}
+
+// TB
+const tbPresent = tbLines.filter(tl => connectedTrainlines.has(tl));
+if (tbPresent.length > 0) {
+    logos.push(renderPopupSectionIcon("logo_TB.svg", "TramBus"));
+    tbPresent.forEach(pushTrainlineLogo);
+}
+
+// NAVI
+const naviPresent = naviLines.filter(tl => connectedTrainlines.has(tl));
+if (naviPresent.length > 0) {
+    logos.push(renderPopupSectionIcon("logo_N.svg", "Navigône"));
+    naviPresent.forEach(pushTrainlineLogo);
+}
 
 		const description = `
 		<div class="station-popup">
