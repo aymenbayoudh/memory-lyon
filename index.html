@@ -1377,15 +1377,13 @@ dataLoader.$stationMemory = dataLoader.$stations.then(stations => {
 		// nom de gare seul:
 		engine.insert(props.nom_gares, payload);
 		engine.insert(props.nom_iv, payload);
-		// nom + sous titre (possible de deviner mais bon courage):
 		engine.insert(props.nom_zdc, payload);
 		if (Array.isArray(props.aliases)) {
-			for (const alias of props.aliases) {
-				if (alias && typeof alias === 'string') {
-					engine.insert(alias, payload);
-				}
-
-			}
+			props.aliases.forEach(alias => {
+				if (alias && typeof alias === "string") {
+            		engine.insert(alias, payload);
+       			}
+    		});
 		}
 	});
 
