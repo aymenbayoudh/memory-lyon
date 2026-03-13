@@ -941,15 +941,17 @@ function renderScoreboard(dom, state, newIndex) {
         let insertedMetroIcon = false;
         let insertedFuniIcon = false;
         let insertedTramIcon = false;
+        let insertedTBIcon = false;
         let insertedNaviIcon = false;
 
         for (const trainline_key of state.cache.orderedTrainlines) {
             const count = state.cache.counts.stationsPerLine[trainline_key];
 
-            const isMetro = /^M[A-D]$/.test(trainline_key);     // MA MB MC MD
-            const isFuni = /^F[12]$/.test(trainline_key);       // F1 F2
-            const isTram = /^T\d+$/.test(trainline_key);        // T1 T2 T3 ...
-            const isNavi = /^NAVI?1$/.test(trainline_key);      // NAV1 ou NAVI1 selon ton nommage
+            const isMetro = /^M[A-D]$/.test(trainline_key);      // MA MB MC MD
+            const isFuni = /^F[12]$/.test(trainline_key);        // F1 F2
+            const isTram = /^T\d+$/.test(trainline_key);         // T1 T2 T3 ...
+            const isTB = /^TB\d+$/.test(trainline_key);          // TB11 TB12
+            const isNavi = /^NAVI?1$/.test(trainline_key);       // NAV1 ou NAVI1
 
             if (isMetro && !insertedMetroIcon) {
                 lineItems.push(renderScorboardSectionIcon("logo_M.svg", "Métro"));
@@ -966,8 +968,13 @@ function renderScoreboard(dom, state, newIndex) {
                 insertedTramIcon = true;
             }
 
+            if (isTB && !insertedTBIcon) {
+                lineItems.push(renderScorboardSectionIcon("logo_TB.svg", "TramBus"));
+                insertedTBIcon = true;
+            }
+
             if (isNavi && !insertedNaviIcon) {
-                lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navi"));
+                lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
                 insertedNaviIcon = true;
             }
 
