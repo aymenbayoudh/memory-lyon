@@ -74,6 +74,59 @@
 			top: 1px;
 			right: 1px;
 		}
+		#count-stations-per-line li.section-icon {
+    position: relative;
+    width: 1.8em;
+    height: 1.8em;
+    overflow: visible;
+}
+
+#count-stations-per-line li.section-icon .logo {
+    position: absolute;
+    height: calc(1.8em - 2px);
+    width: auto;
+    max-width: none;
+    top: 1px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
+
+/* === Section icons (M / F / T / TB / NAVI) ===
+   Objectif :
+   - garder le ratio des logos rectangulaires
+   - faire en sorte que leur petit côté ait la même taille que le côté des badges carrés
+   - retrouver visuellement le même espace entre M|A que entre B|C
+*/
+#count-stations-per-line li.section-icon {
+    width: auto !important;
+    min-width: 1.8em;
+    height: 1.8em;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* ceci recrée l'espace visuel qui manque après un logo rectangulaire */
+    margin-right: 0.15em;
+}
+
+#count-stations-per-line li.section-icon .logo {
+    position: static !important;
+    display: block;
+
+    /* le petit côté du rectangle = côté intérieur du badge normal */
+    height: calc(1.8em - 2px);
+    width: auto !important;
+    max-width: none;
+
+    /* pas de translation/centrage absolu */
+    top: auto;
+    right: auto;
+    left: auto;
+    transform: none;
+}
+
 
 		#search-form-container {
 			position: relative;
