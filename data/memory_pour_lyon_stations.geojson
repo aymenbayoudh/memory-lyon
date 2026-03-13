@@ -3066,7 +3066,11 @@
         "trainline": "TB11",
         "color": "#FDC300",
         "logo": "data/images/TB11.svg",
-        "nom_iv": "Verlaine"
+        "nom_iv": "Verlaine",
+        "aliases": [
+          "Verlaine Tolstoi",
+          "Tolstoi",
+        ]
       }
     },
     {
@@ -3200,7 +3204,11 @@
         "trainline": "T6",
         "color": "#f38fa7",
         "logo": "data/images/T6.svg",
-        "nom_iv": "Verlaine - Tolstoï"
+        "nom_iv": "Verlaine - Tolstoï",
+        "aliases": [
+          "Verlaine Tolstoi",
+          "Tolstoi",
+          "Verlaine"
       }
     },
     {
