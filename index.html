@@ -443,19 +443,22 @@
 			margin: 0.5em 0;
 		}
 		.station-popup .title,
-		.commune-popup .name {
-			display: block;
-			font-weight: bold;
-			font-size: 1.3em;
-		}
-		.station-popup .subtitle,
-		.commune-popup .info {
-			display: block;
-			font-size: 1em;
-		}
-		.station-popup .subtitle {
-			font-style: italic;
-		}
+.commune-popup .name {
+    display: block;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+	.station-popup .subtitle {
+    display: block;
+    font-size: 1em;
+    font-weight: 450;
+    color: #555;
+    margin-top: 0.04em;
+	margin-bottom: 0.4em;
+    line-height: 1.05;
+    font-style: normal;
+}
+		
 		.station-popup .logos {
     display: flex;
     flex-flow: row wrap;
@@ -2101,7 +2104,7 @@ const $map = new Promise((resolve, reject) => {
 		layout: {
 			'text-anchor': 'bottom',
 			'text-offset': [0, -0.5],
-			'text-field': ['get', 'nom_zdc'],
+			'text-field': ['get', 'nom_gares'],
 			'text-size': 13,
 			'text-font': ["Open Sans Regular", "Arial Unicode MS Regular"],
 		},
@@ -2222,12 +2225,16 @@ join($map, dataLoader.$stationData, (map, stationData) => {
         const naviBlock = buildLogoBlock("logo_N.svg", "Navigône", naviLines);
         if (naviBlock) logoBlocks.push(naviBlock);
 
-        const description = `
-        <div class="station-popup">
-            <span class="title">${props.nom_gares}</span>
-            <span class="subtitle">${props.nom_so_gar ? props.nom_so_gar : ""}</span>
-            <div class="logos">${logoBlocks.join('')}</div>
-        </div>
+        const subtitleHtml = props.nom_so
+    ? `<span class="subtitle">${props.nom_so}</span>`
+    : "";
+
+const description = `
+<div class="station-popup">
+    <span class="title">${props.nom_gares}</span>
+    ${subtitleHtml}
+    <div class="logos">${logoBlocks ? logoBlocks.join('') : logos.join('')}</div>
+</div>
         `;
 
         new mapboxgl.Popup()
