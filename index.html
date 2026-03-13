@@ -922,32 +922,67 @@ function renderMenu(dom, state) {
 }
 
 function renderScoreboard(dom, state, newIndex) {
-	dom["stat-communes"].innerText = state.cache.stats.communes.toFixed(1);
-	dom["stat-surface"].innerText = state.cache.stats.surface.toFixed(1);
-	dom["stat-inhabitants"].innerText = state.cache.stats.inhabitants.toFixed(1);
-	dom["stat-stations"].innerText = state.cache.stats.stations.toFixed(1);
+    dom["stat-communes"].innerText = state.cache.stats.communes.toFixed(1);
+    dom["stat-surface"].innerText = state.cache.stats.surface.toFixed(1);
+    dom["stat-inhabitants"].innerText = state.cache.stats.inhabitants.toFixed(1);
+    dom["stat-stations"].innerText = state.cache.stats.stations.toFixed(1);
 
-	dom["count-communes"].innerText = state.cache.counts.communes;
-	dom["count-surface"].innerText = state.cache.counts.surface.toFixed(1);
-	dom["count-inhabitants"].innerText = (state.cache.counts.inhabitants / 1000.0).toFixed(1);
-	dom["count-stations"].innerText = state.cache.counts.stations;
+    dom["count-communes"].innerText = state.cache.counts.communes;
+    dom["count-surface"].innerText = state.cache.counts.surface.toFixed(1);
+    dom["count-inhabitants"].innerText = (state.cache.counts.inhabitants / 1000.0).toFixed(1);
+    dom["count-stations"].innerText = state.cache.counts.stations;
 
-	dom["btn-show-answers"].style.display = state.showAnswers ? "none" : "inline";
+    dom["btn-show-answers"].style.display = state.showAnswers ? "none" : "inline";
+    dom["found"].style.display = state.showAnswers ? "block" : "none";
 
-	dom["found"].style.display = state.showAnswers ? "block" : "none";
+    join(dataLoader.$stationData, dataLoader.$communeData, (stationData, communeData) => {
+        const lineItems = [];
 
-	join(dataLoader.$stationData, dataLoader.$communeData, (stationData, communeData) => {
-		dom["count-stations-per-line"].replaceChildren(...state.cache.orderedTrainlines.map((trainline_key, index) => {
-			const count = state.cache.counts.stationsPerLine[trainline_key];
-			return renderScorboardLineCounter(trainline_key, count, stationData);
-		}));
+        let insertedMetroIcon = false;
+        let insertedFuniIcon = false;
+        let insertedTramIcon = false;
+        let insertedNaviIcon = false;
 
-		dom.found.replaceChildren(...state.found.map((item, index) => {
-			const isNew = index == newIndex;
-			return renderScorboardFoundEntry(item, stationData, communeData, isNew);
-		}));
-	});
+        for (const trainline_key of state.cache.orderedTrainlines) {
+            const count = state.cache.counts.stationsPerLine[trainline_key];
+
+            const isMetro = /^M[A-D]$/.test(trainline_key);     // MA MB MC MD
+            const isFuni = /^F[12]$/.test(trainline_key);       // F1 F2
+            const isTram = /^T\d+$/.test(trainline_key);        // T1 T2 T3 ...
+            const isNavi = /^NAVI?1$/.test(trainline_key);      // NAV1 ou NAVI1 selon ton nommage
+
+            if (isMetro && !insertedMetroIcon) {
+                lineItems.push(renderScorboardSectionIcon("logo_M.svg", "Métro"));
+                insertedMetroIcon = true;
+            }
+
+            if (isFuni && !insertedFuniIcon) {
+                lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire"));
+                insertedFuniIcon = true;
+            }
+
+            if (isTram && !insertedTramIcon) {
+                lineItems.push(renderScorboardSectionIcon("logo_T.svg", "Tram"));
+                insertedTramIcon = true;
+            }
+
+            if (isNavi && !insertedNaviIcon) {
+                lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navi"));
+                insertedNaviIcon = true;
+            }
+
+            lineItems.push(renderScorboardLineCounter(trainline_key, count, stationData));
+        }
+
+        dom["count-stations-per-line"].replaceChildren(...lineItems);
+
+        dom.found.replaceChildren(...state.found.map((item, index) => {
+            const isNew = index == newIndex;
+            return renderScorboardFoundEntry(item, stationData, communeData, isNew);
+        }));
+    });
 }
+
 
 function renderScorboardLineCounter(trainline_key, count, stationData) {
 	const trainline = stationData.meta.trainlines[trainline_key];
@@ -992,6 +1027,13 @@ function renderScorboardLineCounter(trainline_key, count, stationData) {
 	element.setAttribute("title", `${trainline_key}: ${count} / ${total}`);
 	element.innerHTML = `${logo}${progress}`;
 	return element;
+}
+
+function renderScorboardSectionIcon(filename, alt) {
+    const element = document.createElement('li');
+    element.setAttribute("class", "section-icon");
+    element.innerHTML = `<img src="data/images/${filename}" class="logo" alt="${alt}" />`;
+    return element;
 }
 
 function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
