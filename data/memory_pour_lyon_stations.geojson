@@ -17,7 +17,7 @@
         "trainline": "F1",
         "color": "#90EE90",
         "logo": "data/images/F1.svg",
-        "nom_iv": "Vieux Lyon Cathédrale St-Jean",
+        "nom_iv": "Vieux Lyon Cathédrale St-Jean"
       }
     },
 {
@@ -59,7 +59,7 @@
     "trainline": "NAVI1",
     "color": "#00A3A6",
     "logo": "data/images/NAVI1.svg",
-    "aliases": ["Terrasses Presqu'île", "Terrasses"]
+    "aliases": ["Terrasses Presqu'île", "Terrasses", "Terasses"]
   }
 },
      {
@@ -3123,7 +3123,7 @@
         "trainline": "TB11",
         "color": "#FDC300",
         "logo": "data/images/TB11.svg",
-        "nom_iv": "Terrasses Presqu'île"
+        "nom_iv": "Terrasses Presqu'île",
         "aliases": ["Terrasses Presqu'île", "Terrasses"]
       }
     },
