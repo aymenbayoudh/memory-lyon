@@ -839,7 +839,7 @@
       "logo": "MA.svg",
       "logo-style": {
         "text-color": "white",
-        "shape": "circle"
+        "shape": "square"
       }
     },
     "MB": {
