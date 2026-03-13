@@ -3200,7 +3200,8 @@
         "trainline": "T6",
         "color": "#f38fa7",
         "logo": "data/images/T6.svg",
-        "nom_iv": "Verlaine - Tolstoï"
+        "nom_iv": "Verlaine - Tolstoï",
+        "aliases":["Verlaine","Tolstoi","Verlaine - Tolstoï"]
       }
     },
     {
