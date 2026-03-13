@@ -457,20 +457,28 @@
 			font-style: italic;
 		}
 		.station-popup .logos {
-			display: flex;
-			flex-flow: row wrap;
-			justify-content: flex-start;
-			align-content: flex-start;
-			gap: 0.1em;
-		}
-		.station-popup img.trainline.section-group {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.35em; /* espace ENTRE blocs (ex: entre B et T) */
+}
+
+.station-popup .logo-block {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.1em;  /* espace À L’INTÉRIEUR du bloc (ex: entre M et A) */
+}
+
+.station-popup img.trainline {
+    width: 1.5em;
+}
+
+.station-popup img.trainline.section-group {
     height: 1.5em;
     width: auto;
-    margin-right: 0.0em;
+    display: block;
 }
-		.station-popup img.trainline {
-			width: 1.5em;
-		}
 
 		@media (max-width: 1000px) {
 			#map-container {
@@ -1904,112 +1912,110 @@ function renderPopupSectionIcon(filename, alt) {
     return `<img src="data/images/${filename}" alt="${alt}" class="trainline section-group" />`;
 }
 
+function renderPopupSectionIcon(filename, alt) {
+    return `<img src="data/images/${filename}" alt="${alt}" class="trainline section-group" />`;
+}
+
+
 join($map, dataLoader.$stationData, (map, stationData) => {
-	// Popups
-	const stations = stationData.stations;
+    // Popups
+    const stations = stationData.stations;
 
-	// Hack to ensure that station pop-ups "take over" commune ones
-	map.on('preclick', 'found-stations', (e) => {
-		state.preclickedOnStation = true;
-	});
+    // Hack to ensure that station pop-ups "take over" commune ones
+    map.on('preclick', 'found-stations', (e) => {
+        state.preclickedOnStation = true;
+    });
 
-	// When a click event occurs on a train station, open a popup at the
-	// location of the feature, with description HTML from its properties.
-	map.on('click', 'found-stations', (e) => {
-		state.preclickedOnStation = false;
-		// Copy coordinates array.
-		const coordinates = e.features[0].geometry.coordinates.slice();
-		const props = e.features[0].properties;
+    // When a click event occurs on a train station, open a popup at the
+    // location of the feature, with description HTML from its properties.
+    map.on('click', 'found-stations', (e) => {
+        state.preclickedOnStation = false;
 
-		// Ensure that if the map is zoomed out such that multiple
-		// copies of the feature are visible, the popup appears
-		// over the copy being pointed to.
-		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-		}
+        // Copy coordinates array
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const props = e.features[0].properties;
 
-		const connectedIds = stationData.meta['connected-stations'][props.id_gares] || [props.id_gares];
-		const connectedTrainlines = new Set();
-		for (const id of connectedIds) {
-			const index = stationData.idToIndex[id];
-			const props = stations.features[index].properties;
-			connectedTrainlines.add(props.trainline);
-		}
-		const logos = [];
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
 
-// ordre/familles fixes
-const metroLines = ["MA", "MB", "MC", "MD"];
-const funiLines  = ["F1", "F2"];
-const tramLines  = ["T1", "T2", "T3", "T4", "T5", "T6", "T7"];
-const tbLines    = ["TB11", "TB12"];
-const naviLines  = ["NAV1", "NAVI1"];
+        const connectedIds = stationData.meta['connected-stations'][props.id_gares] || [props.id_gares];
+        const connectedTrainlines = new Set();
 
-// helper pour ajouter une ligne si présente
-function pushTrainlineLogo(trainline) {
-    const trainlineMeta = stationData.meta.trainlines[trainline];
-    if (!trainlineMeta) return;
-    logos.push(`<img src="data/images/${trainlineMeta.logo}" alt="${trainline}" class="trainline" />`);
-}
+        for (const id of connectedIds) {
+            const index = stationData.idToIndex[id];
+            const p = stations.features[index].properties;
+            connectedTrainlines.add(p.trainline);
+        }
 
-// Métro
-const metrosPresent = metroLines.filter(tl => connectedTrainlines.has(tl));
-if (metrosPresent.length > 0) {
-    logos.push(renderPopupSectionIcon("logo_M.svg", "Métro"));
-    metrosPresent.forEach(pushTrainlineLogo);
-}
+        const logoBlocks = [];
 
-// Funi
-const funisPresent = funiLines.filter(tl => connectedTrainlines.has(tl));
-if (funisPresent.length > 0) {
-    logos.push(renderPopupSectionIcon("logo_F.svg", "Funiculaire"));
-    funisPresent.forEach(pushTrainlineLogo);
-}
+        // ordre/familles
+        const metroLines = ["MA", "MB", "MC", "MD"];
+        const funiLines  = ["F1", "F2"];
+        const tramLines  = ["T1", "T2", "T3", "T4", "T5", "T6", "T7"];
+        const tbLines    = ["TB11", "TB12"];
+        const naviLines  = ["NAV1", "NAVI1"]; // au cas où ton nommage varie
 
-// Tram
-const tramsPresent = tramLines.filter(tl => connectedTrainlines.has(tl));
-if (tramsPresent.length > 0) {
-    logos.push(renderPopupSectionIcon("logo_T.svg", "Tram"));
-    tramsPresent.forEach(pushTrainlineLogo);
-}
+        function buildLogoBlock(sectionFilename, sectionAlt, lines) {
+            const present = lines.filter(tl => connectedTrainlines.has(tl));
+            if (present.length === 0) return null;
 
-// TB
-const tbPresent = tbLines.filter(tl => connectedTrainlines.has(tl));
-if (tbPresent.length > 0) {
-    logos.push(renderPopupSectionIcon("logo_TB.svg", "TramBus"));
-    tbPresent.forEach(pushTrainlineLogo);
-}
+            const logos = [];
+            logos.push(renderPopupSectionIcon(sectionFilename, sectionAlt));
 
-// NAVI
-const naviPresent = naviLines.filter(tl => connectedTrainlines.has(tl));
-if (naviPresent.length > 0) {
-    logos.push(renderPopupSectionIcon("logo_N.svg", "Navigône"));
-    naviPresent.forEach(pushTrainlineLogo);
-}
+            for (const trainline of present) {
+                const trainlineMeta = stationData.meta.trainlines[trainline];
+                if (!trainlineMeta) continue;
+                logos.push(`<img src="data/images/${trainlineMeta.logo}" alt="${trainline}" class="trainline" />`);
+            }
 
-		const description = `
-		<div class="station-popup">
-		<span class="title">${props.nom_gares}</span>
-		<span class="subtitle">${props.nom_so_gar ? props.nom_so_gar : ""}</span>
-		<div class="logos">${logos.join('')}</div>
-		</div>
-		`;
+            return `<span class="logo-block">${logos.join('')}</span>`;
+        }
 
-		new mapboxgl.Popup()
-			.setLngLat(coordinates)
-			.setHTML(description)
-			.addTo(map);
-	});
+        const metroBlock = buildLogoBlock("logo_M.svg", "Métro", metroLines);
+        if (metroBlock) logoBlocks.push(metroBlock);
 
-	// Change the cursor to a pointer when the mouse is over the train line layer.
-	map.on('mouseenter', 'found-stations', () => {
-		map.getCanvas().style.cursor = 'pointer';
-	});
+        const funiBlock = buildLogoBlock("logo_F.svg", "Funiculaire", funiLines);
+        if (funiBlock) logoBlocks.push(funiBlock);
 
-	// Change it back to a pointer when it leaves.
-	map.on('mouseleave', 'found-stations', () => {
-		map.getCanvas().style.cursor = '';
-	});
+        const tramBlock = buildLogoBlock("logo_T.svg", "Tram", tramLines);
+        if (tramBlock) logoBlocks.push(tramBlock);
+
+        const tbBlock = buildLogoBlock("logo_TB.svg", "TramBus", tbLines);
+        if (tbBlock) logoBlocks.push(tbBlock);
+
+        const naviBlock = buildLogoBlock("logo_N.svg", "Navigône", naviLines);
+        if (naviBlock) logoBlocks.push(naviBlock);
+
+        const description = `
+        <div class="station-popup">
+            <span class="title">${props.nom_gares}</span>
+            <span class="subtitle">${props.nom_so_gar ? props.nom_so_gar : ""}</span>
+            <div class="logos">${logoBlocks.join('')}</div>
+        </div>
+        `;
+
+        new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+    });
+
+    // Change the cursor to a pointer when the mouse is over the train line layer.
+    map.on('mouseenter', 'found-stations', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back when it leaves.
+    map.on('mouseleave', 'found-stations', () => {
+        map.getCanvas().style.cursor = '';
+    });
 });
+
 
 	</script>
 }
