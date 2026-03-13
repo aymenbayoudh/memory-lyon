@@ -1593,7 +1593,20 @@ const $map = new Promise((resolve, reject) => {
 			source: 'traces-' + layer,
 			paint: {
 				"line-color": ["get", "color"],
-				"line-width": 3,
+				//"line-width": 3,
+				"line-width": [
+					"match",
+					["get", "trainline"],
+					// Métros (un peu plus épais)
+					"MA", 4,
+					"MB", 4,
+					"MC", 4,
+					"MD", 4,
+					// Tout le reste → normal
+					3
+				],
+
+				
 				//"line-offset": ["*", 3, ["interpolate",
 				//	['linear'],
 				//	0.0, ["get", "start-line-offset"],
