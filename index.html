@@ -106,28 +106,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* ceci recrée l'espace visuel qui manque après un logo rectangulaire */
     margin-right: 0.15em;
 }
 
 #count-stations-per-line li.section-icon .logo {
     position: static !important;
     display: block;
-
-    /* le petit côté du rectangle = côté intérieur du badge normal */
     height: calc(1.8em - 2px);
     width: auto !important;
     max-width: none;
-
-    /* pas de translation/centrage absolu */
     top: auto;
     right: auto;
     left: auto;
     transform: none;
 }
-
-
+		
 		#search-form-container {
 			position: relative;
 			width: 100%;
@@ -1032,7 +1025,9 @@ function renderScoreboard(dom, state, newIndex) {
             }
 
             if (isFuni && !insertedFuniIcon) {
-                lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire"));
+				lineItems.push(renderScorboardLineBreak());
+				lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire"));
+               // lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire", "margin-left:0.045em;"));
                 insertedFuniIcon = true;
             }
 
@@ -1051,7 +1046,9 @@ function renderScoreboard(dom, state, newIndex) {
             }
 
             if (isNavi && !insertedNaviIcon) {
-                lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
+				lineItems.push(renderScorboardLineBreak())
+				lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
+               //lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône", "margin-left:0.045em;"));
                 insertedNaviIcon = true;
             }
 
@@ -1114,9 +1111,12 @@ function renderScorboardLineCounter(trainline_key, count, stationData) {
 	return element;
 }
 
-function renderScorboardSectionIcon(filename, alt) {
+function renderScorboardSectionIcon(filename, alt, extraStyle = "") {
     const element = document.createElement('li');
     element.setAttribute("class", "section-icon");
+    if (extraStyle) {
+        element.setAttribute("style", extraStyle);
+    }
     element.innerHTML = `<img src="data/images/${filename}" class="logo" alt="${alt}" />`;
     return element;
 }
