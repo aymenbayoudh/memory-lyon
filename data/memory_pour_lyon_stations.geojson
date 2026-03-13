@@ -55,10 +55,10 @@
     "id_gares": 900003,
     "nom_gares": "Terrasses Presqu'île",
     "nom_zdc": "Terrasses Presqu'île",
+    "nom_iv": "Terrasses Presqu'île",
     "trainline": "NAVI1",
     "color": "#00A3A6",
     "logo": "data/images/NAVI1.svg",
-    "nom_iv": "Terrasses Presqu'île",
     "aliases": ["Terrasses Presqu'île", "Terrasses", "Terasses"]
   }
 },
@@ -73,12 +73,12 @@
       },
       "properties": {
         "id_gares": 30212,
-        "nom_gares": "Minimes Théatres Romains",
-        "nom_zdc": "Minimes Théatres Romains",
+        "nom_gares": "caca",
+        "nom_zdc": "caca",
         "trainline": "F1",
         "color": "#90EE90",
         "logo": "data/images/F1.svg",
-        "nom_iv": "Minimes Théatres Romains"
+        "nom_iv": "caca"
       }
     },
     {
@@ -3124,7 +3124,7 @@
         "color": "#FDC300",
         "logo": "data/images/TB11.svg",
         "nom_iv": "Terrasses Presqu'île",
-        "aliases": ["Terrasses Presqu'île", "Terrasses", "Terasses"]
+        "aliases": ["Terrasses Presqu'île", "Terrasses"]
       }
     },
     {
@@ -3200,8 +3200,7 @@
         "trainline": "T6",
         "color": "#f38fa7",
         "logo": "data/images/T6.svg",
-        "nom_iv": "Verlaine - Tolstoï",
-        "aliases":["Verlaine","Tolstoi","Verlaine - Tolstoï"]
+        "nom_iv": "Verlaine - Tolstoï"
       }
     },
     {
