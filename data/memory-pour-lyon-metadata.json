@@ -5,31 +5,29 @@
       33264,
       1000023
     ],
-    "900003": [
-      900003, 
-      50200
-    ],
-    "50200":  [
-      900003,
-      50200
-    ],
     "33264": [
       30211,
       33264,
       1000023
     ],
-    "48290": [
-      48290,
-      47207
-    ],
-    "47207": [
-      47207,
-      48290
-    ],
     "1000023": [
       30211,
       33264,
       1000023
+    ],
+    "900001": [
+      900001
+    ],
+    "900002": [
+      900002
+    ],
+    "50200": [
+      50200,
+      900003
+    ],
+    "900003": [
+      50200,
+      900003
     ],
     "30212": [
       30212
@@ -513,9 +511,6 @@
     "667": [
       667
     ],
-    "50200": [
-      50200
-    ],
     "48290": [
       48290
     ],
@@ -879,6 +874,14 @@
         "shape": "square"
       }
     },
+    "NAVI1": {
+      "station-count": 3,
+      "logo": "NAVI1.svg",
+      "logo-style": {
+        "text-color": "black",
+        "shape": "square"
+      }
+    },
     "T1": {
       "station-count": 27,
       "logo": "T1.svg",
@@ -950,14 +953,6 @@
         "text-color": "black",
         "shape": "square"
       }
-    },
-     "NAVI1": {
-      "station-count": 3,
-      "logo": "NAVI1.svg",
-      "logo-style": {
-        "text-color": "black",
-        "shape": "square"
-      }
     }
   },
   "ordered-trainlines": [
@@ -974,14 +969,14 @@
     "T5",
     "T6",
     "T7",
+    "NAVI1",
     "TB11",
-    "TB12",
-    "NAVI1"
+    "TB12"
   ],
   "communes": {
-    "total-communes": 0,
-    "total-inhabitants": 0,
-    "total-surface": 0
+    "total-communes": 58,
+    "total-inhabitants": 1436354,
+    "total-surface": 533.68
   },
   "from-memory-paris": {}
 }
