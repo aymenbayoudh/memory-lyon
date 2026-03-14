@@ -683,7 +683,7 @@
     #map-container {
         width: 100%;
     }
-
+	
     #scoreboard {
         position: absolute;
         top: 0.8em;
@@ -695,7 +695,8 @@
         height: auto;
         padding: 0.7em 0.7em;
         border-radius: 0.8em;
-        background: rgba(255,255,255,0.92);
+        background:white;
+
         backdrop-filter: blur(6px);
         box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
         overflow: hidden;
@@ -1813,7 +1814,7 @@ function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
 			center: [commune.center.lon, commune.center.lat],
 			zoom: 12,
 		};
-		logo = `<img src="data/images/commune.jps" class="logo" />`;
+		logo = `<img src="data/images/communes.jpg" class="logo" />`;
 	}
 
 	const element = document.createElement('li');
@@ -2328,7 +2329,7 @@ const dataLoader = {
 		.then(response => response.json()),
 
 	$communes:
-		fetch('data/memory-pour-idf-communes.geojson')
+		fetch('data/memory-pour-lyon-communes.geojson')
 		.then(response => response.json()),
 
 	$meta:
@@ -2690,6 +2691,22 @@ const $map = new Promise((resolve, reject) => {
 		'data': state.cache.foundCommunesGeojson,
 	});
 
+	map.addLayer({
+    id: 'found-communes',
+    type: 'fill',
+    source: 'found-communes',
+    paint: {
+        'fill-color': '#d26e7a',
+        'fill-outline-color': '#990000',
+        'fill-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            0.5,
+            0.15
+        ]
+    }
+});
+
 	
 
 	map.on('mousemove', 'found-communes', e => {
@@ -2731,8 +2748,12 @@ const $map = new Promise((resolve, reject) => {
 		if (state.preclickedOnStation) return;
 
 		const commune = e.features[0].properties;
-		const coordinates = JSON.parse(commune.center);
-		coordinates.lng = coordinates.lon;
+const rawCenter = commune.center;
+const coordinates = typeof rawCenter === "string"
+    ? JSON.parse(rawCenter)
+    : { ...rawCenter };
+
+coordinates.lng = coordinates.lon;
 
 		const description = `
 		<div class="commune-popup">
