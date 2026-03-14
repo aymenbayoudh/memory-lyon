@@ -560,6 +560,91 @@
 #scoreboard-mobile-progress {
     display: none;
 }
+
+@media (min-width: 1001px) {
+    /* Sur desktop, le "mobile bar" sert de bandeau compact + bouton */
+    #scoreboard-mobile-bar {
+        display: flex;
+        position: relative;
+        align-items: flex-start;
+        justify-content: flex-end;
+        min-height: 0;
+        margin-bottom: 0;
+    }
+
+    /* En mode ouvert desktop :
+       on ne montre pas les 2 lignes compactes,
+       on garde juste le bouton */
+    #scoreboard-mobile-summary,
+    #scoreboard-mobile-lines-summary {
+        display: none;
+    }
+
+    #scoreboard:not(.minimized) #btn-toggle-scoreboard {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    /* En mode ouvert : on enlève le trou au-dessus des stats */
+    #scoreboard:not(.minimized) #scoreboard-content {
+        margin-top: 0;
+    }
+
+    /* En mode replié desktop :
+       on réaffiche les 2 lignes compactes */
+    #scoreboard.minimized #scoreboard-mobile-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0.18em;
+        padding-right: 2.6em;
+        margin-bottom: 0.5em;
+        min-height: 2.2em;
+    }
+
+    #scoreboard.minimized #scoreboard-mobile-summary {
+        display: flex;
+        align-items: center;
+        gap: 0.75em;
+    }
+
+    #scoreboard.minimized #scoreboard-mobile-lines-summary {
+        display: flex;
+        align-items: center;
+        gap: 0.55em;
+        padding-left: 0.05em;
+    }
+
+    #scoreboard.minimized #btn-toggle-scoreboard {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    /* En mode replié :
+       on enlève toute la partie "au-dessus de la liste" */
+    #scoreboard.minimized #stats,
+    #scoreboard.minimized #counts,
+    #scoreboard.minimized #btn-show-answers,
+    #scoreboard.minimized #scoreboard-mobile-progress {
+        display: none !important;
+    }
+
+    /* On garde le trait pour séparer le résumé compact de la liste */
+    #scoreboard.minimized #scoreboard-content > hr {
+        display: block;
+        margin: 0.45em 0 0.55em 0;
+    }
+
+    /* On garde la liste */
+    #scoreboard.minimized #found {
+        display: block !important;
+    }
+}
+
+
 	@media (max-width: 1000px) {
     #map-container {
         width: 100%;
@@ -1407,12 +1492,11 @@ function renderScoreboard(dom, state, newIndex) {
     dom["btn-show-answers"].style.display = state.showAnswers ? "none" : "inline";
     dom["found"].style.display = state.showAnswers ? "block" : "none";
 
-    // Important : la classe minimized doit être appliquée même si quelque chose bug plus loin
+    // applique l'état plié/déplié
     dom["scoreboard"].setAttribute("class", state.scoreboardMinimized ? "minimized" : "");
     updateMobileScoreboardOffset(dom);
 
     join(dataLoader.$stationData, dataLoader.$communeData, (stationData, communeData) => {
-        // garde-fou sur les conteneurs mobiles
         const requiredIds = [
             "scoreboard",
             "scoreboard-mobile-summary",
@@ -1442,31 +1526,35 @@ function renderScoreboard(dom, state, newIndex) {
 
             const isMetro = /^M[A-D]$/.test(trainline_key);
             const isFuni  = /^F[12]$/.test(trainline_key);
-            const isTram  = /^T\\d+$/.test(trainline_key);
-            const isTB    = /^TB\\d+$/.test(trainline_key);
+            const isTram  = /^T\d+$/.test(trainline_key);
+            const isTB    = /^TB\d+$/.test(trainline_key);
             const isNavi  = /^NAVI?1$/.test(trainline_key);
 
+            // Ligne 1 : M ... F ...
             if (isMetro && !insertedMetroIcon) {
                 lineItems.push(renderScorboardSectionIcon("logo_M.svg", "Métro"));
                 insertedMetroIcon = true;
             }
             if (isFuni && !insertedFuniIcon) {
-                lineItems.push(renderScorboardLineBreak());
+                
                 lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire"));
                 insertedFuniIcon = true;
             }
+
+            // Ligne 2 : T ...
             if (isTram && !insertedTramIcon) {
                 lineItems.push(renderScorboardLineBreak());
                 lineItems.push(renderScorboardSectionIcon("logo_T.svg", "Tram"));
                 insertedTramIcon = true;
             }
+
+            // Ligne 3 : TB ... NAVI ...
             if (isTB && !insertedTBIcon) {
                 lineItems.push(renderScorboardLineBreak());
                 lineItems.push(renderScorboardSectionIcon("logo_TB.svg", "TramBus"));
                 insertedTBIcon = true;
             }
             if (isNavi && !insertedNaviIcon) {
-                lineItems.push(renderScorboardLineBreak());
                 lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
                 insertedNaviIcon = true;
             }
@@ -1483,14 +1571,14 @@ function renderScoreboard(dom, state, newIndex) {
         mobileProgressContainer.replaceChildren(...lineItems.map(node => node.cloneNode(true)));
         dom["scoreboard-mobile-progress"].replaceChildren(mobileProgressContainer);
 
-        // --- Ligne 1 mobile : TCL / communes / train ---
+        // --- Ligne 1 compacte : TCL / communes / train ---
         dom["scoreboard-mobile-summary"].innerHTML = [
-            renderMobileHeaderLine("logo_TCL.svg", state.cache.stats.stations.toFixed(1)),
-            renderMobileHeaderLine("communes.jpg", state.cache.stats.communes.toFixed(1)),
-            renderMobileHeaderLine("train.svg", "0.0"),
+            renderMobileHeaderLine("logo_TCL.svg", state.cache.stats.stations.toFixed(1), "TCL"),
+            renderMobileHeaderLine("communes.jpg", state.cache.stats.communes.toFixed(1), "Communes"),
+            renderMobileHeaderLine("train.svg", "0.0", "TER"),
         ].join("");
 
-        // --- Ligne 2 mobile : M / F / T / TB / N ---
+        // --- Ligne 2 compacte : M / F / T / TB / N ---
         const familyStats = {
             metro: { found: 0, total: 0 },
             funi:  { found: 0, total: 0 },
@@ -1509,10 +1597,10 @@ function renderScoreboard(dom, state, newIndex) {
             } else if (/^F[12]$/.test(trainline)) {
                 familyStats.funi.total += total;
                 familyStats.funi.found += found;
-            } else if (/^T\\d+$/.test(trainline)) {
+            } else if (/^T\d+$/.test(trainline)) {
                 familyStats.tram.total += total;
                 familyStats.tram.found += found;
-            } else if (/^TB\\d+$/.test(trainline)) {
+            } else if (/^TB\d+$/.test(trainline)) {
                 familyStats.tb.total += total;
                 familyStats.tb.found += found;
             } else if (/^NAVI?1$/.test(trainline)) {
@@ -1528,11 +1616,11 @@ function renderScoreboard(dom, state, newIndex) {
         const naviPct  = familyStats.navi.total  > 0 ? (100 * familyStats.navi.found  / familyStats.navi.total ).toFixed(1) : "0.0";
 
         dom["scoreboard-mobile-lines-summary"].innerHTML = [
-            renderMobileHeaderLineSmall("logo_M.svg", metroPct),
-            renderMobileHeaderLineSmall("logo_F.svg", funiPct),
-            renderMobileHeaderLineSmall("logo_T.svg", tramPct),
-            renderMobileHeaderLineSmall("logo_TB.svg", tbPct),
-            renderMobileHeaderLineSmall("logo_N.svg", naviPct),
+            renderMobileHeaderLineSmall("logo_M.svg", metroPct, "Métro"),
+            renderMobileHeaderLineSmall("logo_F.svg", funiPct, "Funiculaire"),
+            renderMobileHeaderLineSmall("logo_T.svg", tramPct, "Tram"),
+            renderMobileHeaderLineSmall("logo_TB.svg", tbPct, "TramBus"),
+            renderMobileHeaderLineSmall("logo_N.svg", naviPct, "Navigône"),
         ].join("");
 
         // --- liste des stations trouvées ---
@@ -1542,10 +1630,10 @@ function renderScoreboard(dom, state, newIndex) {
             return renderScorboardFoundGroupEntry(group, stationData, communeData, isNew);
         }));
 
-        // recalcule la hauteur du header mobile après injection du HTML
         updateMobileScoreboardOffset(dom);
     });
 }
+
 
 
 
