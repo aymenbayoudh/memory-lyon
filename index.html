@@ -303,7 +303,7 @@
 			box-sizing: border-box;
 			position: absolute;
 			right: 0;
-			top: 0;
+			top: 0em;
 			width: 27%;
 			height: 100vh;
 			background-color: #b7c8d9;
@@ -584,6 +584,7 @@
     #scoreboard-mobile-bar {
         display: flex;
         position: relative;
+	
         align-items: flex-start;
         justify-content: flex-end;
         min-height: 0;
@@ -664,13 +665,25 @@
 
 
 	@media (max-width: 1000px) {
+		html,
+    body,
+    main {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    #map-container,
+    #map,
+    #overlay {
+        height: 100vh;
+    }
     #map-container {
         width: 100%;
     }
 
     #scoreboard {
         position: absolute;
-        top: 0.7em;
+        top: 0.8em;
 		
         left: 50%;
         transform: translateX(-50%);
@@ -743,7 +756,7 @@
 
     /* espace un peu plus grand entre header et recherche */
     #search-form-container {
-        margin: calc(var(--mobile-scoreboard-height, 3.2em) + 1em) auto 0 auto;
+        margin: calc(var(--mobile-scoreboard-height, 3.2em) + 1.15em) auto 0 auto;
         width: calc(100% - 1em);
         max-width: 30em;
     }
