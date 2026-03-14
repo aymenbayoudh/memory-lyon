@@ -930,7 +930,7 @@
     </span>
 
     <span class="mobile-stat">
-        <img src="data/images/communes.svg" class="mobile-summary-logo" alt<span class="mobile-percent-sign">%</span>
+        <img src="data/images/communes.jpg" class="mobile-summary-logo" alt<span class="mobile-percent-sign">%</span>
     </span>
 
     <span class="mobile-stat">
@@ -1639,7 +1639,7 @@ const terTotalStats = stationData.meta.trainlines["TER"]?.["station-count"] || 0
 
 		dom["scoreboard-mobile-summary"].innerHTML = [
 			renderMobileHeaderLine("logo_TCL.svg", state.cache.stats.stations.toFixed(1), "TCL"),
-			renderMobileHeaderLine("communes.svg", state.cache.stats.communes.toFixed(1), "Communes"),
+			renderMobileHeaderLine("communes.jpg", state.cache.stats.communes.toFixed(1), "Communes"),
 			renderMobileHeaderLine("train.svg", terPct, "TER"),
 		].join("");
 
@@ -1814,7 +1814,7 @@ function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
 			center: [commune.center.lon, commune.center.lat],
 			zoom: 12,
 		};
-		logo = `<img src="data/images/communes.svg" class="logo" />`;
+		logo = `<img src="data/images/communes.jpg" class="logo" />`;
 	}
 
 	const element = document.createElement('li');
