@@ -1873,6 +1873,29 @@ function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
 
 	return element;
 }
+function getStationDisplayPriority(trainline) {
+    if (/^M[A-D]$/.test(trainline)) return 100;   // métro
+    if (/^T\d+$/.test(trainline)) return 90;      // tram
+    if (/^TB\d+$/.test(trainline)) return 80;     // tram-bus
+    if (/^F[12]$/.test(trainline)) return 70;     // funiculaire
+    if (/^NAVI?1$/.test(trainline)) return 60;    // navigône
+    if (trainline === "TER") return 0;            // TER tout à la fin
+    return 10;
+}
+const PART_DIEU_IDS = new Set([
+    32121,  // Gare Part-Dieu Vivier Merle
+    46025,  // Gare Part-Dieu - Vivier Merle
+    44038,  // Gare Part-Dieu - Vivier Merle
+    45883,  // Gare Part-Dieu - Villette
+    35659,  // Gare Part-Dieu - Villette
+    9991155 // Lyon Part-Dieu TER
+]);
+
+function isPartDieuGroup(features) {
+    return features.some(ft => PART_DIEU_IDS.has(Number(ft.properties.id_gares)));
+}
+
+
 
 function renderScorboardFoundGroupEntry(group, stationData, communeData, isNew) {
     // Cas commune : on garde le comportement simple
@@ -1888,14 +1911,26 @@ function renderScorboardFoundGroupEntry(group, stationData, communeData, isNew) 
     }
 
     const features = stationItems
-        .map(item => {
-            const index = stationData.idToIndex[item.id[1]];
-            return stationData.stations.features[index];
-        })
-        .filter(Boolean);
+    .map(item => {
+        const index = stationData.idToIndex[item.id[1]];
+        return stationData.stations.features[index];
+    })
+    .filter(Boolean);
 
-    const props0 = features[0].properties;
-    const displayName = props0.nom_zdc || props0.nom_gares || stationItems[0].name;
+const sortedFeatures = [...features].sort((a, b) => {
+    const pa = getStationDisplayPriority(a.properties.trainline || "");
+    const pb = getStationDisplayPriority(b.properties.trainline || "");
+    return pb - pa; // plus grand = plus prioritaire
+});
+
+const bestFeature = sortedFeatures[0];
+const bestProps = bestFeature.properties;
+let displayName = bestProps.nom_zdc || bestProps.nom_gares || stationItems[0].name;
+
+// Exception spécifique Part-Dieu
+if (isPartDieuGroup(features)) {
+    displayName = "Gare Part-Dieu";
+}
 
     // logos triés selon ordered-trainlines
     const presentTrainlines = new Set(features.map(ft => ft.properties.trainline));
