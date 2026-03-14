@@ -618,7 +618,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         gap: 0.18em;
-        padding-right: 2.6em;
+        padding-right: 3.4em;
         margin-bottom: 0.5em;
         min-height: 2.2em;
     }
@@ -638,8 +638,8 @@
 
     #scoreboard.minimized #btn-toggle-scoreboard {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: -0.8em;
+        right: 0.2em;
     }
 
     /* En mode replié :
@@ -2723,13 +2723,16 @@ map.addSource("traces", {
 
 function addTraceLayer(map, trainline) {
     const metroLines = new Set(["MA", "MB", "MC", "MD"]);
-    const tbLines = new Set(["TB11", "TB12"]);
+    const tbLines = new Set(["TB11", "TB12","NAVI1","NAV1"]);
+	const terLines = new Set(["TER"]);
 
     let lineWidth = 2.75;
     if (metroLines.has(trainline)) {
         lineWidth = 5;
     } else if (tbLines.has(trainline)) {
         lineWidth = 2.25;
+	} else if (terLines.has(trainline)) {
+        lineWidth = 1.25;
     }
 
     map.addLayer({
@@ -2747,8 +2750,9 @@ function addTraceLayer(map, trainline) {
 
 // Ordre d'ajout = du moins prioritaire au plus prioritaire
 [
-   
+   "TER",
 	"NAV1",
+	"NAVI1",
 	"MD",
     "MC",
     "MB",
@@ -2782,7 +2786,7 @@ function addTraceLayer(map, trainline) {
 		id: 'pending-stations',
 		type: 'circle',
 		source: 'stations',
-		minzoom: 11,
+		//minzoom: 11,
 		paint: {
 			//'circle-color': ['get', 'color'],
 			//'circle-radius': 3,
@@ -2796,6 +2800,10 @@ function addTraceLayer(map, trainline) {
 				"MD", 3.25,
 				"TB11",2.15,
 				"TB12",2.15,
+				"NAV1",2.05,
+				"NAVI1",2.05,
+				"TER",2.05,
+
 				// Tout le reste
 				2.5
 			],
