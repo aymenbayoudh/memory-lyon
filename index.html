@@ -1871,7 +1871,7 @@ function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
 			center: [commune.center.lon, commune.center.lat],
 			zoom: 12,
 		};
-		logo = `<img src="data/images/communes.jpg" class="logo" />`;
+		logo = `<span class="found-logos"><img src="data/images/communes.jpg" class="logo" /></span>`;
 	}
 
 	const element = document.createElement('li');
@@ -2774,7 +2774,7 @@ const $map = new Promise((resolve, reject) => {
 				
          
 			],
-			zoom: 11.5,
+			zoom: 11,
 		});
 
 	
