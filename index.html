@@ -416,11 +416,21 @@
 		}
 
 		#found li .logo {
-			display: inline-block;
-			width: 1.1em;
-			margin-right: 0.5em;
-			vertical-align: sub;
-		}
+    display: inline-block;
+    width: 1.1em;
+    margin-right: 0.08em;   /* logos rapprochés entre eux */
+    vertical-align: sub;
+}
+
+#found li .found-logos {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.45em;   /* espace normal avant le texte */
+}
+
+#found li .found-name {
+    display: inline;
+}
 
 		#btn-show-answers {
 			line-height: 2em;
@@ -1316,7 +1326,7 @@ function renderScorboardFoundGroupEntry(group, stationData, communeData, isNew) 
     const element = document.createElement('li');
     element.setAttribute("class", isNew ? "new" : "");
     element.setAttribute("title", displayName);
-    element.innerHTML = `${logos.join('')}${displayName}`;
+    element.innerHTML = `<span class="found-logos">${logos.join('')}</span><span class="found-name">${displayName}</span>`;
 
     // hover = active toutes les stations du groupe
     $map.then(map => {
