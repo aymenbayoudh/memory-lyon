@@ -609,9 +609,10 @@
     }
 
     #scoreboard-content {
-        margin-top: 0.45em;
+        margin-top: 0.2em;
     }
 
+    /* fermé = on cache tout le contenu */
     #scoreboard.minimized #scoreboard-content {
         display: none;
     }
@@ -628,7 +629,7 @@
         margin-left: 0;
     }
 
-    /* bouton sur la ligne quand réduit */
+    /* bouton en haut à droite quand réduit */
     #scoreboard.minimized #btn-toggle-scoreboard {
         position: absolute;
         right: 0.1em;
@@ -636,7 +637,7 @@
         margin-left: 0;
     }
 
-    /* plus d'espace entre header et recherche */
+    /* espace un peu plus grand entre header et recherche */
     #search-form-container {
         margin: calc(var(--mobile-scoreboard-height, 3.2em) + 0.7em) auto 0 auto;
         width: calc(100% - 1em);
@@ -647,25 +648,36 @@
         margin-top: 0;
     }
 
-    /* en mobile ouvert, on remplace les stats détaillées par la progression */
-    #stats > ul > li:not(:last-child),
-    #counts,
-    #found,
-    #btn-show-answers,
-    #scoreboard > hr {
+    /* ===== CE QUE TU GARDES ===== */
+    #scoreboard-mobile-progress {
+        display: block;
+        margin-top: 0.2em;
+        padding-top: 0.35em;
+        border-top: 2px solid #000000; /* trait noir AVANT les barres */
+    }
+
+    /* ===== CE QUE TU ENLÈVES ===== */
+    #stats {
         display: none;
     }
 
-    #scoreboard-mobile-progress {
-        display: block;
-        margin-top: 0.1em;
+    /* on cache complètement le bloc du bas (counts + bouton + found) */
+    #scoreboard-content > div:last-child {
+        display: none;
     }
 
-    /* on cache la version desktop des badges et on injecte une version mobile plus petite */
+    /* on cache aussi l'ancien trait qui était APRÈS */
+    #scoreboard > hr,
+    #scoreboard-content > hr {
+        display: none !important;
+    }
+
+    /* on garde cachée la version desktop des badges */
     #count-stations-per-line {
         display: none;
     }
 
+    /* version mobile plus petite des badges/progression */
     #scoreboard-mobile-progress #count-stations-per-line-mobile {
         padding: 0;
         margin: 0;
@@ -751,6 +763,8 @@
         transform: none;
     }
 }
+
+
 
 
 	</style>
