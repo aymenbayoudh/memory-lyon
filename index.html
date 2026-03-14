@@ -455,6 +455,9 @@
 			font-weight: bold;
 			font-size: 1.15em;
 		}
+		.percentage-light {
+    font-weight: normal !important;
+}
 		.percentage::after {
 			font-weight: normal;
 			margin-left: 0.15em;
@@ -971,7 +974,12 @@
         <div id="stats">
 
 				<ul>
-					<li><b><span class="percentage" id="stat-stations">X</span> de gares trouvées</b></li>
+					<li>
+    <b>
+        <span class="percentage" id="stat-stations">X</span> de gares trouvées  </b>
+        <span class="stats-ter-inline">(<span class="percentage-light" id="stat-stations-ter">Y</span>% TER)</span>
+
+</li>
 					<li><span class="percentage" id="stat-communes">X</span> de communes trouvées</li>
 					<li><span class="percentage" id="stat-surface">X</span> de km² trouvés</li>
 					<li><span class="percentage" id="stat-inhabitants">X</span> d'habitants trouvés</li>
@@ -1098,6 +1106,7 @@ const $dom = $DOMContentLoaded.then(() => {
         "stat-surface",
         "stat-inhabitants",
         "stat-stations",
+		"stat-stations-ter",
         "count-communes",
         "count-surface",
         "count-inhabitants",
@@ -1515,6 +1524,7 @@ function renderScoreboard(dom, state, newIndex) {
     dom["stat-surface"].innerText = state.cache.stats.surface.toFixed(1);
     dom["stat-inhabitants"].innerText = state.cache.stats.inhabitants.toFixed(1);
     dom["stat-stations"].innerText = state.cache.stats.stations.toFixed(1);
+	
 
     dom["count-communes"].innerText = state.cache.counts.communes;
     dom["count-surface"].innerText = state.cache.counts.surface.toFixed(1);
@@ -1529,7 +1539,19 @@ function renderScoreboard(dom, state, newIndex) {
     updateMobileScoreboardOffset(dom);
 
     join(dataLoader.$stationData, dataLoader.$communeData, (stationData, communeData) => {
-        const requiredIds = [
+        
+const terTotalStats = stationData.meta.trainlines["TER"]?.["station-count"] || 0;
+    const terFoundStats = state.cache.counts.stationsPerLine["TER"] || 0;
+    const terPctStats = terTotalStats > 0
+        ? (100 * terFoundStats / terTotalStats).toFixed(1)
+        : "0.0";
+
+    if (dom["stat-stations-ter"]) {
+        dom["stat-stations-ter"].innerText = terPctStats;
+    }
+
+		
+		const requiredIds = [
             "scoreboard",
             "scoreboard-mobile-summary",
             "scoreboard-mobile-lines-summary",
@@ -1608,11 +1630,18 @@ function renderScoreboard(dom, state, newIndex) {
         dom["scoreboard-mobile-progress"].replaceChildren(mobileProgressContainer);
 
         // --- Ligne 1 compacte : TCL / communes / train ---
-        dom["scoreboard-mobile-summary"].innerHTML = [
-            renderMobileHeaderLine("logo_TCL.svg", state.cache.stats.stations.toFixed(1), "TCL"),
-            renderMobileHeaderLine("communes.jpg", state.cache.stats.communes.toFixed(1), "Communes"),
-            renderMobileHeaderLine("train.svg", "0.0", "TER"),
-        ].join("");
+        const terTotal = stationData.meta.trainlines["TER"]?.["station-count"] || 0;
+		const terFound = state.cache.counts.stationsPerLine["TER"] || 0;
+		const terPct = terTotal > 0
+		? (100 * terFound / terTotal).toFixed(1)
+		: "0.0";
+
+		dom["scoreboard-mobile-summary"].innerHTML = [
+			renderMobileHeaderLine("logo_TCL.svg", state.cache.stats.stations.toFixed(1), "TCL"),
+			renderMobileHeaderLine("communes.jpg", state.cache.stats.communes.toFixed(1), "Communes"),
+			renderMobileHeaderLine("train.svg", terPct, "TER"),
+		].join("");
+
 
         // --- Ligne 2 compacte : M / F / T / TB / N ---
         const familyStats = {
@@ -2648,34 +2677,8 @@ const $map = new Promise((resolve, reject) => {
 ////////////////////////////////////
 // Focus mask (extérieur grisé, centre transparent)
 
-map.addSource('lyon-focus-mask', {
-    type: 'geojson',
-    data: {
-        type: 'FeatureCollection',
-        features: []
-    }
-});
 
-map.addLayer({
-    id: 'lyon-focus-mask-fill',
-    type: 'fill',
-    source: 'lyon-focus-mask',
-    paint: {
-        'fill-color': '#e1e1e1',
-        'fill-opacity': 0.7
-    }
-});
 
-map.addLayer({
-    id: 'lyon-focus-mask-outline',
-    type: 'line',
-    source: 'lyon-focus-mask',
-    paint: {
-        'line-color': '#000000',
-        'line-opacity': 1,
-        'line-width': 0.65
-    }
-});
 	// Communes are not displayed prior to being found
 	//map.addSource('communes', {
 	//	type: 'geojson',
@@ -2748,6 +2751,7 @@ map.addLayer({
 	////////////////////////////////////
 	////////////////////////////////////
 ////////////////////////////////////
+////////////////////////////////////
 // Traces
 
 map.addSource("traces", {
@@ -2760,23 +2764,30 @@ map.addSource("traces", {
 
 function addTraceLayer(map, trainline) {
     const metroLines = new Set(["MA", "MB", "MC", "MD"]);
-    const tbLines = new Set(["TB11", "TB12","NAVI1","NAV1"]);
-	const terLines = new Set(["TER"]);
+    const tbLines = new Set(["TB11", "TB12"]);
+
 
     let lineWidth = 2.75;
     if (metroLines.has(trainline)) {
         lineWidth = 5;
     } else if (tbLines.has(trainline)) {
         lineWidth = 2.25;
-	} else if (terLines.has(trainline)) {
-        lineWidth = 1.25;
+    } else if (trainline === "TER") {
+        lineWidth = 2.4;
+    }
+
+    let filter;
+    if (trainline === "NAVI1") {
+        filter = ["match", ["get", "trainline"], ["NAV1", "NAVI1"], true, false];
+    } else {
+        filter = ["==", ["get", "trainline"], trainline];
     }
 
     map.addLayer({
         id: `trace-${trainline}`,
         type: "line",
         source: "traces",
-        filter: ["==", ["get", "trainline"], trainline],
+        filter,
         paint: {
             "line-color": ["get", "color"],
             "line-width": lineWidth,
@@ -2785,38 +2796,66 @@ function addTraceLayer(map, trainline) {
     });
 }
 
-// Ordre d'ajout = du moins prioritaire au plus prioritaire
+// Toutes les lignes en dessous du masque
 [
-   "TER",
-	"NAV1",
-	"NAVI1",
-	"MD",
-    "MC",
-    "MB",
-    "MA",
+    "TER",
+    "NAVI1",
     "TB12",
     "TB11",
-   
+    "T7",
     "T6",
     "T5",
     "T4",
     "T3",
-	 "T7",
     "T2",
     "T1",
     "F2",
-    "F1"
-   
+    "F1",
+    "MD",
+    "MC",
+    "MB",
+    "MA"
 ].forEach(trainline => addTraceLayer(map, trainline));
-	
+
+////////////////////////////////////
+// Focus mask (au-dessus des tracés, sous les stations)
+
+map.addSource('lyon-focus-mask', {
+    type: 'geojson',
+    data: {
+        type: 'FeatureCollection',
+        features: []
+    }
+});
 
 
+map.addLayer({
+    id: 'lyon-focus-mask-fill',
+    type: 'fill',
+    source: 'lyon-focus-mask',
+    paint: {
+        'fill-color': '#ececec',
+        'fill-opacity': 0.7
+    }
+});
 
-	// Add a GeoJSON source containing place coordinates and information.
-	map.addSource('stations', {
-		type: 'geojson',
-		data: null
-	});
+map.addLayer({
+    id: 'lyon-focus-mask-outline',
+    type: 'line',
+    source: 'lyon-focus-mask',
+    paint: {
+        'line-color': '#000000',
+        'line-opacity': 1,
+        'line-width': 0.65
+    }
+});
+
+// Add a GeoJSON source containing place coordinates and information.
+map.addSource('stations', {
+    type: 'geojson',
+    data: null
+});
+
 
 	// Add a symbol layer showing all train stations before they are found
 	map.addLayer({
@@ -3015,6 +3054,9 @@ join($map, dataLoader.$stationData, (map, stationData) => {
         const funiLines  = ["F1", "F2"];
         const tramLines  = ["T1", "T2", "T3", "T4", "T5", "T6", "T7"];
         const tbLines    = ["TB11", "TB12"];
+		const terLines = ["TER"];
+		
+		
         const naviLines  = ["NAV1", "NAVI1"]; // au cas où ton nommage varie
 
         function buildLogoBlock(sectionFilename, sectionAlt, lines) {
@@ -3044,6 +3086,9 @@ join($map, dataLoader.$stationData, (map, stationData) => {
 
         const tbBlock = buildLogoBlock("logo_TB.svg", "TramBus", tbLines);
         if (tbBlock) logoBlocks.push(tbBlock);
+
+		const terBlock = buildLogoBlock("transilien.svg", "TER", terLines);
+		if (terBlock) logoBlocks.push(terBlock);
 
         const naviBlock = buildLogoBlock("logo_N.svg", "Navigône", naviLines);
         if (naviBlock) logoBlocks.push(naviBlock);
