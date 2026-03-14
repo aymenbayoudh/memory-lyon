@@ -7,7 +7,7 @@
 	<meta name="description" content="Un jeu de devinette où l'on doit retrouver de mémoire le nom de toutes les gares de la Métropole de Lyon !" />
 	<link rel="canonical" href="https://aymenbayoudh.github.io/memory-lyon" />
 
-	<meta name="og:title" href="Memory pour le Grand Lyon" />
+	<meta name="og:title" href="Le Grand Lyon de tête" />
 	<meta property="og:type" content="article" />
 	<meta property="og:article:author" content="Aymen Bayoudh" />
 	<meta property="og:article:published_time" content="2023-10-23T12:00:00+01:00 " />
@@ -15,7 +15,7 @@
 	<meta name="og:description" href="Un jeu de devinette où l'on doit retrouver de mémoire le nom de toutes les gares de la Métropole de Lyon !" />
 	<meta name="og:image" href="images/preview.jpg" />
 
-	<title>Memory pour le Grand Lyon</title>
+	<title>Le Grand Lyon de tête</title>
 
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
@@ -1125,10 +1125,12 @@ function renderScoreboard(dom, state, newIndex) {
 
         dom["count-stations-per-line"].replaceChildren(...lineItems);
 
-        dom.found.replaceChildren(...state.found.map((item, index) => {
-            const isNew = index == newIndex;
-            return renderScorboardFoundEntry(item, stationData, communeData, isNew);
-        }));
+        const foundGroups = buildFoundGroups(state.found, stationData);
+
+dom.found.replaceChildren(...foundGroups.map((group, index) => {
+    const isNew = index == newIndex;
+    return renderScorboardFoundGroupEntry(group, stationData, communeData, isNew);
+}));
     });
 }
 
@@ -1195,7 +1197,32 @@ function renderScorboardLineBreak() {
     element.setAttribute("class", "line-break");
     return element;
 }
+function buildFoundGroups(found, stationData) {
+    const groups = [];
+    const groupMap = new Map();
 
+    for (const item of found) {
+        let key;
+
+        if (item.id[0] === 'STATION') {
+            const connectedIds = stationData.meta['connected-stations'][item.id[1]] || [item.id[1]];
+            const sortedIds = [...connectedIds].sort((a, b) => a - b);
+            key = `STATION:${sortedIds.join('|')}`;
+        } else {
+            key = `COMMUNE:${item.id[1]}`;
+        }
+
+        if (!groupMap.has(key)) {
+            const group = { key, items: [item] };
+            groupMap.set(key, group);
+            groups.push(group);
+        } else {
+            groupMap.get(key).items.push(item);
+        }
+    }
+
+    return groups;
+}
 
 function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
 	const className = isNew ? "new" : "";
@@ -1251,6 +1278,82 @@ function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
 
 	return element;
 }
+
+function renderScorboardFoundGroupEntry(group, stationData, communeData, isNew) {
+    // Cas commune : on garde le comportement simple
+    if (group.items.length === 1 && group.items[0].id[0] === 'COMMUNE') {
+        return renderScorboardFoundEntry(group.items[0], stationData, communeData, isNew);
+    }
+
+    // Cas station(s)
+    const stationItems = group.items.filter(item => item.id[0] === 'STATION');
+    if (stationItems.length === 0) {
+        // fallback
+        return renderScorboardFoundEntry(group.items[0], stationData, communeData, isNew);
+    }
+
+    const features = stationItems
+        .map(item => {
+            const index = stationData.idToIndex[item.id[1]];
+            return stationData.stations.features[index];
+        })
+        .filter(Boolean);
+
+    const props0 = features[0].properties;
+    const displayName = props0.nom_zdc || props0.nom_gares || stationItems[0].name;
+
+    // logos triés selon ordered-trainlines
+    const presentTrainlines = new Set(features.map(ft => ft.properties.trainline));
+    const logos = [];
+
+    for (const trainline of stationData.meta["ordered-trainlines"]) {
+        if (presentTrainlines.has(trainline)) {
+            const url = stationData.meta.trainlines[trainline].logo;
+            logos.push(`<img src="data/images/${url}" class="logo" alt="${trainline}" />`);
+        }
+    }
+
+    const element = document.createElement('li');
+    element.setAttribute("class", isNew ? "new" : "");
+    element.setAttribute("title", displayName);
+    element.innerHTML = `${logos.join('')}${displayName}`;
+
+    // hover = active toutes les stations du groupe
+    $map.then(map => {
+        element.addEventListener('mouseenter', () => {
+            for (const item of stationItems) {
+                map.setFeatureState(
+                    { source: 'found-stations', id: item.id[1] },
+                    { active: true }
+                );
+            }
+        });
+
+        element.addEventListener('mouseleave', () => {
+            for (const item of stationItems) {
+                map.setFeatureState(
+                    { source: 'found-stations', id: item.id[1] },
+                    { active: false }
+                );
+            }
+        });
+
+        // clic = zoom sur la première station du groupe
+        if (features.length > 0) {
+            const flyTarget = {
+                center: features[0].geometry.coordinates.slice(),
+                zoom: 13,
+            };
+
+            element.addEventListener('click', () => {
+                map.flyTo(flyTarget);
+            });
+        }
+    });
+
+    return element;
+}
+``
 
 function renderSearchForm(dom, state) {
 	const input = dom["search-input"];
