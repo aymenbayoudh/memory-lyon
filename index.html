@@ -835,7 +835,7 @@
     }
 
     #scoreboard-mobile-progress #count-stations-per-line-mobile li .progress {
-        border-color: white;
+        border-color: black;
         background-color: rgba(255, 255, 255, 0.0);
     }
 
@@ -3085,13 +3085,19 @@ join($map, dataLoader.$stationData, (map, stationData) => {
         if (tramBlock) logoBlocks.push(tramBlock);
 
         const tbBlock = buildLogoBlock("logo_TB.svg", "TramBus", tbLines);
-        if (tbBlock) logoBlocks.push(tbBlock);
+		if (tbBlock) logoBlocks.push(tbBlock);
 
-		const terBlock = buildLogoBlock("transilien.svg", "TER", terLines);
-		if (terBlock) logoBlocks.push(terBlock);
+		if (connectedTrainlines.has("TER")) {
+			const terMeta = stationData.meta.trainlines["TER"];
+			if (terMeta?.logo) {
+				logoBlocks.push(
+					`<span class="logo-block"><img src="data/images/${terMeta.logo}" alt="TER" class="trainline" /></span>`
+				);
+			}
+		}
 
-        const naviBlock = buildLogoBlock("logo_N.svg", "Navigône", naviLines);
-        if (naviBlock) logoBlocks.push(naviBlock);
+		const naviBlock = buildLogoBlock("logo_N.svg", "Navigône", naviLines);
+		if (naviBlock) logoBlocks.push(naviBlock);
 
         const subtitleHtml = props.nom_so
     ? `<span class="subtitle">${props.nom_so}</span>`
