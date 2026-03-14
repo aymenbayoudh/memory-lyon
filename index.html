@@ -492,40 +492,112 @@
     width: auto;
     display: block;
 }
+#scoreboard-mobile-bar {
+    display: none;
+}
 
+#scoreboard-mobile-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+}
+
+.mobile-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    font-weight: bold;
+    color: #155a9f;
+    white-space: nowrap;
+}
+
+.mobile-summary-logo {
+    height: 1.1em;
+    width: auto;
+    display: block;
+}
+
+.mobile-percent-sign {
+    margin-left: 0.05em;
+    font-weight: normal;
+}
+
+#btn-toggle-scoreboard {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    border: none;
+    border-radius: 999px;
+    background: white;
+    box-shadow: 0 0 6px rgba(0,0,0,0.15);
+    cursor: pointer;
+    color: #4b5563;
+}
+
+#scoreboard.minimized #scoreboard-toggle-icon {
+    transform: rotate(180deg);
+}
+
+#scoreboard-toggle-icon {
+    transition: transform 0.2s ease;
+}
 		@media (max-width: 1000px) {
-			#map-container {
-				width: 100%;
-			}
+    #map-container {
+        width: 100%;
+    }
 
-			#search-input-container {
-				margin-top: 11em;
-			}
+    #search-input-container {
+        margin-top: 11em;
+    }
 
-			#scoreboard {
-				position: relative;
-				margin: 0 auto;
-				width: 100%;
-				max-width: 30em;
-				height: 11.5em;
-				padding-top: 0.4em;
-				overflow: hidden;
-				font-size: 0.9em;
-			}
+    #scoreboard {
+        position: absolute;
+        top: 4.4em;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 1em);
+        max-width: 30em;
+        height: auto;
+        padding: 0.45em 0.7em;
+        border-radius: 1em;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(6px);
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        overflow: hidden;
+        font-size: 0.9em;
+        z-index: 20;
+    }
 
-			#scoreboard > hr {
-				height: 2px;
-				margin: 0.5em 0;
-			}
+    #scoreboard-mobile-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75em;
+    }
 
-			#count-stations-per-line {
-				display: none;
-			}
+    #scoreboard-content {
+        margin-top: 0.45em;
+    }
 
-			#found {
-				display: none;
-			}
-		}
+    #scoreboard.minimized #scoreboard-content {
+        display: none;
+    }
+
+    #scoreboard > hr {
+        height: 2px;
+        margin: 0.5em 0;
+    }
+
+    #count-stations-per-line {
+        display: none;
+    }
+
+    #found {
+        display: none;
+    }
+}
 
 	</style>
 </head>
@@ -560,9 +632,36 @@
 		</div>
 
 		<div id="scoreboard">
-			<div id="stats">
+    <div id="scoreboard-mobile-bar">
+        <div id="scoreboard-mobile-summary">
+            <span class="mobile-stat">
+                <img src="data/images/logo_TCL.svg" class="mobile-summary-logo" alt="TCL" />
+                <span id="mobile-stat-stations">X</span><span class="mobile-percent-sign">%</span>
+            </span>
+
+            <span class="mobile-stat">
+                <img src="data/images/communes.jpg" class="mobile-summary-logo" alt="Communes" />
+                <span id="mobile-stat-communes">X</span><span class="mobile-percent-sign">%</span>
+            </span>
+
+            <span class="mobile-stat">
+                <img src="data/images/train.svg" class="mobile-summary-logo" alt="TER" />
+                <span id="mobile-stat-ter">0.0</span><span class="mobile-percent-sign">%</span>
+            </span>
+        </div>
+
+        <button id="btn-toggle-scoreboard" type="button" aria-label="Réduire/agrandir le résumé">
+            <svg id="scoreboard-toggle-icon" viewBox="0 0 24 24" width="20" height="20">
+                <path fill="currentColor" d="m12 8l6 6H6z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div id="scoreboard-content">
+        <div id="stats">
 				<ul>
 					<li><span class="percentage" id="stat-communes">X</span> de communes trouvées</li>
+					<li><span class="percentage" id="stat-surface">X</span> de km² trouvés</li>
 					<li><span class="percentage" id="stat-inhabitants">X</span> d'habitants trouvés</li>
 					<!--<li><span class="percentage" id="stat-forest">0.0</span> de parcs et forêts trouvés</li>-->
 					<li><span class="percentage" id="stat-stations">X</span> de gares trouvées</li>
@@ -582,7 +681,8 @@
 				<ul id="found">
 				</ul>
 			</div>
-		</div>
+    </div> <!-- /#scoreboard-content -->
+</div>
 	</main>
 
 	<script>
@@ -613,6 +713,7 @@ const state = {
 	loading: true,
 	showMenu: false,
 	showAnswers: true,
+	scoreboardMinimized: false,
 	notifyingError: false,
 	notifyingDuplicate: false,
 	notifyingSuccess: false,
@@ -682,6 +783,12 @@ const $dom = $DOMContentLoaded.then(() => {
 		"count-inhabitants",
 		"count-stations",
 		"count-stations-per-line",
+		"scoreboard-content",
+"scoreboard-mobile-bar",
+"btn-toggle-scoreboard",
+"mobile-stat-stations",
+"mobile-stat-communes",
+"mobile-stat-ter",
 		"btn-toggle-menu",
 		"menu-container",
 		"btn-export",
@@ -1068,6 +1175,11 @@ function renderScoreboard(dom, state, newIndex) {
     dom["stat-surface"].innerText = state.cache.stats.surface.toFixed(1);
     dom["stat-inhabitants"].innerText = state.cache.stats.inhabitants.toFixed(1);
     dom["stat-stations"].innerText = state.cache.stats.stations.toFixed(1);
+	dom["mobile-stat-stations"].innerText = state.cache.stats.stations.toFixed(1);
+dom["mobile-stat-communes"].innerText = state.cache.stats.communes.toFixed(1);
+dom["mobile-stat-ter"].innerText = "0.0"; // placeholder tant que TER n'est pas branché
+
+dom["scoreboard"].setAttribute("class", state.scoreboardMinimized ? "minimized" : "");
 
     dom["count-communes"].innerText = state.cache.counts.communes;
     dom["count-surface"].innerText = state.cache.counts.surface.toFixed(1);
@@ -1254,7 +1366,7 @@ function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
 			center: [commune.center.lon, commune.center.lat],
 			zoom: 12,
 		};
-		logo = `<img src="data/images/commune.svg" class="logo" />`;
+		logo = `<img src="data/images/commune.jps" class="logo" />`;
 	}
 
 	const element = document.createElement('li');
@@ -1886,6 +1998,12 @@ dataLoader.$communeMemory = dataLoader.$communes.then(communes => {
 $dom.then(dom => {
 	renderScoreboard(dom, state);
 	renderSearchForm(dom, state);
+	dom["btn-toggle-scoreboard"].addEventListener('click', () => {
+        state.scoreboardMinimized = !state.scoreboardMinimized;
+        renderScoreboard(dom, state);
+    });
+
+	
 
 	dom["btn-toggle-menu"].addEventListener('mousedown', () => {
 		dom["btn-toggle-menu"].setAttribute("class", "active");
