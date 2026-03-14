@@ -325,13 +325,20 @@
 			list-style-type: none;
 		}
 
-		#counts li {
-			text-transform: uppercase;
-			color: #155a9f;
-		}
-		#counts li:nth-child(2) {
-			font-size: 0.9em;
-		}
+		#counts li:first-child {
+    font-family: "Helvetica", sans-serif;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: #155a9f;
+}
+
+#counts li:nth-child(2) {
+    font-family: "Helvetica", sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #155a9f;
+    line-height: 1.25;
+}
 
 		#count-stations-per-line {
 			padding: 0;
@@ -397,9 +404,10 @@
 
 		#found li {
 			display: block;
-			padding: 0.7em 0.7em;
-			margin: 0.5em 0;
+			padding: 0.5em 0.5em;
+			margin: 0.2em 0;
 			border-radius: 0.3em;
+			font-size: 0.95em;
 			font-weight: bold;
 			overflow: hidden;
 		}
@@ -940,11 +948,11 @@
         <div id="stats">
 
 				<ul>
+					<li><b><span class="percentage" id="stat-stations">X</span> de gares trouvées</b></li>
 					<li><span class="percentage" id="stat-communes">X</span> de communes trouvées</li>
 					<li><span class="percentage" id="stat-surface">X</span> de km² trouvés</li>
 					<li><span class="percentage" id="stat-inhabitants">X</span> d'habitants trouvés</li>
 					<!--<li><span class="percentage" id="stat-forest">0.0</span> de parcs et forêts trouvés</li>-->
-					<li><span class="percentage" id="stat-stations">X</span> de gares trouvées</li>
 					<ul id="count-stations-per-line">
 					</ul>
 				</ul>
@@ -1538,6 +1546,7 @@ function renderScoreboard(dom, state, newIndex) {
             if (isFuni && !insertedFuniIcon) {
                 lineItems.push(renderScorboardLineBreak());
                 lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire"));
+				//lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire", "margin-left:0.10em;"));
                 insertedFuniIcon = true;
             }
 
@@ -1557,6 +1566,7 @@ function renderScoreboard(dom, state, newIndex) {
             if (isNavi && !insertedNaviIcon) {
                 lineItems.push(renderScorboardLineBreak());
 				lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
+				//lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône", "margin-left:0.10em;"));
                 insertedNaviIcon = true;
             }
 
