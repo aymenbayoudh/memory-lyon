@@ -2637,19 +2637,7 @@ const $map = new Promise((resolve, reject) => {
 		'data': state.cache.foundCommunesGeojson,
 	});
 
-	map.addLayer({
-		id: 'found-communes',
-		type: 'fill',
-		source: 'found-communes',
-		paint: {
-			"fill-color": "#d26e7a",
-			"fill-outline-color": "#990000",
-			"fill-opacity": ['case',
-				['boolean', ['feature-state', 'hover'], false],
-				0.5, 0.15
-			],
-		}
-	});
+	
 
 	map.on('mousemove', 'found-communes', e => {
 		map.getCanvas().style.cursor = 'pointer';
@@ -2708,60 +2696,67 @@ const $map = new Promise((resolve, reject) => {
 	});
 
 	////////////////////////////////////
-	// Traces
+	////////////////////////////////////
+////////////////////////////////////
+// Traces
 
-	// Split to force TER to be below other lines
-	
-	map.addSource("traces", {
-		type:"geojson",
-		data:null
-	});
+map.addSource("traces", {
+    type: "geojson",
+    data: {
+        type: "FeatureCollection",
+        features: []
+    }
+});
 
-	//map.addSource('traces-ter', {
-	//	type: 'geojson',
-	//	data: null,
-	//	filter: [ '==', [ 'get', 'trainline' ], 'TER TER' ]
-//	});
-	//map.addSource('traces-no-ter', {
-		//type: 'geojson',
-		//data: null,
-		//filter: [ '!=', [ 'get', 'trainline' ], 'TER TER' ]
-	//});
+function addTraceLayer(map, trainline) {
+    const metroLines = new Set(["MA", "MB", "MC", "MD"]);
+    const tbLines = new Set(["TB11", "TB12"]);
 
-	// Add a symbol layer showing all train lines
+    let lineWidth = 2.75;
+    if (metroLines.has(trainline)) {
+        lineWidth = 5;
+    } else if (tbLines.has(trainline)) {
+        lineWidth = 2.25;
+    }
+
+    map.addLayer({
+        id: `trace-${trainline}`,
+        type: "line",
+        source: "traces",
+        filter: ["==", ["get", "trainline"], trainline],
+        paint: {
+            "line-color": ["get", "color"],
+            "line-width": lineWidth,
+            "line-offset": ["*", 3, ["coalesce", ["get", "line-offset"], 0]]
+        }
+    });
+}
+
+// Ordre d'ajout = du moins prioritaire au plus prioritaire
+[
+   
+	"NAV1",
+	"MD",
+    "MC",
+    "MB",
+    "MA",
+    "TB12",
+    "TB11",
+   
+    "T6",
+    "T5",
+    "T4",
+    "T3",
+	 "T7",
+    "T2",
+    "T1",
+    "F2",
+    "F1"
+   
+].forEach(trainline => addTraceLayer(map, trainline));
 	
-		map.addLayer({
-			id:"trainlines",
-			type:"line",
-			source:"traces",
-			paint: {
-				"line-color": ["get", "color"],
-				//"line-width": 3,
-				"line-width": [
-					"match",
-					["get", "trainline"],
-					// Métros (un peu plus épais)
-					"MA", 5,
-					"MB",5,
-					"MC", 5,
-					"MD", 5,
-					"TB11",2.25,
-					"TB12",2.25,
-					// Tout le reste → normal
-					2.75
-				],
-				
-				//"line-offset": ["*", 3, ["interpolate",
-				//	['linear'],
-				//	0.0, ["get", "start-line-offset"],
-				//	1.0, ["get", "end-line-offset"],
-				//]],
-				"line-offset": ["*", 3, ["get", "line-offset"]],
-			}
-		});
-	
-	;
-``
+
+
 
 	// Add a GeoJSON source containing place coordinates and information.
 	map.addSource('stations', {
@@ -2882,10 +2877,21 @@ const $map = new Promise((resolve, reject) => {
 
 	return map;
 });
+function sortTraceFeaturesByPriority(traces) {
+    if (!traces || !Array.isArray(traces.features)) return traces;
 
+    traces.features.sort((a, b) => {
+        const pa = a?.properties?.draw_order || 0;
+        const pb = b?.properties?.draw_order || 0;
+        return pb - pa; // plus grand = plus prioritaire
+    });
+
+    return traces;
+}
 
 join($map, dataLoader.$traces, (map, traces) => {
-  map.getSource("traces").setData(traces);
+    const sortedTraces = sortTraceFeaturesByPriority(traces);
+    map.getSource("traces").setData(sortedTraces);
 });
 
 
