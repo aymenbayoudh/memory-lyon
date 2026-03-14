@@ -698,7 +698,7 @@ body {
     body,
     main {
         height: 100vh;
-        overflow: hidden;
+       
     }
 
     #map-container,
@@ -2710,12 +2710,14 @@ const $map = new Promise((resolve, reject) => {
 		const map = new mapboxgl.Map({
 			container: 'map',
 			style: 'mapbox://styles/mapbox/light-v11',
-			center: [4.8357, 45.7640],
+			center: [4.836349, 45.754934],
 			maxBounds: [
 				[4.55, 45.60],  // SW
         		[5.05, 45.90]
+				
+         
 			],
-			zoom: 11,
+			zoom: 2,
 		});
 
 	
