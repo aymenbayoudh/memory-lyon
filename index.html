@@ -644,6 +644,7 @@ const state = {
 			type: "FeatureCollection",
 			features: [],
 		},
+		completedLinesCelebrated: {},
 	}
 };
 
@@ -893,109 +894,124 @@ const Action = {
 	// NB: This also has the effect of StopLoading after loading state
 	LoadState: (newState, stationData, communes) => (dom, state) => {
 		const stations = stationData.stations;
-		//state.found = newState.found;
-		const newFound = Array.isArray(newState.found) ? newState.found : [];
-		state.found = newFound;
-		state.showAnswers = newState.showAnswers !== undefined ? newState.showAnswers : true;
-		state.hoveredCommuneId = null;
-		state.cache = {
-			counts: { // raw values
-				communes: 0,
-				surface: 0, // in km²
-				inhabitants: 0, // in thousands of people
-				stations: 0,
-				stationsPerLine: {}, // trainline_key => station count
-			},
-			stats: { // percentages
-				communes: 0.0,
-				surface: 0.0,
-				inhabitants: 0.0,
-				stations: 0.0,
-			},
-			totalCounts: { // from data loader
-				communes: -1,
-				surface: -1, // in km²
-				inhabitants: -1, // in thousands of people
-				stations: -1,
-			},
-			orderedTrainlines: [],
-			foundKeys: {}, // speed up duplicate detection
+//state.found = newState.found;
+const newFound = Array.isArray(newState.found) ? newState.found : [];
+state.found = newFound;
+state.showAnswers = newState.showAnswers !== undefined ? newState.showAnswers : true;
+state.hoveredCommuneId = null;
 
-			// We accumulate here the stations we find
-			foundStationsGeojson: {
-				type: "FeatureCollection",
-				features: [],
-			},
-			foundCommunesGeojson: {
-				type: "FeatureCollection",
-				features: [],
-			},
-		};
+state.cache = {
+    counts: { // raw values
+        communes: 0,
+        surface: 0, // in km²
+        inhabitants: 0, // in thousands of people
+        stations: 0,
+        stationsPerLine: {}, // trainline_key => station count
+    },
+    stats: { // percentages
+        communes: 0.0,
+        surface: 0.0,
+        inhabitants: 0.0,
+        stations: 0.0,
+    },
+    totalCounts: { // from data loader
+        communes: -1,
+        surface: -1, // in km²
+        inhabitants: -1, // in thousands of people
+        stations: -1,
+    },
+    orderedTrainlines: [],
+    foundKeys: {}, // speed up duplicate detection
 
-		// TODO: avoid duplication with other actions (e.g., InitializeStationCache)
-		state.cache.totalCounts.stations = 0;
-		for (const [key, trainline] of Object.entries(stationData.meta.trainlines)) {
-			state.cache.counts.stationsPerLine[key] = 0;
-			state.cache.totalCounts.stations += trainline['station-count'];
-		}
-		state.cache.orderedTrainlines = stationData.meta["ordered-trainlines"];
+    foundStationsGeojson: {
+        type: "FeatureCollection",
+        features: [],
+    },
+    foundCommunesGeojson: {
+        type: "FeatureCollection",
+        features: [],
+    },
+    completedLinesCelebrated: {},
+};
 
-		// Build a temporary mapping from id to geoFeatures (TODO: use stationData.idToIndex)
-		const stationIdToIndex = {};
-		stations.features.map((entry, index) => {
-			stationIdToIndex[entry.properties.id_gares] = index;
-		});
-		const communeIdToIndex = {};
-		communes.features.map((entry, index) => {
-			communeIdToIndex[entry.properties.code] = index;
-		});
+// TODO: avoid duplication with other actions (e.g., InitializeStationCache)
+state.cache.totalCounts.stations = 0;
+for (const [key, trainline] of Object.entries(stationData.meta.trainlines)) {
+    state.cache.counts.stationsPerLine[key] = 0;
+    state.cache.totalCounts.stations += trainline['station-count'];
+}
+state.cache.orderedTrainlines = stationData.meta["ordered-trainlines"];
 
-		state.found.map(item => {
-			if (item.id[0] === 'STATION') {
-				state.cache.foundKeys[item.id] = true;
-				const stationIndex = stationIdToIndex[item.id[1]];
-				const geoFeature = stations.features[stationIndex];
-				state.cache.foundStationsGeojson.features.push({
-					...geoFeature,
-					id: item.id[1]
-				});
-				++state.cache.counts.stations;
-				++state.cache.counts.stationsPerLine[geoFeature.properties.trainline];
-			} else if (item.id[0] === 'COMMUNE') {
-				state.cache.foundKeys[item.id] = true;
+// Build a temporary mapping from id to geoFeatures (TODO: use stationData.idToIndex)
+const stationIdToIndex = {};
+stations.features.map((entry, index) => {
+    stationIdToIndex[entry.properties.id_gares] = index;
+});
 
-				const communeIndex = communeIdToIndex[item.id[1]];
-				const geoFeature = communes.features[communeIndex];
+const communeIdToIndex = {};
+communes.features.map((entry, index) => {
+    communeIdToIndex[entry.properties.code] = index;
+});
 
-				console.assert(item.id[1] !== undefined);
-				state.cache.foundCommunesGeojson.features.push({
-					...geoFeature,
-					id: item.id[1]
-				});
+state.found.map(item => {
+    if (item.id[0] === 'STATION') {
+        state.cache.foundKeys[item.id] = true;
+        const stationIndex = stationIdToIndex[item.id[1]];
+        const geoFeature = stations.features[stationIndex];
 
-				state.cache.counts.communes += 1;
-				state.cache.counts.surface += geoFeature.properties.superficie;
-				state.cache.counts.inhabitants += geoFeature.properties.population;
-			}
-		});
-
-		Action._initializeTotalCounts(stationData, state);
-
-		join($map, dataLoader.$stationData, (map, stationData) => {
-            map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
-            map.getSource('found-communes').setData(state.cache.foundCommunesGeojson);
-            renderFoundStationCamemberts(map, stationData, state);
+        state.cache.foundStationsGeojson.features.push({
+            ...geoFeature,
+            id: item.id[1]
         });
 
+        ++state.cache.counts.stations;
+        ++state.cache.counts.stationsPerLine[geoFeature.properties.trainline];
+    }
+    else if (item.id[0] === 'COMMUNE') {
+        state.cache.foundKeys[item.id] = true;
 
-		state.loading = false;
-		renderSearchForm(dom, state);
-		renderScoreboard(dom, state);
-		$map.then(map => {
-			renderMap(map, state);
-		});
+        const communeIndex = communeIdToIndex[item.id[1]];
+        const geoFeature = communes.features[communeIndex];
 
-		localStorage.setItem("savedState", JSON.stringify(state));
+        console.assert(item.id[1] !== undefined);
+        state.cache.foundCommunesGeojson.features.push({
+            ...geoFeature,
+            id: item.id[1]
+        });
+
+        state.cache.counts.communes += 1;
+        state.cache.counts.surface += geoFeature.properties.superficie;
+        state.cache.counts.inhabitants += geoFeature.properties.population;
+    }
+});
+
+// ✅ ICI SEULEMENT : on sait enfin quelles lignes sont déjà complètes
+state.cache.completedLinesCelebrated = {};
+for (const trainline of state.cache.orderedTrainlines) {
+    const total = stationData.meta.trainlines[trainline]?.["station-count"] || 0;
+    const found = state.cache.counts.stationsPerLine[trainline] || 0;
+    if (total > 0 && found >= total) {
+        state.cache.completedLinesCelebrated[trainline] = true;
+    }
+}
+
+Action._initializeTotalCounts(stationData, state);
+
+join($map, dataLoader.$stationData, (map, stationData) => {
+    map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
+    map.getSource('found-communes').setData(state.cache.foundCommunesGeojson);
+    renderFoundStationCamemberts(map, stationData, state);
+});
+
+state.loading = false;
+renderSearchForm(dom, state);
+renderScoreboard(dom, state);
+$map.then(map => {
+    renderMap(map, state);
+});
+
+localStorage.setItem("savedState", JSON.stringify(state));
+``
 	},
 };
 function dispatch(dom, action) {
@@ -1545,7 +1561,33 @@ function renderFoundStationCamemberts(map, stationData, state) {
     }
 }
 ``
+//confetti time!!! copier de Benjamin TD
+async function fireCompletedLineConfetti(lines) {
+    if (!lines || lines.length === 0) return;
 
+    // import ESM direct depuis CDN (car dans index.html tu n'as pas de bundler React/TS)
+    const { confetti } = await import("https://cdn.jsdelivr.net/npm/tsparticles-confetti/+esm");
+
+    confetti({
+        spread: 120,
+        ticks: 200,
+        particleCount: 150,
+        origin: { y: 0.2 },
+        decay: 0.85,
+        gravity: 2,
+        startVelocity: 50,
+        shapes: ["image"],
+        scalar: 2,
+        shapeOptions: {
+            image: lines.map((line) => ({
+                src: `data/images/${line}.svg`,
+                width: 64,
+                height: 64,
+            })),
+        },
+    });
+}
+``
 ///////////////////////////////////////////////////////////
 // Data loader
 
