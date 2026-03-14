@@ -4,18 +4,18 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="content-language" content="fr-fr" />
-	<meta name="description" content="Un jeu de devinette où l'on doit retrouver de mémoire le nom de toutes les gares de la Métropole de Lyon !" />
-	<link rel="canonical" href="https://aymenbayoudh.github.io/memory-lyon" />
+	<meta name="description" content="Un jeu de devinette où l'on doit retrouver de mémoire le nom de toutes les gares d'Île-de-France." />
+	<link rel="canonical" href="https://eliemichel.github.io/MemoryIDF" />
 
-	<meta name="og:title" href="Memory pour le Grand Lyon" />
+	<meta name="og:title" href="Memory pour le Grand Paris" />
 	<meta property="og:type" content="article" />
-	<meta property="og:article:author" content="Aymen Bayoudh" />
+	<meta property="og:article:author" content="Élie Michel" />
 	<meta property="og:article:published_time" content="2023-10-23T12:00:00+01:00 " />
-	<meta name="og:url" href="https://aymenbayoudh.github.io/memory-lyon" />
-	<meta name="og:description" href="Un jeu de devinette où l'on doit retrouver de mémoire le nom de toutes les gares de la Métropole de Lyon !" />
+	<meta name="og:url" href="https://eliemichel.github.io/MemoryIDF" />
+	<meta name="og:description" href="Un jeu de devinette où l'on doit retrouver de mémoire le nom de toutes les gares d'Île-de-France." />
 	<meta name="og:image" href="images/preview.jpg" />
 
-	<title>Memory pour le Grand Lyon</title>
+	<title>Memory pour le Grand Paris</title>
 
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
@@ -542,6 +542,7 @@
 					<div id="menu-container">
 						<button id="btn-export">Exporter la partie</button>
 						<button id="btn-import">Importer une partie</button>
+						<button id="btn-import-memory-paris">Importer depuis memory.pour.paris</button>
 						<button id="btn-toggle-answers">Masquer les réponses</button>
 						<button id="btn-about">À propos</button>
 					</div>
@@ -578,7 +579,7 @@
 
 	<script>
 // NB: Variable starting with $ are promises.
-// And 'join' is a shorthand for Promise.all (see https://github.com/aymenbayoudh/join.js)
+// And 'join' is a shorthand for Promise.all (see https://github.com/eliemichel/join.js)
 
 ///////////////////////////////////////////////////////////
 // Immutable configuration globals
@@ -676,6 +677,7 @@ const $dom = $DOMContentLoaded.then(() => {
 		"menu-container",
 		"btn-export",
 		"btn-import",
+		"btn-import-memory-paris",
 		"btn-toggle-answers",
 		"btn-about",
 		"btn-show-answers",
@@ -1326,11 +1328,11 @@ const FOUND_STATION_CAMEMBERTS = {
    //    left: "T2",
    //     right: "T5",
   //  },
-    45270: { // Grange Blanche (T5)
-        angleDeg: 22,
-        left: "T2",
-        right: "T5",
-    },
+ //   45270: { // Grange Blanche (T5)
+  //      angleDeg: 22,
+  //      left: "T2",
+  //      right: "T5",
+  //  },
 
     // T1 / T2 (Confluence)
     32103: { // Perrache
@@ -1350,11 +1352,6 @@ const FOUND_STATION_CAMEMBERTS = {
     },
 
     // T3 / T7
-	47685: { // Vaux la soie
-        angleDeg: 340,
-        left: "T7",
-        right: "T3",
-    },
     48358: { // Décines Roosevelt
         angleDeg: 340,
         left: "T7",
@@ -1692,7 +1689,7 @@ $dom.then(dom => {
 	});
 
 	dom["btn-about"].addEventListener('click', () => {
-		window.open("https://github.com/aymenbayoudh/memory-lyon/blob/main/about.md", '_blank');
+		window.open("https://github.com/eliemichel/MemoryIDF/blob/prod/about.md", '_blank');
 	});
 });
 
@@ -2108,7 +2105,7 @@ const $map = new Promise((resolve, reject) => {
 			'text-anchor': 'bottom',
 			'text-offset': [0, -0.5],
 			'text-field': ['get', 'nom_gares'],
-			'text-size': 13,
+			'text-size': 12,
 			'text-font': ["Open Sans Regular", "Arial Unicode MS Regular"],
 		},
 		paint: {
