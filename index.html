@@ -822,15 +822,41 @@ const Action = {
     return true;
 },
 
+	
+
 	_renderAfterNewStationItem: (dom, state) => {
-        Action._updateStationStats(state);
-        join($map, dataLoader.$stationData, (map, stationData) => {
-            map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
-            renderFoundStationCamemberts(map, stationData, state);
-        });
-        renderScoreboard(dom, state);
-        localStorage.setItem("savedState", JSON.stringify(state));
-    },
+    Action._updateStationStats(state);
+
+    join($map, dataLoader.$stationData, (map, stationData) => {
+        map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
+        renderFoundStationCamemberts(map, stationData, state);
+
+        // ✅ Détecter les lignes nouvellement complétées
+        const newlyCompletedLines = [];
+
+        for (const trainline of state.cache.orderedTrainlines) {
+            const total = stationData.meta.trainlines[trainline]?.["station-count"] || 0;
+            const found = state.cache.counts.stationsPerLine[trainline] || 0;
+
+            if (
+                total > 0 &&
+                found >= total &&
+                !state.cache.completedLinesCelebrated[trainline]
+            ) {
+                newlyCompletedLines.push(trainline);
+                state.cache.completedLinesCelebrated[trainline] = true;
+            }
+        }
+
+        // ✅ Lancer le confetti si au moins une ligne vient d'être complétée
+        if (newlyCompletedLines.length > 0) {
+            fireCompletedLineConfetti(newlyCompletedLines);
+        }
+    });
+
+    renderScoreboard(dom, state, 0);
+    localStorage.setItem("savedState", JSON.stringify(state));
+},
 
 	AppendFoundStationItem: (item, geoFeature) => (dom, state) => {
 		if (!Action._appendStationItemWithoutRender(item, geoFeature, state)) return;
@@ -838,12 +864,11 @@ const Action = {
 	},
 
 	AppendMultipleStationItems: (entries) => (dom, state) => {
-		for (const [item, geoFeature] of entries) {
-			Action._appendStationItemWithoutRender(item, geoFeature, state);
-		}
-		Action._renderAfterNewStationItem(dom, state);
-		renderScoreboard(dom, state);
-	},
+    for (const [item, geoFeature] of entries) {
+        Action._appendStationItemWithoutRender(item, geoFeature, state);
+    }
+    Action._renderAfterNewStationItem(dom, state);
+},
 
 	_updateStationStats: (state) => {
 		state.cache.stats.stations = 100 * state.cache.counts.stations / state.cache.totalCounts.stations;
