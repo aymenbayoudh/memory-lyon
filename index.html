@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="color-scheme" content="light"> 
+<meta name="supported-color-schemes" content="light">
 	<meta http-equiv="content-language" content="fr-fr" />
 	<meta name="description" content="Un jeu de devinette où l'on doit retrouver de mémoire le nom de toutes les gares de la Métropole de Lyon !" />
 	<link rel="canonical" href="https://aymenbayoudh.github.io/memory-lyon" />
@@ -23,11 +25,35 @@
 	<script src="join.js"></script>
 
 	<style type="text/css">
-		body {
-			font-family: "Helvetica", sans-serif;
-			padding: 0;
-			margin: 0;
-		}
+		
+body {
+    font-family: "Helvetica", sans-serif;
+    padding: 0;
+    margin: 0;
+    color-scheme: only light;
+    background: #ffffff;
+}
+
+		html {
+    color-scheme: only light;
+    background: #ffffff;
+}
+
+
+#scoreboard,
+#search-input,
+#btn-toggle-menu,
+#menu-container,
+#search-notification,
+#search-loader {
+    color-scheme: only light;
+}
+
+
+body {
+    color-scheme: only light;
+    background: #ffffff;
+}
 
 		#map-container {
 			width: 73%;
@@ -2696,7 +2722,8 @@ const $map = new Promise((resolve, reject) => {
     type: 'fill',
     source: 'found-communes',
     paint: {
-        //'fill-color': '#ACD26E', //vert
+        //couleur_communes
+		//'fill-color': '#ACD26E', //vert
         //'fill-outline-color': '#4D9900',
 		//'fill-color': '#946ED2',//violet
 		//'fill-outline-color': '#4D0099',
