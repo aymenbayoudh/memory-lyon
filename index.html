@@ -1355,6 +1355,25 @@ function renderMenu(dom, state) {
 		: "Montrer les réponses";
 }
 
+function renderMobileHeaderLine(iconFile, value, alt = "") {
+    return `
+        <span class="mobile-stat">
+            <img src="data/images/${iconFile}" alt="${alt}" class="mobile-summary-logo" />
+            <span class="mobile-stat-value">${value}</span>
+            <span class="mobile-percent-sign">%</span>
+        </span>
+    `;
+}
+
+function renderMobileHeaderLineSmall(iconFile, value, alt = "") {
+    return `
+        <span class="mobile-line-stat">
+            <img src="data/images/${iconFile}" alt="${alt}" class="mobile-summary-logo" />
+            <span class="mobile-stat-value">${value}</span>
+            <span class="mobile-percent-sign">%</span>
+        </span>
+    `;
+}
 
 
 
