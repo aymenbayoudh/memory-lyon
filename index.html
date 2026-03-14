@@ -352,6 +352,30 @@ body {
 			list-style-type: none;
 		}
 
+		#stats .stats-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    margin-bottom: 0.3em;
+    list-style-type: none;
+    line-height: 1.1;
+}
+
+#stats .stats-heading-logo {
+    display: block;
+    height: auto;
+    width: auto;
+    max-width: 2.05em;
+    flex: 0 0 auto;
+}
+
+#stats .stats-heading-text {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: #155a9f;
+}
+
 		#counts li:first-child {
     font-family: "Helvetica", sans-serif;
     font-size: 1.05em;
@@ -1001,6 +1025,12 @@ body {
         <div id="stats">
 
 				<ul>
+
+<li class="stats-heading">
+    <img src="data/images/Logo_ML.svg" class="stats-heading-logo" alt="Logo Métropole de Lyon">
+    <span class="stats-heading-text">La Métropole de Lyon de tête !</span>
+</li>
+
 					<li>
     <b>
         <span class="percentage" id="stat-stations">X</span> de gares trouvées  </b>
@@ -1014,6 +1044,7 @@ body {
 					<ul id="count-stations-per-line">
 					</ul>
 				</ul>
+				
 			</div>
 			<hr />
 			<div>
@@ -2050,51 +2081,81 @@ function exportFile(filename, json) {
 
 // Open a file browser to load a json file
 function importJsonFile() {
-  return new Promise((resolve, reject) => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.setAttribute('accept', '.json,application/json');
+    return new Promise((resolve, reject) => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json,application/json';
+        input.style.display = 'none';
 
-    let done = false;
+        let settled = false;
 
-    const cleanup = () => {
-      window.removeEventListener('focus', onFocus, true);
-      input.removeEventListener('change', onChange, true);
-      if (input.parentNode) document.body.removeChild(input);
-    };
+        const cleanup = () => {
+            window.removeEventListener('focus', onFocus, true);
+            input.removeEventListener('change', onChange, true);
+            if (input.parentNode) {
+                document.body.removeChild(input);
+            }
+        };
 
-    const onChange = () => {
-      done = true;
-      const file = input.files && input.files[0];
-      if (!file) { cleanup(); reject(new Error('IMPORT_CANCELLED')); return; }
-      const reader = new FileReader();
-      reader.onload = () => {
-        try {
-          const json = JSON.parse(reader.result);
-          cleanup();
-          resolve(json);
-        } catch (e) {
-          cleanup();
-          reject(new Error('INVALID_JSON'));
-        }
-      };
-      reader.onerror = () => { cleanup(); reject(reader.error || new Error('READ_ERROR')); };
-      reader.readAsText(file);
-    };
+        const finishResolve = (value) => {
+            if (settled) return;
+            settled = true;
+            cleanup();
+            resolve(value);
+        };
 
-    const onFocus = () => {
-      setTimeout(() => {
-        if (!done) { cleanup(); reject(new Error('IMPORT_CANCELLED')); }
-      }, 200);
-    };
+        const finishReject = (error) => {
+            if (settled) return;
+            settled = true;
+            cleanup();
+            reject(error);
+        };
 
-    input.addEventListener('change', onChange, { once: true });
-    window.addEventListener('focus', onFocus, { once: true, capture: true });
+        const onChange = () => {
+            const file = input.files && input.files[0];
 
-    input.style.display = 'none';
-    document.body.appendChild(input);
-    input.click();
-  });
+            if (!file) {
+                finishReject(new Error('IMPORT_CANCELLED'));
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                try {
+                    const json = JSON.parse(reader.result);
+                    finishResolve(json);
+                } catch (e) {
+                    finishReject(new Error('INVALID_JSON'));
+                }
+            };
+
+            reader.onerror = () => {
+                finishReject(reader.error || new Error('READ_ERROR'));
+            };
+
+            reader.readAsText(file);
+        };
+
+        const onFocus = () => {
+            // Le sélecteur de fichier vient de se fermer.
+            // On laisse un peu de temps au navigateur pour déclencher `change`.
+            setTimeout(() => {
+                if (settled) return;
+
+                const hasFile = !!(input.files && input.files.length > 0);
+                if (!hasFile) {
+                    finishReject(new Error('IMPORT_CANCELLED'));
+                }
+            }, 500);
+        };
+
+        input.addEventListener('change', onChange, { once: true });
+        window.addEventListener('focus', onFocus, { once: true, capture: true });
+
+        document.body.appendChild(input);
+        input.click();
+    });
 }
 
 //cam
@@ -2525,11 +2586,7 @@ dataLoader.$communeMemory = dataLoader.$communes.then(communes => {
 			index
 		};
 		engine.insert(props.nom, payload);
-		if (props.nom.startsWith("Paris") && props.nom.endsWith("Arrondissement")) {
-			const end = props.nom.length - "Arrondissement".length - 1;
-			engine.insert(props.nom.substr(0, end), payload);
-			engine.insert(props.nom.substr("Paris".length + 1), payload);
-		}
+		
 	});
 
 	engine.freeze();
@@ -2594,7 +2651,7 @@ join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, com
 	dom["btn-export"].addEventListener('click', () => {
 		dispatch(dom, Action.CloseMenu());
 
-		exportFile("memory-pour-idf.json", JSON.stringify({
+		exportFile("le_grand_lyon_de_tete.json", JSON.stringify({
 			...state,
 			cache: null,
 		}, null, 2));
