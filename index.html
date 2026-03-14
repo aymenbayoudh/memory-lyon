@@ -30,7 +30,7 @@
 		}
 
 		#map-container {
-			width: 70%;
+			width: 73%;
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -304,10 +304,10 @@
 			position: absolute;
 			right: 0;
 			top: 0;
-			width: 30%;
+			width: 27%;
 			height: 100vh;
 			background-color: #b7c8d9;
-			padding: 1em 1.5em;
+			padding: 1em 1.3em;
 			overflow-y: scroll;
 		}
 
@@ -504,6 +504,11 @@
     height: 1.5em;
     width: auto;
     display: block;
+}
+.found-camembert-marker,
+.found-camembert-marker svg,
+.found-camembert-marker * {
+    cursor: pointer;
 }
 #scoreboard-mobile-bar {
     display: none;
@@ -1073,6 +1078,7 @@ const $dom = $DOMContentLoaded.then(() => {
         "scoreboard-mobile-lines-summary",
         "scoreboard-mobile-progress",
         "btn-toggle-scoreboard",
+		
 
         "found",
         "stat-communes",
@@ -2169,13 +2175,15 @@ function renderFoundStationCamemberts(map, stationData, state) {
     }
     map.__foundCamembertMarkers = [];
 
+    // On garde aussi en mémoire des zones de hover pour le curseur
+    map.__foundCamembertHoverZones = [];
+
     // Grouper les stations trouvées par coordonnée exacte
     const buckets = new Map();
 
     for (const ft of state.cache.foundStationsGeojson.features) {
         if (!ft || !ft.geometry || ft.geometry.type !== "Point") continue;
         const coords = ft.geometry.coordinates;
-        const props = ft.properties || {};
         const key = `${coords[0].toFixed(6)}|${coords[1].toFixed(6)}`;
 
         if (!buckets.has(key)) buckets.set(key, []);
@@ -2185,15 +2193,13 @@ function renderFoundStationCamemberts(map, stationData, state) {
     for (const entries of buckets.values()) {
         if (entries.length < 2) continue;
 
-        const props = entries[0].properties || {};
-		const stationIds = entries.map(ft => Number(ft.properties.id_gares));
-		const config = stationIds
-		.map(id => FOUND_STATION_CAMEMBERTS[id])
-		.find(Boolean);
+        const stationIds = entries.map(ft => Number(ft.properties.id_gares));
+        const config = stationIds
+            .map(id => FOUND_STATION_CAMEMBERTS[id])
+            .find(Boolean);
 
         if (!config) continue;
 
-        // On ne traite que les stations qui ont explicitement une config
         const leftFt = entries.find(ft => ft.properties.trainline === config.left);
         const rightFt = entries.find(ft => ft.properties.trainline === config.right);
         if (!leftFt || !rightFt) continue;
@@ -2202,19 +2208,40 @@ function renderFoundStationCamemberts(map, stationData, state) {
         const rightColor = rightFt.properties.color;
 
         const el = document.createElement("div");
-        el.className = "found-camembert-marker";
-        el.style.pointerEvents = "none"; // laisse les clics passer à la couche found-stations
-        el.innerHTML = makeFoundStationCamembertSVG(leftColor, rightColor, config.angleDeg, 7, 9.5);
+		el.className = "found-camembert-marker";
+		el.style.pointerEvents = "none";
+		el.style.cursor = "pointer";
+		el.innerHTML = makeFoundStationCamembertSVG(leftColor, rightColor, config.angleDeg, 7, 9.5);
+        const lngLat = entries[0].geometry.coordinates;
 
         const marker = new mapboxgl.Marker({
             element: el,
             anchor: "center"
         })
-            .setLngLat(entries[0].geometry.coordinates)
+            .setLngLat(lngLat)
             .addTo(map);
 
         map.__foundCamembertMarkers.push(marker);
+
+        // rayon hover légèrement plus large que le visuel
+        map.__foundCamembertHoverZones.push({
+            lngLat,
+            radiusPx: 8
+        });
     }
+}
+function isPointerOverCamembert(map, point) {
+    const zones = map.__foundCamembertHoverZones || [];
+    for (const zone of zones) {
+        const projected = map.project(zone.lngLat);
+        const dx = projected.x - point.x;
+        const dy = projected.y - point.y;
+        const dist2 = dx * dx + dy * dy;
+        if (dist2 <= zone.radiusPx * zone.radiusPx) {
+            return true;
+        }
+    }
+    return false;
 }
 ``
 //confetti time!!! copier de Benjamin TD
@@ -2781,6 +2808,16 @@ const $map = new Promise((resolve, reject) => {
 
 	// Add a symbol layer showing all train stations that have been found
 	map.addLayer({
+    id: 'found-stations-hitbox',
+    type: 'circle',
+    source: 'found-stations',
+    paint: {
+        'circle-radius': 7,
+        'circle-opacity': 0,
+        'circle-stroke-width': 0
+    }
+});
+	map.addLayer({
 		id: 'found-stations',
 		type: 'circle',
 		source: 'found-stations',
@@ -2880,7 +2917,7 @@ join($map, dataLoader.$stationData, (map, stationData) => {
 
     // When a click event occurs on a train station, open a popup at the
     // location of the feature, with description HTML from its properties.
-    map.on('click', 'found-stations', (e) => {
+    map.on('click', 'found-stations-hitbox', (e) => {
         state.preclickedOnStation = false;
 
         // Copy coordinates array
@@ -2962,12 +2999,12 @@ const description = `
     });
 
     // Change the cursor to a pointer when the mouse is over the train line layer.
-    map.on('mouseenter', 'found-stations', () => {
+    map.on('mouseenter', 'found-stations-hitbox', () => {
         map.getCanvas().style.cursor = 'pointer';
     });
 
     // Change it back when it leaves.
-    map.on('mouseleave', 'found-stations', () => {
+    map.on('mouseleave', 'found-stations-hitbox', () => {
         map.getCanvas().style.cursor = '';
     });
 });
