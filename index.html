@@ -1267,23 +1267,51 @@ function exportFile(filename, json) {
 
 // Open a file browser to load a json file
 function importJsonFile() {
-	return new Promise((resolve, reject) => {
-		const element = document.createElement('input');
-		element.setAttribute('type', 'file');
-		element.setAttribute('accept', '*.json');
-		element.addEventListener("change", event => {
-			const reader = new FileReader();
-			reader.addEventListener('load', () => {
-				resolve(JSON.parse(reader.result));
-			});
-			reader.readAsText(element.files[0]);
-		}, false);
+  return new Promise((resolve, reject) => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.setAttribute('accept', '.json,application/json');
 
-		element.style.display = 'none';
-		document.body.appendChild(element);
-		element.click();
-		document.body.removeChild(element);
-	});
+    let done = false;
+
+    const cleanup = () => {
+      window.removeEventListener('focus', onFocus, true);
+      input.removeEventListener('change', onChange, true);
+      if (input.parentNode) document.body.removeChild(input);
+    };
+
+    const onChange = () => {
+      done = true;
+      const file = input.files && input.files[0];
+      if (!file) { cleanup(); reject(new Error('IMPORT_CANCELLED')); return; }
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const json = JSON.parse(reader.result);
+          cleanup();
+          resolve(json);
+        } catch (e) {
+          cleanup();
+          reject(new Error('INVALID_JSON'));
+        }
+      };
+      reader.onerror = () => { cleanup(); reject(reader.error || new Error('READ_ERROR')); };
+      reader.readAsText(file);
+    };
+
+    const onFocus = () => {
+      setTimeout(() => {
+        if (!done) { cleanup(); reject(new Error('IMPORT_CANCELLED')); }
+      }, 200);
+    };
+
+    input.addEventListener('change', onChange, { once: true });
+    window.addEventListener('focus', onFocus, { once: true, capture: true });
+
+    input.style.display = 'none';
+    document.body.appendChild(input);
+    input.click();
+  });
 }
 
 //cam
@@ -1728,14 +1756,26 @@ join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, com
 	});
 
 	dom["btn-import"].addEventListener('click', () => {
-		dispatch(dom, Action.CloseMenu());
-
-		dispatch(dom, Action.StartLoading());
-		importJsonFile()
-		.then(json => {
-			dispatch(dom, Action.LoadState(json, stationData, communes));
-		});
-	});
+  dispatch(dom, Action.CloseMenu());
+  dispatch(dom, Action.StartLoading());
+  importJsonFile()
+    .then(json => {
+      // 1) Supporte un patch de métadonnées (connected-stations)
+      if (json && json['connected-stations']) {
+        stationData.meta['connected-stations'] = json['connected-stations'];
+        console.log('✅ connected-stations importé (meta patch)');
+        dispatch(dom, Action.StopLoading());
+        return;
+      }
+      // 2) Sinon : c’est un "save" complet
+      dispatch(dom, Action.LoadState(json, stationData, communes));
+    })
+    .catch(err => {
+      // Annulation ou erreur → on sort du mode "chargement"
+      console.warn('Import annulé/échoué:', err && err.message ? err.message : err);
+      dispatch(dom, Action.StopLoading());
+    });
+});
 
 	
 });
