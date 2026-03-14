@@ -1553,49 +1553,50 @@ function renderScoreboard(dom, state, newIndex) {
         let insertedTBIcon = false;
         let insertedNaviIcon = false;
 
-        for (const trainline_key of state.cache.orderedTrainlines) {
-            const count = state.cache.counts.stationsPerLine[trainline_key];
+       for (const trainline_key of state.cache.orderedTrainlines) {
+    if (trainline_key === "TER") continue;
 
-            const isMetro = /^M[A-D]$/.test(trainline_key);
-            const isFuni  = /^F[12]$/.test(trainline_key);
-            const isTram  = /^T\d+$/.test(trainline_key);
-            const isTB    = /^TB\d+$/.test(trainline_key);
-            const isNavi  = /^NAVI?1$/.test(trainline_key);
+    const count = state.cache.counts.stationsPerLine[trainline_key];
 
-            // Ligne 1 : M ... F ...
-            if (isMetro && !insertedMetroIcon) {
-                lineItems.push(renderScorboardSectionIcon("logo_M.svg", "Métro"));
-                insertedMetroIcon = true;
-            }
-            if (isFuni && !insertedFuniIcon) {
-                lineItems.push(renderScorboardLineBreak());
-                lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire"));
-				//lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire", "margin-left:0.10em;"));
-                insertedFuniIcon = true;
-            }
+    const isMetro = /^M[A-D]$/.test(trainline_key);
+    const isFuni = /^F[12]$/.test(trainline_key);
+    const isTram = /^T\d+$/.test(trainline_key);
+    const isTB = /^TB\d+$/.test(trainline_key);
+    const isNavi = /^NAVI?1$/.test(trainline_key);
 
-            // Ligne 2 : T ...
-            if (isTram && !insertedTramIcon) {
-                lineItems.push(renderScorboardLineBreak());
-                lineItems.push(renderScorboardSectionIcon("logo_T.svg", "Tram"));
-                insertedTramIcon = true;
-            }
+    // Ligne 1 : M ... F ...
+    if (isMetro && !insertedMetroIcon) {
+        lineItems.push(renderScorboardSectionIcon("logo_M.svg", "Métro"));
+        insertedMetroIcon = true;
+    }
+    if (isFuni && !insertedFuniIcon) {
+        lineItems.push(renderScorboardLineBreak());
+        lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire"));
+        insertedFuniIcon = true;
+    }
 
-            // Ligne 3 : TB ... NAVI ...
-            if (isTB && !insertedTBIcon) {
-                lineItems.push(renderScorboardLineBreak());
-                lineItems.push(renderScorboardSectionIcon("logo_TB.svg", "TramBus"));
-                insertedTBIcon = true;
-            }
-            if (isNavi && !insertedNaviIcon) {
-                lineItems.push(renderScorboardLineBreak());
-				lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
-				//lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône", "margin-left:0.10em;"));
-                insertedNaviIcon = true;
-            }
+    // Ligne 2 : T ...
+    if (isTram && !insertedTramIcon) {
+        lineItems.push(renderScorboardLineBreak());
+        lineItems.push(renderScorboardSectionIcon("logo_T.svg", "Tram"));
+        insertedTramIcon = true;
+    }
 
-            lineItems.push(renderScorboardLineCounter(trainline_key, count, stationData));
-        }
+    // Ligne 3 : TB ... NAVI ...
+    if (isTB && !insertedTBIcon) {
+        lineItems.push(renderScorboardLineBreak());
+        lineItems.push(renderScorboardSectionIcon("logo_TB.svg", "TramBus"));
+        insertedTBIcon = true;
+    }
+    if (isNavi && !insertedNaviIcon) {
+        lineItems.push(renderScorboardLineBreak());
+        lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
+        insertedNaviIcon = true;
+    }
+
+    lineItems.push(renderScorboardLineCounter(trainline_key, count, stationData));
+}
+
 
         // desktop
         dom["count-stations-per-line"].replaceChildren(...lineItems);
@@ -2304,6 +2305,12 @@ const dataLoader = {
 	$meta:
 		fetch('data/memory-pour-lyon-metadata.json')
 		.then(response => response.json()),
+	
+	$focusMask:
+	fetch('data/lyon-focus-mask.geojson')
+	.then(response => response.json()),
+
+	
 
 	// Post-operations are populated below because the rely on other members of
 	// the dataLoader.
@@ -2638,7 +2645,37 @@ const $map = new Promise((resolve, reject) => {
 
 	////////////////////////////////////
 	// Communes
+////////////////////////////////////
+// Focus mask (extérieur grisé, centre transparent)
 
+map.addSource('lyon-focus-mask', {
+    type: 'geojson',
+    data: {
+        type: 'FeatureCollection',
+        features: []
+    }
+});
+
+map.addLayer({
+    id: 'lyon-focus-mask-fill',
+    type: 'fill',
+    source: 'lyon-focus-mask',
+    paint: {
+        'fill-color': '#e1e1e1',
+        'fill-opacity': 0.7
+    }
+});
+
+map.addLayer({
+    id: 'lyon-focus-mask-outline',
+    type: 'line',
+    source: 'lyon-focus-mask',
+    paint: {
+        'line-color': '#000000',
+        'line-opacity': 1,
+        'line-width': 0.65
+    }
+});
 	// Communes are not displayed prior to being found
 	//map.addSource('communes', {
 	//	type: 'geojson',
@@ -2913,6 +2950,10 @@ function sortTraceFeaturesByPriority(traces) {
 join($map, dataLoader.$traces, (map, traces) => {
     const sortedTraces = sortTraceFeaturesByPriority(traces);
     map.getSource("traces").setData(sortedTraces);
+});
+
+join($map, dataLoader.$focusMask, (map, mask) => {
+    map.getSource('lyon-focus-mask').setData(mask);
 });
 
 
