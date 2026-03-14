@@ -1,32 +1,16 @@
 {
+ 
   "connected-stations": {
-    "30211": [
-      30211,
-      33264,
-      1000023
-    ],
-    "45863": [
-      50238,
-      45863
-    ],
-    "50238": [
-      50238,
-      45863
-    ],
+    "30211": [30211, 33264, 1000023],
+    "33264": [30211, 33264, 1000023],
 
-    "47207": [
-      47207,
-      48290
-    ],
-    "48290": [
-      47207,
-      48290
-    ],
-    "33264": [
-      30211,
-      33264,
-      1000023
-    ],
+    "45863": [45863, 50238],
+    "50238": [45863, 50238],
+
+    "47207": [47207, 48290],
+    "48290": [47207, 48290],
+  
+    
     "1000023": [
       30211,
       33264,
@@ -295,6 +279,7 @@
     "45861": [
       45861
     ],
+    
     "45869": [
       45869
     ],
@@ -519,9 +504,11 @@
     "47120": [
       47120
     ],
+    
     "667": [
       667
     ],
+    
     "48292": [
       48292
     ],
@@ -545,6 +532,7 @@
     "50396": [
       50396
     ],
+    
     "50244": [
       50244
     ],
@@ -843,7 +831,7 @@
       "station-count": 2,
       "logo": "F2.svg",
       "logo-style": {
-        "text-color": "white",
+        "text-color": "black",
         "shape": "square"
       }
     },
@@ -851,7 +839,7 @@
       "station-count": 14,
       "logo": "MA.svg",
       "logo-style": {
-        "text-color": "white",
+        "text-color": "black",
         "shape": "square"
       }
     },
@@ -859,7 +847,7 @@
       "station-count": 12,
       "logo": "MB.svg",
       "logo-style": {
-        "text-color": "white",
+        "text-color": "black",
         "shape": "square"
       }
     },
@@ -875,7 +863,7 @@
       "station-count": 15,
       "logo": "MD.svg",
       "logo-style": {
-        "text-color": "white",
+        "text-color": "black",
         "shape": "square"
       }
     },
@@ -887,11 +875,19 @@
         "shape": "square"
       }
     },
+    "TER": {
+      "station-count": 36,
+      "logo": "transilien.svg",
+      "logo-style": {
+        "text-color": "white",
+        "shape": "rounded-square"
+      }
+    },
     "T1": {
       "station-count": 27,
       "logo": "T1.svg",
       "logo-style": {
-        "text-color": "white",
+        "text-color": "black",
         "shape": "square"
       }
     },
@@ -923,7 +919,7 @@
       "station-count": 12,
       "logo": "T5.svg",
       "logo-style": {
-        "text-color": "white",
+        "text-color": "black",
         "shape": "square"
       }
     },
@@ -939,7 +935,7 @@
       "station-count": 5,
       "logo": "T7.svg",
       "logo-style": {
-        "text-color": "white",
+        "text-color": "black",
         "shape": "square"
       }
     },
@@ -955,7 +951,7 @@
       "station-count": 12,
       "logo": "TB12.svg",
       "logo-style": {
-        "text-color": "white",
+        "text-color": "black",
         "shape": "square"
       }
     }
@@ -976,7 +972,8 @@
     "T7",
     "TB11",
     "TB12",
-    "NAVI1"
+    "NAVI1",
+    "TER"
   ],
   "communes": {
     "total-communes": 58,
@@ -985,3 +982,5 @@
   },
   "from-memory-paris": {}
 }
+
+
