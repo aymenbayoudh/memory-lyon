@@ -1536,7 +1536,7 @@ function renderScoreboard(dom, state, newIndex) {
                 insertedMetroIcon = true;
             }
             if (isFuni && !insertedFuniIcon) {
-                
+                lineItems.push(renderScorboardLineBreak());
                 lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire"));
                 insertedFuniIcon = true;
             }
@@ -1555,7 +1555,8 @@ function renderScoreboard(dom, state, newIndex) {
                 insertedTBIcon = true;
             }
             if (isNavi && !insertedNaviIcon) {
-                lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
+                lineItems.push(renderScorboardLineBreak());
+				lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
                 insertedNaviIcon = true;
             }
 
