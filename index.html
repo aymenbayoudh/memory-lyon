@@ -2696,13 +2696,18 @@ const $map = new Promise((resolve, reject) => {
     type: 'fill',
     source: 'found-communes',
     paint: {
-        'fill-color': '#d26e7a',
-        'fill-outline-color': '#990000',
+        //'fill-color': '#ACD26E', //vert
+        //'fill-outline-color': '#4D9900',
+		//'fill-color': '#946ED2',//violet
+		//'fill-outline-color': '#4D0099',
+		'fill-color': '#b7c8d9',//bleu
+		'fill-outline-color': '#669CD1',
+	
         'fill-opacity': [
             'case',
             ['boolean', ['feature-state', 'hover'], false],
-            0.5,
-            0.15
+            0.50,
+            0.25
         ]
     }
 });
@@ -2856,7 +2861,7 @@ map.addLayer({
     source: 'lyon-focus-mask',
     paint: {
         'fill-color': '#ececec',
-        'fill-opacity': 0.7
+        'fill-opacity': 0.8
     }
 });
 
