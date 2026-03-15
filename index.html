@@ -970,10 +970,10 @@ body {
 						</svg>
 					</div>
 					<div id="menu-container">
-						<button id="btn-export">Exporter la partie</button>
-						<button id="btn-import">Importer une partie</button>
-						<button id="btn-toggle-answers">Masquer les réponses</button>
-						<button id="btn-about">À propos</button>
+						<button id="btn-export" type="button">Exporter la partie</button>
+<button id="btn-import" type="button">Importer une partie</button>
+<button id="btn-toggle-answers" type="button">Masquer les réponses</button>
+<button id="btn-about" type="button">À propos</button>
 					</div>
 				</div>
 			</div>
@@ -2721,27 +2721,27 @@ join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, com
 		dispatch(dom, Action.LoadState(savedState, stationData, communes));
 	}
 
-	dom["btn-export"].addEventListener('click', () => {
-		dispatch(dom, Action.CloseMenu());
+	dom["btn-export"].addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
 
-		exportFile("le_grand_lyon_de_tete.json", JSON.stringify({
-			...state,
-			cache: null,
-		}, null, 2));
-	});
+    dispatch(dom, Action.CloseMenu());
+    exportFile("le_grand_lyon_de_tete.json", JSON.stringify({
+        found: state.found,
+        showAnswers: state.showAnswers
+    }, null, 2));
+});
 
-	exportFile("le_grand_lyon_de_tete.json", JSON.stringify({
-    found: state.found,
-    showAnswers: state.showAnswers
-}, null, 2));
 
-	dom["btn-import"].addEventListener('click', () => {
+	dom["btn-import"].addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     dispatch(dom, Action.CloseMenu());
     dispatch(dom, Action.StartLoading());
 
     importJsonFile(dom["import-json-input"])
         .then(json => {
-            // 1) Supporte un patch de métadonnées (connected-stations)
             if (json && json['connected-stations']) {
                 stationData.meta['connected-stations'] = json['connected-stations'];
                 console.log('✅ connected-stations importé (meta patch)');
@@ -2749,7 +2749,6 @@ join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, com
                 return;
             }
 
-            // 2) Sinon : c’est un "save" complet
             dispatch(dom, Action.LoadState(json, stationData, communes));
         })
         .catch(err => {
