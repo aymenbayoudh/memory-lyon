@@ -980,8 +980,8 @@ body {
 		</div>
 
 		<div id="scoreboard">
-    <div id="scoreboard-mobile-bar">
-        <div id="scoreboard-mobile-summary">
+         <div id="scoreboard-mobile-bar">
+          <div id="scoreboard-mobile-summary">
     
 
 	<span class="mobile-stat">
@@ -1540,38 +1540,46 @@ communes.features.map((entry, index) => {
     communeIdToIndex[entry.properties.code] = index;
 });
 
-state.found.map(item => {
+state.found = state.found.filter(item => {
     if (item.id[0] === 'STATION') {
-        state.cache.foundKeys[item.id] = true;
         const stationIndex = stationIdToIndex[item.id[1]];
         const geoFeature = stations.features[stationIndex];
+        if (!geoFeature) {
+            console.warn("Station absente des données, ignorée au chargement :", item);
+            return false;
+        }
 
+        state.cache.foundKeys[item.id] = true;
         state.cache.foundStationsGeojson.features.push({
             ...geoFeature,
             id: item.id[1]
         });
-
         ++state.cache.counts.stations;
         ++state.cache.counts.stationsPerLine[geoFeature.properties.trainline];
+        return true;
     }
-    else if (item.id[0] === 'COMMUNE') {
-        state.cache.foundKeys[item.id] = true;
 
+    if (item.id[0] === 'COMMUNE') {
         const communeIndex = communeIdToIndex[item.id[1]];
         const geoFeature = communes.features[communeIndex];
+        if (!geoFeature) {
+            console.warn("Commune absente des données, ignorée au chargement :", item);
+            return false;
+        }
 
-        console.assert(item.id[1] !== undefined);
+        state.cache.foundKeys[item.id] = true;
         state.cache.foundCommunesGeojson.features.push({
             ...geoFeature,
             id: item.id[1]
         });
-
         state.cache.counts.communes += 1;
         state.cache.counts.surface += geoFeature.properties.superficie;
         state.cache.counts.inhabitants += geoFeature.properties.population;
+        return true;
     }
-});
 
+    return false;
+});
 // ✅ ICI SEULEMENT : on sait enfin quelles lignes sont déjà complètes
 state.cache.completedLinesCelebrated = {};
 for (const trainline of state.cache.orderedTrainlines) {
@@ -1919,61 +1927,78 @@ function buildFoundGroups(found, stationData) {
 
     return groups;
 }
-
 function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
-	const className = isNew ? "new" : "";
+    var logo = "";
+    var flyTarget = null;
 
-	var logo = "";
-	var flyTarget = null;
-	if (item.id[0] == 'STATION' && stationData != null) {
-		const index = stationData.idToIndex[item.id[1]];
-		const feature = stationData.stations.features[index];
-		const props = feature.properties;
-		flyTarget = {
-			center: feature.geometry.coordinates.slice(),
-			zoom: 13,
-		};
-		logo = `<img src="${props.logo}" class="logo" />`;
-	} else if (item.id[0] == 'COMMUNE') {
-		const index = communeData.idToIndex[item.id[1]];
-		const commune = communeData.communes.features[index].properties;
-		flyTarget = {
-			center: [commune.center.lon, commune.center.lat],
-			zoom: 12,
-		};
-		logo = `<span class="found-logos"><img src="data/images/communes.jpg" class="logo" /></span>`;
-	}
+    if (item.id[0] == 'STATION' && stationData != null) {
+        const index = stationData.idToIndex[item.id[1]];
+        const feature = stationData.stations.features[index];
+        if (!feature) {
+            const element = document.createElement('li');
+            element.setAttribute("class", isNew ? "new" : "");
+            element.innerText = item.name || "(station introuvable)";
+            return element;
+        }
 
-	const element = document.createElement('li');
-	element.setAttribute("class", isNew ? "new" : "");
-	element.setAttribute("title", "Trouvé le XXX à XXXh");
-	element.innerHTML = `${logo}${item.name}`;
+        const props = feature.properties;
+        flyTarget = {
+            center: feature.geometry.coordinates.slice(),
+            zoom: 13,
+        };
+        logo = `${props.logo}`;
+    }
+    else if (item.id[0] == 'COMMUNE') {
+        const index = communeData.idToIndex[item.id[1]];
+        const feature = communeData.communes.features[index];
+        if (!feature) {
+            const element = document.createElement('li');
+            element.setAttribute("class", isNew ? "new" : "");
+            element.innerText = item.name || "(commune introuvable)";
+            return element;
+        }
 
-	$map.then(map => {
-		const source = item.id[0] == 'STATION' ? 'found-stations' : 'found-communes';
-		const stateName = item.id[0] == 'STATION' ? 'active' : 'hover';
+        const commune = feature.properties;
+        flyTarget = {
+            center: [commune.center.lon, commune.center.lat],
+            zoom: 12,
+        };
+        logo = `<span class="found-logos">data/images/communes.jpg</span>`;
+    }
 
-		element.addEventListener('mouseenter', () => {
-			map.setFeatureState(
-				{ source, id: item.id[1] },
-				{ [stateName]: true }
-			);
-		});
-		element.addEventListener('mouseleave', () => {
-			map.setFeatureState(
-				{ source, id: item.id[1] },
-				{ [stateName]: false }
-			);
-		});
-		if (flyTarget !== null) {
-			element.addEventListener('click', () => {
-				map.flyTo(flyTarget);
-			});
-		}
-	});
+    const element = document.createElement('li');
+    element.setAttribute("class", isNew ? "new" : "");
+    element.setAttribute("title", "Trouvé le XXX à XXXh");
+    element.innerHTML = `${logo}${item.name}`;
 
-	return element;
+    $map.then(map => {
+        const source = item.id[0] == 'STATION' ? 'found-stations' : 'found-communes';
+        const stateName = item.id[0] == 'STATION' ? 'active' : 'hover';
+
+        element.addEventListener('mouseenter', () => {
+            map.setFeatureState(
+                { source, id: item.id[1] },
+                { [stateName]: true }
+            );
+        });
+
+        element.addEventListener('mouseleave', () => {
+            map.setFeatureState(
+                { source, id: item.id[1] },
+                { [stateName]: false }
+            );
+        });
+
+        if (flyTarget !== null) {
+            element.addEventListener('click', () => {
+                map.flyTo(flyTarget);
+            });
+        }
+    });
+
+    return element;
 }
+
 function getStationDisplayPriority(trainline) {
     if (/^M[A-D]$/.test(trainline)) return 100;   // métro
     if (/^T\d+$/.test(trainline)) return 90;      // tram
