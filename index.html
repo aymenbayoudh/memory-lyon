@@ -1185,7 +1185,36 @@ const $dom = $DOMContentLoaded.then(() => {
 });
 
 
+const COMPLETE_MILESTONE_TCL = "__COMPLETE_TCL__";
+const COMPLETE_MILESTONE_ALL = "__COMPLETE_ALL__";
 
+function getTclTrainlines(orderedTrainlines) {
+    return orderedTrainlines.filter(trainline => trainline !== "TER");
+}
+
+function isTclNetworkComplete(state, stationData) {
+    const tclTrainlines = getTclTrainlines(state.cache.orderedTrainlines);
+
+    if (tclTrainlines.length === 0) return false;
+
+    return tclTrainlines.every(trainline => {
+        const total = stationData.meta.trainlines[trainline]?.["station-count"] || 0;
+        const found = state.cache.counts.stationsPerLine[trainline] || 0;
+        return total > 0 && found >= total;
+    });
+}
+
+function isEverythingComplete(state) {
+    const allStationsDone =
+        state.cache.totalCounts.stations > 0 &&
+        state.cache.counts.stations >= state.cache.totalCounts.stations;
+
+    const allCommunesDone =
+        state.cache.totalCounts.communes > 0 &&
+        state.cache.counts.communes >= state.cache.totalCounts.communes;
+
+    return allStationsDone && allCommunesDone;
+}
 ///////////////////////////////////////////////////////////
 // Actions
 
@@ -1331,9 +1360,8 @@ const Action = {
         map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
         renderFoundStationCamemberts(map, stationData, state);
 
-        // ✅ Détecter les lignes nouvellement complétées
+        // 1) Lignes individuelles nouvellement complétées
         const newlyCompletedLines = [];
-
         for (const trainline of state.cache.orderedTrainlines) {
             const total = stationData.meta.trainlines[trainline]?.["station-count"] || 0;
             const found = state.cache.counts.stationsPerLine[trainline] || 0;
@@ -1348,9 +1376,26 @@ const Action = {
             }
         }
 
-        // ✅ Lancer le confetti si au moins une ligne vient d'être complétée
         if (newlyCompletedLines.length > 0) {
             fireCompletedLineConfetti(newlyCompletedLines);
+        }
+
+        // 2) Milestone : tout le TCL (hors TER)
+        if (
+            isTclNetworkComplete(state, stationData) &&
+            !state.cache.completedLinesCelebrated[COMPLETE_MILESTONE_TCL]
+        ) {
+            state.cache.completedLinesCelebrated[COMPLETE_MILESTONE_TCL] = true;
+            fireCompletedLineConfetti(["logo_TCL"]);
+        }
+
+        // 3) Milestone : tout le jeu (stations + communes)
+        if (
+            isEverythingComplete(state) &&
+            !state.cache.completedLinesCelebrated[COMPLETE_MILESTONE_ALL]
+        ) {
+            state.cache.completedLinesCelebrated[COMPLETE_MILESTONE_ALL] = true;
+            fireCompletedLineConfetti(["Logo_ML"]);
         }
     });
 
@@ -1518,6 +1563,14 @@ for (const trainline of state.cache.orderedTrainlines) {
     if (total > 0 && found >= total) {
         state.cache.completedLinesCelebrated[trainline] = true;
     }
+}
+
+if (isTclNetworkComplete(state, stationData)) {
+    state.cache.completedLinesCelebrated[COMPLETE_MILESTONE_TCL] = true;
+}
+
+if (isEverythingComplete(state)) {
+    state.cache.completedLinesCelebrated[COMPLETE_MILESTONE_ALL] = true;
 }
 
 Action._initializeTotalCounts(stationData, state);
