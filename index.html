@@ -38,7 +38,15 @@ body {
     color-scheme: only light;
     background: #ffffff;
 }
-
+#import-json-input {
+    position: fixed;
+    left: -9999px;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
 
 #scoreboard,
 #search-input,
@@ -1061,6 +1069,13 @@ body {
 			</div>
     </div> <!-- /#scoreboard-content -->
 </div>
+<input
+    id="import-json-input"
+    type="file"
+    accept=".json,application/json"
+    tabindex="-1"
+    aria-hidden="true"
+/>
 	</main>
 
 	<script>
@@ -1179,6 +1194,7 @@ const $dom = $DOMContentLoaded.then(() => {
         "btn-toggle-answers",
         "btn-about",
         "btn-show-answers",
+		"import-json-input"
     ].reduce((acc, item) => {
         acc[item] = document.getElementById(item);
         return acc;
@@ -2134,21 +2150,19 @@ function exportFile(filename, json) {
 }
 
 // Open a file browser to load a json file
-function importJsonFile() {
+function importJsonFile(input) {
     return new Promise((resolve, reject) => {
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = '.json,application/json';
-        input.style.display = 'none';
+        if (!input) {
+            reject(new Error('NO_IMPORT_INPUT'));
+            return;
+        }
 
         let settled = false;
 
         const cleanup = () => {
+            input.removeEventListener('change', onChange);
+            input.removeEventListener('cancel', onCancel);
             window.removeEventListener('focus', onFocus, true);
-            input.removeEventListener('change', onChange, true);
-            if (input.parentNode) {
-                document.body.removeChild(input);
-            }
         };
 
         const finishResolve = (value) => {
@@ -2191,23 +2205,28 @@ function importJsonFile() {
             reader.readAsText(file);
         };
 
+        const onCancel = () => {
+            finishReject(new Error('IMPORT_CANCELLED'));
+        };
+
         const onFocus = () => {
-            // Le sélecteur de fichier vient de se fermer.
-            // On laisse un peu de temps au navigateur pour déclencher `change`.
+            // Fallback pour navigateurs qui ne gèrent pas encore bien `cancel`
             setTimeout(() => {
                 if (settled) return;
-
                 const hasFile = !!(input.files && input.files.length > 0);
                 if (!hasFile) {
                     finishReject(new Error('IMPORT_CANCELLED'));
                 }
-            }, 500);
+            }, 600);
         };
 
+        // Important : réinitialiser la valeur pour pouvoir réimporter le même fichier
+        input.value = "";
+
         input.addEventListener('change', onChange, { once: true });
+        input.addEventListener('cancel', onCancel, { once: true });
         window.addEventListener('focus', onFocus, { once: true, capture: true });
 
-        document.body.appendChild(input);
         input.click();
     });
 }
@@ -2711,26 +2730,32 @@ join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, com
 		}, null, 2));
 	});
 
+	exportFile("le_grand_lyon_de_tete.json", JSON.stringify({
+    found: state.found,
+    showAnswers: state.showAnswers
+}, null, 2));
+
 	dom["btn-import"].addEventListener('click', () => {
-  dispatch(dom, Action.CloseMenu());
-  dispatch(dom, Action.StartLoading());
-  importJsonFile()
-    .then(json => {
-      // 1) Supporte un patch de métadonnées (connected-stations)
-      if (json && json['connected-stations']) {
-        stationData.meta['connected-stations'] = json['connected-stations'];
-        console.log('✅ connected-stations importé (meta patch)');
-        dispatch(dom, Action.StopLoading());
-        return;
-      }
-      // 2) Sinon : c’est un "save" complet
-      dispatch(dom, Action.LoadState(json, stationData, communes));
-    })
-    .catch(err => {
-      // Annulation ou erreur → on sort du mode "chargement"
-      console.warn('Import annulé/échoué:', err && err.message ? err.message : err);
-      dispatch(dom, Action.StopLoading());
-    });
+    dispatch(dom, Action.CloseMenu());
+    dispatch(dom, Action.StartLoading());
+
+    importJsonFile(dom["import-json-input"])
+        .then(json => {
+            // 1) Supporte un patch de métadonnées (connected-stations)
+            if (json && json['connected-stations']) {
+                stationData.meta['connected-stations'] = json['connected-stations'];
+                console.log('✅ connected-stations importé (meta patch)');
+                dispatch(dom, Action.StopLoading());
+                return;
+            }
+
+            // 2) Sinon : c’est un "save" complet
+            dispatch(dom, Action.LoadState(json, stationData, communes));
+        })
+        .catch(err => {
+            console.warn('Import annulé/échoué:', err && err.message ? err.message : err);
+            dispatch(dom, Action.StopLoading());
+        });
 });
 
 	
