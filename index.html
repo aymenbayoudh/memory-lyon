@@ -668,13 +668,13 @@ body {
 
 #answers-import-title {
     margin: 0 0 0.35em 0;
-    font-size: 1.2em;
+    font-size: 1.22em;
     color: #155a9f;
 }
 
 #answers-import-subtitle {
     margin: 0 0 0.9em 0;
-    font-size: 0.95em;
+    font-size: 0.85em;
     line-height: 1.35;
     color: #555;
 }
@@ -1050,7 +1050,7 @@ body {
 						<button id="btn-export" type="button">Exporter la partie</button>
                         <button id="btn-import" type="button">Importer une partie</button>
                         <button id="btn-restart" type="button">Recommencer la partie</button>
-                        <button id="btn-import-answers" type="button">Importer des réponses</button>
+                        <button id="btn-import-answers" type="button">Mode "triche"</button>
                         
                         <button id="btn-about" type="button">À propos</button>
 					</div>
@@ -1158,7 +1158,7 @@ body {
 
 <div id="answers-import-modal" class="modal-backdrop hidden" aria-hidden="true">
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="answers-import-title">
-        <h2 id="answers-import-title">Choisir quelles réponses importer</h2>
+        <h2 id="answers-import-title">Quelles lignes voulez-vous importer ?</h2>
         <p id="answers-import-subtitle">
             Le jeu ne sera plus complétable à 100&nbsp;%, il faudra recharger la page pour revenir à une partie « propre ».
         </p>
@@ -1167,8 +1167,7 @@ body {
             <label><input type="checkbox" name="answer-pack" value="COMMUNES" /> Communes</label>
             <label><input type="checkbox" name="answer-pack" value="TER" /> Gares TER</label>
 
-            <label><input type="checkbox" name="answer-pack" value="MA" /> MA</label>
-            <label><input type="checkbox" name="answer-pack" value="MB" /> MB</label>
+            <label><input type="checkbox" name="answer-pack" value="MA" /> MA</label> <label><input type="checkbox" name="answer-pack" value="MB" /> MB</label>
             <label><input type="checkbox" name="answer-pack" value="MC" /> MC</label>
             <label><input type="checkbox" name="answer-pack" value="MD" /> MD</label>
 
