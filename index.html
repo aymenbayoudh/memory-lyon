@@ -2551,13 +2551,31 @@ function closeAnswersImportModal(dom) {
 
 function buildCheatStateFromSelection(selected, state, stationData, communes) {
     const foundKeys = new Set(state.found.map(item => JSON.stringify(item.id)));
-    const mergedFound = [...state.found];
+    const importedFound = [];
 
     function pushIfMissing(item) {
         const key = JSON.stringify(item.id);
         if (foundKeys.has(key)) return;
         foundKeys.add(key);
-        mergedFound.push(item);
+        importedFound.push(item);
+    }
+
+    function addStationAndConnections(feature) {
+        const baseId = feature.properties.id_gares;
+        const connectedIds =
+            stationData.meta['connected-stations'][baseId] || [baseId];
+
+        connectedIds.forEach(id => {
+            const index = stationData.idToIndex[id];
+            if (index === undefined) return;
+
+            const props = stationData.stations.features[index].properties;
+
+            pushIfMissing({
+                id: ["STATION", props.id_gares],
+                name: props.nom_zdc
+            });
+        });
     }
 
     for (const choice of selected) {
@@ -2581,15 +2599,12 @@ function buildCheatStateFromSelection(selected, state, stationData, communes) {
 
             if (!matches) return;
 
-            pushIfMissing({
-                id: ["STATION", feature.properties.id_gares],
-                name: feature.properties.nom_zdc
-            });
+            addStationAndConnections(feature);
         });
     }
 
     return {
-        found: mergedFound,
+        found: [...importedFound, ...state.found],
         showAnswers: state.showAnswers,
         cheats: Array.from(new Set([
             ...(Array.isArray(state.cheats) ? state.cheats : []),
