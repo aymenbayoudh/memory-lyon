@@ -971,9 +971,11 @@ body {
 					</div>
 					<div id="menu-container">
 						<button id="btn-export" type="button">Exporter la partie</button>
-<button id="btn-import" type="button">Importer une partie</button>
-<button id="btn-toggle-answers" type="button">Masquer les réponses</button>
-<button id="btn-about" type="button">À propos</button>
+                        <button id="btn-import" type="button">Importer une partie</button>
+                        <button id="btn-restart" type="button">Recommencer la partie</button>
+                        
+                        
+                        <button id="btn-about" type="button">À propos</button>
 					</div>
 				</div>
 			</div>
@@ -1191,7 +1193,9 @@ const $dom = $DOMContentLoaded.then(() => {
         "menu-container",
         "btn-export",
         "btn-import",
-        "btn-toggle-answers",
+        "btn-restart",
+        
+       
         "btn-about",
         "btn-show-answers",
 		"import-json-input"
@@ -1626,10 +1630,7 @@ function dispatch(dom, action) {
 
 function renderMenu(dom, state) {
 	dom["menu-container"].setAttribute("class", state.showMenu ? "opened" : "");
-	dom["btn-toggle-answers"].innerText =
-		state.showAnswers
-		? "Masquer les réponses"
-		: "Montrer les réponses";
+	
 }
 
 function renderMobileHeaderLine(iconFile, value, alt = "") {
@@ -2718,10 +2719,7 @@ $dom.then(dom => {
 		dispatch(dom, Action.ToggleMenu());
 	});
 
-	dom["btn-toggle-answers"].addEventListener('click', () => {
-		dispatch(dom, Action.ToggleAnswers());
-		dispatch(dom, Action.CloseMenu());
-	});
+	
 
 	dom["btn-show-answers"].addEventListener('click', () => {
 		dispatch(dom, Action.ShowAnswers());
@@ -2781,6 +2779,14 @@ join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, com
             dispatch(dom, Action.StopLoading());
         });
 });
+dom["btn-restart"].addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    dispatch(dom, Action.CloseMenu());
+    localStorage.removeItem("savedState");
+    location.reload();
+});
+``
 
 	
 });
