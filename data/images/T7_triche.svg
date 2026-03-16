@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   sodipodi:docname="Lyon_tcl_tram-7.svg"
+   inkscape:version="1.2 (dc2aeda, 2022-05-15)"
+   version="1.1"
+   id="svg2"
+   height="100"
+   width="100"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     inkscape:window-maximized="0"
+     inkscape:window-y="25"
+     inkscape:window-x="0"
+     inkscape:window-height="917"
+     inkscape:window-width="1463"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     showgrid="false"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="33.375"
+     inkscape:cx="14.375"
+     inkscape:zoom="4"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque"
+     id="layer1"
+     inkscape:groupmode="layer">
+    <flowRoot
+       style="font-style:normal;font-weight:normal;font-size:16.6667px;line-height:0.01%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="flowRoot2988"
+       xml:space="preserve"><flowRegion
+         style="font-family:sans-serif;stroke-width:1px"
+         id="flowRegion2990"><rect
+           y="12.5"
+           x="12.5"
+           height="63.888889"
+           width="83.333336"
+           id="rect2992"
+           style="stroke-width:1px" /></flowRegion><flowPara
+         style="font-size:55.5556px;line-height:1.25;font-family:sans-serif;stroke-width:1px"
+         id="flowPara2994"> </flowPara></flowRoot>
+    <rect
+       y="-1.3882908e-14"
+       x="0"
+       height="100"
+       width="100"
+       id="rect3764"
+       style="fill:#972964;fill-opacity:1;stroke:none;stroke-width:1" />
+    <path
+       d="m 38.326895,87.486487 -0.195821,0.0979 h 13.612535 c -2.7e-5,-4.537507 0.03261,-7.681521 0.09792,-9.43205 0.06326,-2.591157 0.257111,-4.924196 0.581529,-6.999122 0.389637,-2.074895 0.973144,-3.986621 1.750523,-5.735186 0.714025,-1.621928 1.783127,-3.502007 3.207312,-5.640242 l 6.613414,-9.817759 c 2.20344,-3.241887 4.277363,-6.515459 6.221771,-9.820726 1.554654,-2.46255 2.753315,-4.795588 3.595988,-6.999122 0.842575,-2.009582 1.426082,-3.922299 1.750522,-5.738153 0.259066,-1.619913 0.388625,-3.661197 0.388675,-6.12386 -5e-5,-1.101674 -0.06433,-2.560442 -0.192854,-4.376306 -0.06532,-1.424082 -0.163235,-2.688016 -0.293731,-3.791809 h -47.24927 v 10.986753 h 34.417048 c -3.8e-5,0.648843 -0.03268,1.135429 -0.09792,1.459757 -3.7e-5,0.518295 -0.03267,0.939606 -0.0979,1.263936 -0.128611,0.907958 -0.32245,1.783218 -0.58153,2.625783 -0.324426,0.971251 -0.811011,2.007718 -1.459757,3.109403 -0.259151,0.453014 -1.003865,1.716948 -2.234142,3.791808 -0.583539,0.973222 -1.717915,2.723743 -3.403133,5.251567 l -5.542331,8.263058 c -2.334051,3.564375 -4.181493,6.610478 -5.542332,9.13832 -1.426148,2.527898 -2.527889,5.249611 -3.305223,8.165147 -0.842638,2.852281 -1.393509,5.8341 -1.652611,8.945465 -0.259131,2.852273 -0.388689,6.644078 -0.388675,11.375428 z"
+       id="path3131"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:70px;line-height:125%;font-family:Confluence;-inkscape-font-specification:'Confluence Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1" />
+  </g>
+</svg>
