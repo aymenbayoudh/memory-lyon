@@ -1315,10 +1315,10 @@ body {
                 <button id="btn-validate-import-answers" type="submit">Valider</button>
             </div>
         </form>
-        ``
+        
     </div>
 </div>
-``
+
 
 
 	</main>
@@ -1873,7 +1873,7 @@ $map.then(map => {
 });
 
 localStorage.setItem("savedState", JSON.stringify(state));
-``
+
 	},
 };
 function dispatch(dom, action) {
@@ -2166,7 +2166,7 @@ function renderScorboardLineCounter(trainline_key, count, stationData, state) {
     element.innerHTML = `${logo}${progress}`;
     return element;
 }
-``
+
 
 function renderScorboardSectionIcon(filename, alt, extraStyle = "") {
     const element = document.createElement('li');
@@ -2392,7 +2392,7 @@ if (isPartDieuGroup(features)) {
 
     return element;
 }
-``
+
 
 function renderSearchForm(dom, state) {
 	const input = dom["search-input"];
@@ -2728,7 +2728,7 @@ const FOUND_STATION_CAMEMBERTS = {
 },
 };
 
-``
+
 
    
 
@@ -2849,7 +2849,7 @@ function isPointerOverCamembert(map, point) {
     }
     return false;
 }
-``
+
 //confetti time!!! copier de Benjamin TD
 async function fireCompletedLineConfetti(lines) {
     if (!lines || lines.length === 0) return;
@@ -2876,7 +2876,6 @@ async function fireCompletedLineConfetti(lines) {
         },
     });
 }
-``
 ///////////////////////////////////////////////////////////
 // Data loader
 
@@ -3137,7 +3136,7 @@ dom["btn-restart"].addEventListener('click', (event) => {
     localStorage.removeItem("savedState");
     location.reload();
 });
-``
+
 
 dom["answers-import-form"].addEventListener("submit", (event) => {
     event.preventDefault();
