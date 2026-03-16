@@ -1806,7 +1806,7 @@ const Action = {
 },
 
 	_updateStationStats: (state) => {
-		state.cache.stats.stations = 100 * state.cache.counts.stations / state.cache.totalCounts.stations;
+		state.cache.stats.stations = 100 * state.cache.counts.stations / (state.cache.totalCounts.stations+1);
 	},
 	_updateCommuneStats: (state) => {
 		state.cache.stats.communes = 100 * state.cache.counts.communes / state.cache.totalCounts.communes;
