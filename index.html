@@ -641,6 +641,83 @@ body {
     display: none;
 }
 
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    pointer-events: auto;
+}
+
+.modal-backdrop.hidden {
+    display: none;
+}
+
+.modal-card {
+    width: calc(100% - 2em);
+    max-width: 28em;
+    background: white;
+    border-radius: 0.8em;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    padding: 1em 1.1em 1em 1.1em;
+    box-sizing: border-box;
+}
+
+#answers-import-title {
+    margin: 0 0 0.35em 0;
+    font-size: 1.2em;
+    color: #155a9f;
+}
+
+#answers-import-subtitle {
+    margin: 0 0 0.9em 0;
+    font-size: 0.95em;
+    line-height: 1.35;
+    color: #555;
+}
+
+#answers-import-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45em;
+}
+
+#answers-import-form label {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.95em;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6em;
+    margin-top: 0.8em;
+}
+
+#btn-cancel-import-answers,
+#btn-validate-import-answers {
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.6em 0.9em;
+    cursor: pointer;
+}
+
+#btn-cancel-import-answers {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+#btn-validate-import-answers {
+    background: #155a9f;
+    color: white;
+}
+
+
 @media (min-width: 1001px) {
     /* Sur desktop, le "mobile bar" sert de bandeau compact + bouton */
     #scoreboard-mobile-bar {
@@ -973,7 +1050,7 @@ body {
 						<button id="btn-export" type="button">Exporter la partie</button>
                         <button id="btn-import" type="button">Importer une partie</button>
                         <button id="btn-restart" type="button">Recommencer la partie</button>
-                        
+                        <button id="btn-import-answers" type="button">Importer des réponses</button>
                         
                         <button id="btn-about" type="button">À propos</button>
 					</div>
@@ -1078,6 +1155,49 @@ body {
     tabindex="-1"
     aria-hidden="true"
 />
+
+<div id="answers-import-modal" class="modal-backdrop hidden" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="answers-import-title">
+        <h2 id="answers-import-title">Choisir quelles réponses importer</h2>
+        <p id="answers-import-subtitle">
+            Le jeu ne sera plus complétable à 100&nbsp;%, il faudra recharger la page pour revenir à une partie « propre ».
+        </p>
+
+        <form id="answers-import-form">
+            <label><input type="checkbox" name="answer-pack" value="COMMUNES" /> Communes</label>
+            <label><input type="checkbox" name="answer-pack" value="TER" /> Gares TER</label>
+
+            <label><input type="checkbox" name="answer-pack" value="MA" /> MA</label>
+            <label><input type="checkbox" name="answer-pack" value="MB" /> MB</label>
+            <label><input type="checkbox" name="answer-pack" value="MC" /> MC</label>
+            <label><input type="checkbox" name="answer-pack" value="MD" /> MD</label>
+
+            <label><input type="checkbox" name="answer-pack" value="F1" /> F1</label>
+            <label><input type="checkbox" name="answer-pack" value="F2" /> F2</label>
+
+            <label><input type="checkbox" name="answer-pack" value="T1" /> T1</label>
+            <label><input type="checkbox" name="answer-pack" value="T2" /> T2</label>
+            <label><input type="checkbox" name="answer-pack" value="T3" /> T3</label>
+            <label><input type="checkbox" name="answer-pack" value="T4" /> T4</label>
+            <label><input type="checkbox" name="answer-pack" value="T5" /> T5</label>
+            <label><input type="checkbox" name="answer-pack" value="T6" /> T6</label>
+            <label><input type="checkbox" name="answer-pack" value="T7" /> T7</label>
+
+            <label><input type="checkbox" name="answer-pack" value="TB11" /> TB11</label>
+            <label><input type="checkbox" name="answer-pack" value="TB12" /> TB12</label>
+
+            <label><input type="checkbox" name="answer-pack" value="NAVI1" /> NAVI1</label>
+
+            <div class="modal-actions">
+                <button id="btn-cancel-import-answers" type="button">Annuler</button>
+                <button id="btn-validate-import-answers" type="submit">Valider</button>
+            </div>
+        </form>
+    </div>
+</div>
+``
+
+
 	</main>
 
 	<script>
@@ -1107,8 +1227,9 @@ const state = {
 	// Temporary state that does not need to be serialized
 	loading: true,
 	showMenu: false,
-	showAnswers: true,
-	scoreboardMinimized: false,
+    showAnswers: true,
+    cheats: [],
+    scoreboardMinimized: false,
 	notifyingError: false,
 	notifyingDuplicate: false,
 	notifyingSuccess: false,
@@ -1175,6 +1296,8 @@ const $dom = $DOMContentLoaded.then(() => {
         "scoreboard-mobile-lines-summary",
         "scoreboard-mobile-progress",
         "btn-toggle-scoreboard",
+
+        
 		
 
         "found",
@@ -1194,6 +1317,12 @@ const $dom = $DOMContentLoaded.then(() => {
         "btn-export",
         "btn-import",
         "btn-restart",
+
+        "btn-import-answers",
+        "answers-import-modal",
+        "answers-import-form",
+        "btn-cancel-import-answers",
+        "btn-validate-import-answers",
         
        
         "btn-about",
@@ -1226,13 +1355,15 @@ function isTclNetworkComplete(state, stationData) {
 }
 
 function isEverythingComplete(state) {
+    if (Array.isArray(state.cheats) && state.cheats.length > 0) return false;
+
     const allStationsDone =
-        state.cache.totalCounts.stations > 0 &&
-        state.cache.counts.stations >= state.cache.totalCounts.stations;
+    state.cache.totalCounts.stations > 0 &&
+    state.cache.counts.stations >= state.cache.totalCounts.stations;
 
     const allCommunesDone =
-        state.cache.totalCounts.communes > 0 &&
-        state.cache.counts.communes >= state.cache.totalCounts.communes;
+    state.cache.totalCounts.communes > 0 &&
+    state.cache.counts.communes >= state.cache.totalCounts.communes;
 
     return allStationsDone && allCommunesDone;
 }
@@ -1489,6 +1620,7 @@ const Action = {
 const newFound = Array.isArray(newState.found) ? newState.found : [];
 state.found = newFound;
 state.showAnswers = newState.showAnswers !== undefined ? newState.showAnswers : true;
+state.cheats = Array.isArray(newState.cheats) ? newState.cheats : [];
 state.hoveredCommuneId = null;
 
 state.cache = {
@@ -1753,7 +1885,7 @@ const terTotalStats = stationData.meta.trainlines["TER"]?.["station-count"] || 0
         insertedNaviIcon = true;
     }
 
-    lineItems.push(renderScorboardLineCounter(trainline_key, count, stationData));
+    lineItems.push(renderScorboardLineCounter(trainline_key, count, stationData, state));
 }
 
 
@@ -1841,50 +1973,77 @@ const terTotalStats = stationData.meta.trainlines["TER"]?.["station-count"] || 0
 
 
 
-function renderScorboardLineCounter(trainline_key, count, stationData) {
-	const trainline = stationData.meta.trainlines[trainline_key];
-	const total = trainline['station-count'];
-	const angle = 2.0 * Math.PI * (count | 0) / total;
+function renderScorboardLineCounter(trainline_key, count, stationData, state) {
+    const trainline = stationData.meta.trainlines[trainline_key];
+    const total = trainline['station-count'];
 
-	const logo = `<img src="data/images/${trainline.logo}" class="logo" alt="${trainline_key}" />`;
-	const radius = 50 * Math.sqrt(2.0);
-	const center = { x: 50, y: 50 };
-	const clipPoly = [
-		`${center.x}% ${center.y}%`,
-		`${center.x}% ${center.y - radius}%`,
-	];
-	if (angle > Math.PI / 4.0) {
-		clipPoly.push(`${center.x + radius}% ${center.y - radius}%`);
-	}
-	if (angle > 3.0 * Math.PI / 4.0) {
-		clipPoly.push(`${center.x + radius}% ${center.y + radius}%`);
-	}
-	if (angle > 5.0 * Math.PI / 4.0) {
-		clipPoly.push(`${center.x - radius}% ${center.y + radius}%`);
-	}
-	if (angle > 7.0 * Math.PI / 4.0) {
-		clipPoly.push(`${center.x - radius}% ${center.y - radius}%`);
-	}
-	const x = Math.cos(angle - Math.PI / 2.0);
-	const y = Math.sin(angle - Math.PI / 2.0);
-	clipPoly.push(`${center.x + x * radius}% ${center.y + y * radius}%`);
+    // 1) Est-ce que cette ligne est marquée comme "trichée" ?
+    const cheated = Array.isArray(state.cheats) && state.cheats.includes(trainline_key);
 
-	const progressStyle = count != total ? `clip-path: polygon(${clipPoly.join(", ")});` : "";
-	const progressStyleClass = `
-		text-color-${trainline['logo-style']['text-color']}
-		shape-${trainline['logo-style']['shape']}
-	`;
+    // 2) Choix de l’icône :
+    //    - normale si pas de triche
+    //    - icône spéciale *_triche.svg si trichée
+    const logoFilename = cheated
+        ? `${trainline_key}_triche.svg`
+        : trainline.logo;
 
-	const progress = `
-		<div class="${progressStyleClass} progress-background"></div>
-		<div class="${progressStyleClass} progress" style="${progressStyle}"></div>
-	`;
+    const logo = `<img src="data/images/${logoFilename}" class="logo" alt="${trainline_key}" />`;
 
-	const element = document.createElement('li');
-	element.setAttribute("title", `${trainline_key}: ${count} / ${total}`);
-	element.innerHTML = `${logo}${progress}`;
-	return element;
+    // 3) Création de l’élément <li>
+    const element = document.createElement('li');
+    element.setAttribute("title", `${trainline_key}: ${count} / ${total}`);
+
+    // 4) Si trichée : on met seulement l’icône, sans anneau
+    if (cheated) {
+        element.innerHTML = `${logo}`;
+        return element;
+    }
+
+    // 5) Sinon, on garde EXACTEMENT la logique actuelle de progression
+    const angle = 2.0 * Math.PI * (count || 0) / total;
+
+    const radius = 50 * Math.sqrt(2.0);
+    const center = { x: 50, y: 50 };
+    const clipPoly = [
+        `${center.x}% ${center.y}%`,
+        `${center.x}% ${center.y - radius}%`,
+    ];
+
+    if (angle > Math.PI / 4.0) {
+        clipPoly.push(`${center.x + radius}% ${center.y - radius}%`);
+    }
+    if (angle > 3.0 * Math.PI / 4.0) {
+        clipPoly.push(`${center.x + radius}% ${center.y + radius}%`);
+    }
+    if (angle > 5.0 * Math.PI / 4.0) {
+        clipPoly.push(`${center.x - radius}% ${center.y + radius}%`);
+    }
+    if (angle > 7.0 * Math.PI / 4.0) {
+        clipPoly.push(`${center.x - radius}% ${center.y - radius}%`);
+    }
+
+    const x = Math.cos(angle - Math.PI / 2.0);
+    const y = Math.sin(angle - Math.PI / 2.0);
+    clipPoly.push(`${center.x + x * radius}% ${center.y + y * radius}%`);
+
+    const progressStyle = count != total
+        ? `clip-path: polygon(${clipPoly.join(", ")});`
+        : "";
+
+    const progressStyleClass = `
+        text-color-${trainline['logo-style']['text-color']}
+        shape-${trainline['logo-style']['shape']}
+    `;
+
+    const progress = `
+        <div class="${progressStyleClass} progress-background"></div>
+        <div class="${progressStyleClass} progress" style="${progressStyle}"></div>
+    `;
+
+    element.innerHTML = `${logo}${progress}`;
+    return element;
 }
+``
 
 function renderScorboardSectionIcon(filename, alt, extraStyle = "") {
     const element = document.createElement('li');
@@ -2255,6 +2414,65 @@ function importJsonFile(input) {
 
         input.click();
     });
+}
+
+function openAnswersImportModal(dom) {
+    dom["answers-import-modal"].classList.remove("hidden");
+    dom["answers-import-modal"].setAttribute("aria-hidden", "false");
+}
+
+function closeAnswersImportModal(dom) {
+    dom["answers-import-modal"].classList.add("hidden");
+    dom["answers-import-modal"].setAttribute("aria-hidden", "true");
+}
+
+function buildCheatStateFromSelection(selected, state, stationData, communes) {
+    const foundKeys = new Set(state.found.map(item => JSON.stringify(item.id)));
+    const mergedFound = [...state.found];
+
+    function pushIfMissing(item) {
+        const key = JSON.stringify(item.id);
+        if (foundKeys.has(key)) return;
+        foundKeys.add(key);
+        mergedFound.push(item);
+    }
+
+    for (const choice of selected) {
+        if (choice === "COMMUNES") {
+            communes.features.forEach(feature => {
+                pushIfMissing({
+                    id: ["COMMUNE", feature.properties.code],
+                    name: feature.properties.nom
+                });
+            });
+            continue;
+        }
+
+        stationData.stations.features.forEach(feature => {
+            const tl = feature.properties.trainline;
+
+            const matches =
+                choice === "NAVI1"
+                    ? (tl === "NAVI1" || tl === "NAV1")
+                    : tl === choice;
+
+            if (!matches) return;
+
+            pushIfMissing({
+                id: ["STATION", feature.properties.id_gares],
+                name: feature.properties.nom_zdc
+            });
+        });
+    }
+
+    return {
+        found: mergedFound,
+        showAnswers: state.showAnswers,
+        cheats: Array.from(new Set([
+            ...(Array.isArray(state.cheats) ? state.cheats : []),
+            ...selected
+        ]))
+    };
 }
 
 //cam
@@ -2728,6 +2946,15 @@ $dom.then(dom => {
 	dom["btn-about"].addEventListener('click', () => {
 		window.open("https://github.com/aymenbayoudh/memory-lyon/blob/main/about.md", '_blank');
 	});
+
+    dom["btn-import-answers"].addEventListener("click", () => {
+    dispatch(dom, Action.CloseMenu());
+    openAnswersImportModal(dom);
+});
+
+dom["btn-cancel-import-answers"].addEventListener("click", () => {
+    closeAnswersImportModal(dom);
+});
 });
 
 join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, communes) => {
@@ -2750,9 +2977,10 @@ join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, com
 
     dispatch(dom, Action.CloseMenu());
     exportFile("le_grand_lyon_de_tete.json", JSON.stringify({
-        found: state.found,
-        showAnswers: state.showAnswers
-    }, null, 2));
+    found: state.found,
+    showAnswers: state.showAnswers,
+    cheats: state.cheats
+}, null, 2));
 });
 
 
@@ -2787,6 +3015,24 @@ dom["btn-restart"].addEventListener('click', (event) => {
     location.reload();
 });
 ``
+
+dom["answers-import-form"].addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const selected = Array.from(
+        dom["answers-import-form"].querySelectorAll('input[name="answer-pack"]:checked')
+    ).map(input => input.value);
+
+    if (selected.length === 0) {
+        closeAnswersImportModal(dom);
+        return;
+    }
+
+    const cheatedState = buildCheatStateFromSelection(selected, state, stationData, communes);
+
+    localStorage.setItem("savedState", JSON.stringify(cheatedState));
+    location.reload();
+});
 
 	
 });
