@@ -758,6 +758,12 @@ body {
     display: block;
 }
 
+.answer-pack-mode-icon {
+    height: 1.1em;
+    width: auto;
+    display: block;
+}
+
 
 @media (min-width: 1001px) {
     /* Sur desktop, le "mobile bar" sert de bandeau compact + bouton */
@@ -1204,7 +1210,7 @@ body {
             Le jeu ne sera plus complétable à 100&nbsp;%, il faudra recharger la page pour revenir à une partie « propre ».
         </p>
 
-        <form id="answers-import-form"><form id="answers-import-form">
+        <form id="answers-import-form">
             <div class="answer-pack-row">
                 <div class="answer-pack-inline-list">
                     <label class="answer-pack-inline">
@@ -1223,67 +1229,108 @@ body {
         
             <div class="answer-pack-row">
                 <div class="answer-pack-row-title">
-                    <img src="data/images/logo_M.svg" class="answer-pack-group-icon" alt="Métro" />
+                    
                     <span>Métro</span>
                 </div>
                 <div class="answer-pack-inline-list">
                     <label class="answer-pack-inline">
                         <input type="checkbox" name="answer-pack" value="MA" />
+                        <img src="data/images/logo_M.svg" class="answer-pack-mode-icon" alt="Métro">
                         <img src="data/images/MA.svg" class="answer-pack-line-icon" alt="MA" />
                         <span></span>
                     </label>
                     <label class="answer-pack-inline">
                         <input type="checkbox" name="answer-pack" value="MB" />
+                        <img src="data/images/logo_M.svg" class="answer-pack-mode-icon" alt="Métro">
                         <img src="data/images/MB.svg" class="answer-pack-line-icon" alt="MB" />
                         <span></span>
                     </label>
                     <label class="answer-pack-inline">
                         <input type="checkbox" name="answer-pack" value="MC" />
+                           <img src="data/images/logo_M.svg" class="answer-pack-mode-icon" alt="Métro">
                         <img src="data/images/MC.svg" class="answer-pack-line-icon" alt="MC" />
                         <span></span>
                     </label>
                     <label class="answer-pack-inline">
                         <input type="checkbox" name="answer-pack" value="MD" />
+                        <img src="data/images/logo_M.svg" class="answer-pack-mode-icon" alt="Métro">
                         <img src="data/images/MD.svg" class="answer-pack-line-icon" alt="MD" />
-                        <span></span>
+                        
                     </label>
                 </div>
             </div>
         
             <div class="answer-pack-row">
                 <div class="answer-pack-row-title">
-                    <img src="data/images/logo_F.svg" class="answer-pack-group-icon" alt="Funiculaire" />
+                   
                     <span>Funiculaire</span>
                 </div>
                 <div class="answer-pack-inline-list">
                     <label class="answer-pack-inline">
                         <input type="checkbox" name="answer-pack" value="F1" />
+                        <img src="data/images/logo_F.svg" class="answer-pack-mode-icon" alt="Funiculaire">
                         <img src="data/images/F1.svg" class="answer-pack-line-icon" alt="F1" />
                         <span></span>
                     </label>
                     <label class="answer-pack-inline">
                         <input type="checkbox" name="answer-pack" value="F2" />
+                        <img src="data/images/logo_F.svg" class="answer-pack-mode-icon" alt="Funiculaire" />
                         <img src="data/images/F2.svg" class="answer-pack-line-icon" alt="F2" />
-                        <span></span>
+                     
                     </label>
                 </div>
             </div>
         
             <div class="answer-pack-row">
                 <div class="answer-pack-row-title">
-                    <img src="data/images/logo_T.svg" class="answer-pack-group-icon" alt="Tram" />
                     <span>Tram</span>
                 </div>
+            
                 <div class="answer-pack-inline-list">
-                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="T1" /><img src="data/images/T1.svg" class="answer-pack-line-icon" alt="T1" /><span></span></label>
-                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="T2" /><img src="data/images/T2.svg" class="answer-pack-line-icon" alt="T2" /><span></span></label>
-                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="T3" /><img src="data/images/T3.svg" class="answer-pack-line-icon" alt="T3" /><span></span></label>
-                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="T4" /><img src="data/images/T4.svg" class="answer-pack-line-icon" alt="T4" /><span></span></label>
-                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="T5" /><img src="data/images/T5.svg" class="answer-pack-line-icon" alt="T5" /><span></span></label>
-                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="T6" /><img src="data/images/T6.svg" class="answer-pack-line-icon" alt="T6" /><span></span></label>
-                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="T7" /><img src="data/images/T7.svg" class="answer-pack-line-icon" alt="T7" /><span></span></label>
+                    <label class="answer-pack-inline">
+                        <input type="checkbox" name="answer-pack" value="T1" />
+                        <img src="data/images/logo_T.svg" class="answer-pack-mode-icon" alt="Tram" />
+                        <img src="data/images/T1.svg" class="answer-pack-line-icon" alt="T1" />
+                    </label>
+            
+                    <label class="answer-pack-inline">
+                        <input type="checkbox" name="answer-pack" value="T2" />
+                        <img src="data/images/logo_T.svg" class="answer-pack-mode-icon" alt="Tram" />
+                        <img src="data/images/T2.svg" class="answer-pack-line-icon" alt="T2" />
+                    </label>
+            
+                    <label class="answer-pack-inline">
+                        <input type="checkbox" name="answer-pack" value="T3" />
+                        <img src="data/images/logo_T.svg" class="answer-pack-mode-icon" alt="Tram" />
+                        <img src="data/images/T3.svg" class="answer-pack-line-icon" alt="T3" />
+                    </label>
+            
+                    <label class="answer-pack-inline">
+                        <input type="checkbox" name="answer-pack" value="T4" />
+                        <img src="data/images/logo_T.svg" class="answer-pack-mode-icon" alt="Tram" />
+                        <img src="data/images/T4.svg" class="answer-pack-line-icon" alt="T4" />
+                    </label>
+            
+                    <label class="answer-pack-inline">
+                        <input type="checkbox" name="answer-pack" value="T5" />
+                        <img src="data/images/logo_T.svg" class="answer-pack-mode-icon" alt="Tram" />
+                        <img src="data/images/T5.svg" class="answer-pack-line-icon" alt="T5" />
+                    </label>
+            
+                    <label class="answer-pack-inline">
+                        <input type="checkbox" name="answer-pack" value="T6" />
+                        <img src="data/images/logo_T.svg" class="answer-pack-mode-icon" alt="Tram" />
+                        <img src="data/images/T6.svg" class="answer-pack-line-icon" alt="T6" />
+                    </label>
+            
+                    <label class="answer-pack-inline">
+                        <input type="checkbox" name="answer-pack" value="T7" />
+                        <img src="data/images/logo_T.svg" class="answer-pack-mode-icon" alt="Tram" />
+                        <img src="data/images/T7.svg" class="answer-pack-line-icon" alt="T7" />
+                    </label>
                 </div>
             </div>
+            
         
             <div class="answer-pack-row">
                 <div class="answer-pack-row-title">
@@ -1291,8 +1338,8 @@ body {
                     <span>TramBus</span>
                 </div>
                 <div class="answer-pack-inline-list">
-                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="TB11" /><img src="data/images/TB11.svg" class="answer-pack-line-icon" alt="TB11" /><span></span></label>
-                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="TB12" /><img src="data/images/TB12.svg" class="answer-pack-line-icon" alt="TB12" /><span></span></label>
+                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="TB11" /><img src="data/images/logo_TB.svg" class="answer-pack-mode-icon" alt="Trambus" /><img src="data/images/TB11.svg" class="answer-pack-line-icon" alt="TB11" /><span></span></label>
+                    <label class="answer-pack-inline"><input type="checkbox" name="answer-pack" value="TB12" /> <img src="data/images/logo_TB.svg" class="answer-pack-mode-icon" alt="Trambus" /><img src="data/images/TB12.svg" class="answer-pack-line-icon" alt="TB12" /><span></span></label>
                 </div>
             </div>
         
@@ -1304,8 +1351,9 @@ body {
                 <div class="answer-pack-inline-list">
                     <label class="answer-pack-inline">
                         <input type="checkbox" name="answer-pack" value="NAVI1" />
+                        <img src="data/images/logo_N.svg" class="answer-pack-mode-icon" alt="Navigône" />
                         <img src="data/images/NAVI1.svg" class="answer-pack-line-icon" alt="NAVI1" />
-                        <span></span>
+                       
                     </label>
                 </div>
             </div>
