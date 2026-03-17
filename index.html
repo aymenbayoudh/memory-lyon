@@ -18,9 +18,9 @@
 	<meta name="og:image" href="images/preview.jpg" />
 
 	<title>Le Grand Lyon de tête</title>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.20.0/mapbox-gl.css" rel="stylesheet" />
 
-	<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
-	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
 	<script src="fuzzyset.js"></script>
 	<script src="join.js"></script>
 
@@ -1112,7 +1112,7 @@ body {
 						<button id="btn-export" type="button">Exporter la partie</button>
                         <button id="btn-import" type="button">Importer une partie</button>
                         <button id="btn-restart" type="button">Recommencer la partie</button>
-                        <button id="btn-import-answers" type="button">Corrections</button>
+                        <button id="btn-import-answers" type="button">Avoir des corrections</button>
                         
                         <button id="btn-about" type="button">À propos</button>
 					</div>
@@ -1222,7 +1222,7 @@ body {
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="answers-import-title">
         <h2 id="answers-import-title">Quelles lignes voulez-vous compléter&nbsp;?</h2>
         <p id="answers-import-subtitle">
-            La progression sera arretée pour les lignes concernées. Il faudra recommencer la partie pour effacer la restriction.
+            Le jeu ne sera plus complétable à 100&nbsp;%, il faudra recharger la page pour revenir à une partie « propre ».
         </p>
 
        <form id="answers-import-form">
@@ -1231,13 +1231,13 @@ body {
             <label class="answer-pack-inline">
                 <input type="checkbox" name="answer-pack" value="COMMUNES" />
                 <img src="data/images/communes.jpg" class="answer-pack-group-icon" alt="Communes" />
-                <span>&thinsp;Communes</span>
+                <span>&nbsp;Communes</span>
             </label>
 
             <label class="answer-pack-inline">
                 <input type="checkbox" name="answer-pack" value="TER" />
                 <img src="data/images/transilien.svg" class="answer-pack-group-icon" alt="TER" />
-                <span>&thinsp;Gares TER</span>
+                <span>&nbsp;Gares TER</span>
             </label>
         </div>
     </div>
@@ -1745,7 +1745,30 @@ const Action = {
 
 	_renderAfterNewStationItem: (dom, state) => {
     Action._updateStationStats(state);
+let isPerspective3DEnabled = false;
 
+function updateStandard3DMode(map) {
+    const pitch = map.getPitch();
+    const shouldEnable3D = pitch > 8;
+
+    if (shouldEnable3D === isPerspective3DEnabled) return;
+    isPerspective3DEnabled = shouldEnable3D;
+
+    // 3D buildings / landmarks / trees du style Standard
+    if (typeof map.setConfigProperty === 'function') {
+        map.setConfigProperty('basemap', 'show3dObjects', shouldEnable3D);
+    }
+
+    // Relief du sol
+    if (shouldEnable3D) {
+        map.setTerrain({
+            source: 'mapbox-dem',
+            exaggeration: 1.0
+        });
+    } else {
+        map.setTerrain(null);
+    }
+}
     join($map, dataLoader.$stationData, (map, stationData) => {
         map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
         renderFoundStationCamemberts(map, stationData, state);
@@ -3363,40 +3386,83 @@ const $gameplayReady = join($dom, dataLoader.$stationMemory, dataLoader.$commune
 
 ///////////////////////////////////////////////////////////
 // Map
+// Map
+let isPerspective3DEnabled = false;
+
+function updateStandard3DMode(map) {
+    const pitch = map.getPitch();
+    const shouldEnable3D = pitch > 8;
+
+    if (shouldEnable3D === isPerspective3DEnabled) return;
+    isPerspective3DEnabled = shouldEnable3D;
+
+    if (typeof map.setConfigProperty === 'function') {
+        map.setConfigProperty('basemap', 'show3dObjects', shouldEnable3D);
+    }
+
+    if (shouldEnable3D) {
+        map.setTerrain({
+            source: 'mapbox-dem',
+            exaggeration: 1.0
+        });
+    } else {
+        map.setTerrain(null);
+    }
+}
 
 const $map = new Promise((resolve, reject) => {
-	if (config.DISABLE_MAP) {
-		// Just never resolve
-		console.log("Map is disabled");
-	} else {
-		mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
+    if (config.DISABLE_MAP) {
+        console.log("Map is disabled");
+        return;
+    }
 
-		const map = new mapboxgl.Map({
-			container: 'map',
-			style: 'mapbox://styles/mapbox/light-v11',
-			center: [4.836349, 45.754934],
-			maxBounds: [
-				[4.55, 45.60],  // SW
-        		[5.05, 45.90]
-				
-         
-			],
-			zoom: 11,
-		});
+    mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
-	
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/standard',
+        config: {
+            basemap: {
+                lightPreset: 'day',
+                 theme: 'default',
+                 show3dObjects: true,
+                 showPlaceLabels: false,
+                 showRoadLabels: false,
+                 showPointOfInterestLabels: false,
+                 showTransitLabels: false
+  }
+},
 
-		//map.on('load', () => { resolve(map); });
-		map.on('load', () => {
-			const style = map.getStyle();
-			for (const layer of style.layers) {
-				if (layer.type === 'symbol') {
-					map.setLayoutProperty(layer.id, 'visibility', 'none');
-				}
-    	}
-    	resolve(map);
-	});
-	}
+
+        center: [4.836349, 45.754934],
+        maxBounds: [
+            [4.55, 45.60],
+            [5.05, 45.90]
+        ],
+        zoom: 11,
+        pitch: 0,
+        bearing: 0
+    });
+
+    map.on('style.load', () => {
+        if (!map.getSource('mapbox-dem')) {
+            map.addSource('mapbox-dem', {
+                type: 'raster-dem',
+                url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+                tileSize: 512,
+                maxzoom: 14
+            });
+        }
+
+        const style = map.getStyle();
+        for (const layer of style.layers) {
+            if (layer.type === 'symbol') {
+                map.setLayoutProperty(layer.id, 'visibility', 'none');
+            }
+        }
+
+        resolve(map);
+    });
 })
 .then(map => {
 
@@ -3501,6 +3567,26 @@ coordinates.lng = coordinates.lon;
 			.setHTML(description)
 			.addTo(map);
 	});
+
+    map.on('style.load', () => {
+    if (!map.getSource('mapbox-dem')) {
+        map.addSource('mapbox-dem', {
+            type: 'raster-dem',
+            url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+            tileSize: 512,
+            maxzoom: 14
+        });
+    }
+
+    const style = map.getStyle();
+    for (const layer of style.layers) {
+        if (layer.type === 'symbol') {
+            map.setLayoutProperty(layer.id, 'visibility', 'none');
+        }
+    }
+
+    resolve(map);
+});
 
 	////////////////////////////////////
 	////////////////////////////////////
@@ -3725,6 +3811,12 @@ map.addSource('stations', {
 	});
 
 	renderMap(map, state);
+
+    updateStandard3DMode(map);
+
+map.on('move', () => {
+    updateStandard3DMode(map);
+});
 
 	return map;
 });
