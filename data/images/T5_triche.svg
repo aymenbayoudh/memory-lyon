@@ -89,4 +89,25 @@
          id="path3762" />
     </g>
   </g>
+      <!-- Grande barre diagonale -->
+   
+
+     <line
+       x1="100"
+       y1="0"
+       x2="0"
+       y2="100"
+       stroke="#FFFFFF"
+       stroke-opacity="0.79"
+       stroke-width="13"
+       stroke-linecap="square" />
+
+       <!-- Voile blanc/gris semi-transparent -->
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="100"
+       fill="#E6E6E6"
+       opacity="0.6" />
 </svg>
