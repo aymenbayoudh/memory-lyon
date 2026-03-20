@@ -14,14 +14,7 @@
     stroke-linecap="square"
   />
 
- <line
-    x1="39.333" y1="28"
-    x2="67.333" y2="0"
-    stroke="#FFFFFF"
-    stroke-opacity="0.91"
-    stroke-width="3"
-    stroke-linecap="square"
-  />
+
 
  <!-- Voile blanc/gris semi-transparent -->
   <rect x="39.333" y="0" width="28" height="28" fill="#E6E6E6" opacity="0.7"/>
