@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="39.333 0 28 28" data-ligne-id="MD"><g><path fill="#009D42" d="M39.333 0h28v28h-28z"/><path fill="#FFFFFF" d="M45.13 23.52L50.98 23.52C56.73 23.52 61.19 20.63 61.19 13.54C61.19 6.67 56.78 4.48 51.98 4.48L45.13 4.48ZM48.39 20.78L48.39 7.24L51.70 7.24C55.71 7.24 57.85 9.53 57.85 13.94C57.85 19.14 54.67 20.78 50.76 20.78Z"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="39.333 0 28 28" data-ligne-id="MD"><g><path fill="#009D42" d="M39.333 0h28v28h-28z"/><path fill="#FFFFFF" d="M45.13 23.52L50.98 23.52C56.73 23.52 61.19 20.63 61.19 13.54C61.19 6.67 56.78 4.48 51.98 4.48L45.13 4.48ZM48.39 20.78L48.39 7.24L51.70 7.24C55.71 7.24 57.85 9.53 57.85 13.94C57.85 19.14 54.67 20.78 50.76 20.78Z"/></g>
+ <line
+    x1="67.333" y1="0"
+    x2="39.333" y2="28"
+    stroke="#FFFFFF"
+    stroke-opacity="0.91"
+    stroke-width="3"
+    stroke-linecap="square"
+  />
+
+
+
+ <!-- Voile blanc/gris semi-transparent -->
+  <rect x="39.333" y="0" width="28" height="28" fill="#E6E6E6" opacity="0.7"/></svg>
