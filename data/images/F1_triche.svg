@@ -4,7 +4,18 @@
     <path fill="#FFFFFF" d="M47.63 23.52L59.53 23.52L59.53 20.91L55.72 20.91L55.72 4.48L52.94 4.48L46.79 7.84L47.98 10.15L52.39 7.67L52.39 20.91L47.63 20.91Z"/>
   </g>
 
-  <!-- Masque blanc/gris semi-transparent -->
+  <line
+    x1="67.333" y1="0"
+    x2="39.333" y2="28"
+    stroke="#FFFFFF"
+    stroke-opacity="0.91"
+    stroke-width="3"
+    stroke-linecap="square"
+  />
+
+
+
+ <!-- Voile blanc/gris semi-transparent -->
   <rect x="39.333" y="0" width="28" height="28" fill="#E6E6E6" opacity="0.7"/>
 
 </svg>
