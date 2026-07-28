@@ -3473,13 +3473,13 @@ class MemoryEngine {
         let threshold;
 
         if (nkey.length <= 3) {
-            threshold = 0.92;
+            threshold = 0.925;
         } else if (nkey.length <= 5) {
-            threshold = 0.86;
+            threshold = 0.88;
         } else if (nkey.length <= 8) {
-            threshold = 0.80;
+            threshold = 0.84;
         } else {
-            threshold = 0.75;
+            threshold = 0.79;
         }
 
         const results = this.fuzzyset.get(
@@ -3498,6 +3498,8 @@ class MemoryEngine {
     });
 }
 
+	
+
 	_normalizeKey(str) {
     return String(str ?? "")
         .normalize("NFD")
@@ -3505,9 +3507,11 @@ class MemoryEngine {
         .replace(/[’']/g, " ")
         .replace(/[-–—]/g, " ")
         .replace(/[.,;:!?()[\]{}]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim()
-        .toLowerCase();
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(Boolean)
+        .sort()
+        .join(" ");
 }
 }
 
