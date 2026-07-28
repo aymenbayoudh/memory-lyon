@@ -1750,22 +1750,7 @@ const Action = {
 
 	_renderAfterNewStationItem: (dom, state) => {
     Action._updateStationStats(state);
-let isPerspective3DEnabled = false;
 
-function updateStandard3DMode(map) {
-    const shouldEnable3D = map.getPitch() > 8;
-
-    if (shouldEnable3D === isPerspective3DEnabled) return;
-    isPerspective3DEnabled = shouldEnable3D;
-
-    if (typeof map.setConfigProperty !== 'function') return;
-
-    map.setConfigProperty('basemap', 'show3dObjects', shouldEnable3D);
-    map.setConfigProperty('basemap', 'show3dBuildings', shouldEnable3D);
-    map.setConfigProperty('basemap', 'show3dLandmarks', shouldEnable3D);
-    map.setConfigProperty('basemap', 'show3dTrees', shouldEnable3D);
-    map.setConfigProperty('basemap', 'show3dFacades', shouldEnable3D);
-}
     join($map, dataLoader.$stationData, (map, stationData) => {
         map.getSource('found-stations').setData(state.cache.foundStationsGeojson);
         renderFoundStationCamemberts(map, stationData, state);
@@ -3387,24 +3372,18 @@ const $gameplayReady = join($dom, dataLoader.$stationMemory, dataLoader.$commune
 let isPerspective3DEnabled = false;
 
 function updateStandard3DMode(map) {
-    const pitch = map.getPitch();
-    const shouldEnable3D = pitch > 8;
+    const shouldEnable3D = map.getPitch() > 8;
 
     if (shouldEnable3D === isPerspective3DEnabled) return;
     isPerspective3DEnabled = shouldEnable3D;
 
-    if (typeof map.setConfigProperty === 'function') {
-        map.setConfigProperty('basemap', 'show3dObjects', shouldEnable3D);
-    }
+    if (typeof map.setConfigProperty !== 'function') return;
 
-    if (shouldEnable3D) {
-        map.setTerrain({
-            source: 'mapbox-dem',
-            exaggeration: 1.0
-        });
-    } else {
-        map.setTerrain(null);
-    }
+    map.setConfigProperty('basemap', 'show3dObjects', shouldEnable3D);
+    map.setConfigProperty('basemap', 'show3dBuildings', shouldEnable3D);
+    map.setConfigProperty('basemap', 'show3dLandmarks', shouldEnable3D);
+    map.setConfigProperty('basemap', 'show3dTrees', shouldEnable3D);
+    map.setConfigProperty('basemap', 'show3dFacades', shouldEnable3D);
 }
 
 const $map = new Promise((resolve, reject) => {
@@ -3565,25 +3544,7 @@ coordinates.lng = coordinates.lon;
 			.addTo(map);
 	});
 
-    map.on('style.load', () => {
-    if (!map.getSource('mapbox-dem')) {
-        map.addSource('mapbox-dem', {
-            type: 'raster-dem',
-            url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-            tileSize: 512,
-            maxzoom: 14
-        });
-    }
 
-    const style = map.getStyle();
-    for (const layer of style.layers) {
-        if (layer.type === 'symbol') {
-            map.setLayoutProperty(layer.id, 'visibility', 'none');
-        }
-    }
-
-    resolve(map);
-});
 
 	////////////////////////////////////
 	////////////////////////////////////
