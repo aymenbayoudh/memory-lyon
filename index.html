@@ -3406,17 +3406,19 @@ const $map = new Promise((resolve, reject) => {
 
    
 
-        const style = map.getStyle();
-        for (const layer of style.layers) {
-            if (layer.type === 'symbol') {
-                map.setLayoutProperty(layer.id, 'visibility', 'none');
-            }
+        map.once('style.load', () => {
+    const style = map.getStyle();
+
+    for (const layer of style.layers || []) {
+        if (layer.type === 'symbol') {
+            map.setLayoutProperty(layer.id, 'visibility', 'none');
         }
+    }
 
-        resolve(map);
-    });
-
-then(map => {
+    resolve(map);
+});
+})
+.then(map => {
 
 	////////////////////////////////////
 	// Communes
