@@ -25,6 +25,13 @@
 	<script src="fuzzyset.js"></script>
 	<script src="join.js"></script>
 
+	<link
+    rel="preload"
+    href="data/images/metro-loader-transparent.webp"
+    as="image"
+    type="image/webp"
+/>
+
 	<style type="text/css">
 		
 body {
@@ -1195,7 +1202,8 @@ body {
 #page-loader-train {
     position: absolute;
 
-    left: -58%;
+    /* Point de référence fixe au centre */
+    left: 50%;
     top: 50%;
 
     width: min(640px, 78vw);
@@ -1204,15 +1212,19 @@ body {
 
     display: block;
 
-    transform: translate(-50%, -50%);
+    transform: translate3d(
+        calc(-50% - 110vw),
+        -50%,
+        0
+    );
 
     animation:
         page-loader-metro-shuttle
-        2s
-        linear
+        3s
         infinite;
 
-    will-change: left;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 
@@ -1227,32 +1239,57 @@ body {
 
 @keyframes page-loader-metro-shuttle {
 
-    /* La rame est entièrement hors champ à gauche */
+    /* Départ entièrement hors champ à gauche */
     0% {
-        left: -58%;
-        animation-timing-function: ease-out;
+        transform: translate3d(
+            calc(-50% - 110vw),
+            -50%,
+            0
+        );
+
+        animation-timing-function:
+            cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
-    /* Elle arrive au centre */
-    37% {
-        left: 50%;
+    /* Arrivée douce au centre */
+    38% {
+        transform: translate3d(
+            -50%,
+            -50%,
+            0
+        );
+
         animation-timing-function: linear;
     }
 
-    /* Arrêt bref au centre */
-    47% {
-        left: 50%;
-        animation-timing-function: ease-in;
+    /* Arrêt bref */
+    48% {
+        transform: translate3d(
+            -50%,
+            -50%,
+            0
+        );
+
+        animation-timing-function:
+            cubic-bezier(0.55, 0.06, 0.68, 0.19);
     }
 
-    /* Elle repart et sort entièrement à droite */
-    88% {
-        left: 158%;
+    /* Départ vers la droite */
+    90% {
+        transform: translate3d(
+            calc(-50% + 110vw),
+            -50%,
+            0
+        );
     }
 
-    /* Elle reste hors champ jusqu’au redémarrage */
+    /* La rame reste hors champ avant la reprise */
     100% {
-        left: 158%;
+        transform: translate3d(
+            calc(-50% + 110vw),
+            -50%,
+            0
+        );
     }
 }
 
@@ -1396,13 +1433,13 @@ body {
             alt=""
             aria-hidden="true"
             fetchpriority="high"
-            decoding="async"
+            decoding="sync"
         />
 
     </div>
 
     <p id="page-loader-text">
-        Chargement de la carte<span id="page-loader-dots"></span>
+        Chargement du jeu<span id="page-loader-dots"></span>
     </p>
 </div>
 
