@@ -3450,27 +3450,65 @@ class MemoryEngine {
 	}
 
 	search(query) {
-		return new Promise((resolve, reject) => {
-			const nkey = this._normalizeKey(query);
+    return new Promise(resolve => {
+        const nkey = this._normalizeKey(query);
 
-			// naive baseline
-			//resolve(this.data[nkey]);
+        if (!nkey) {
+            resolve(null);
+            return;
+        }
 
-			// fuzzyset
-			const results = this.fuzzyset.get(nkey, null, 0.9);
-			if (results == null) resolve(null);
-			else resolve(this.data[results[0][1]]);
-		});
-	}
+        /*
+         * On privilégie toujours une correspondance exacte.
+         */
+        if (Object.prototype.hasOwnProperty.call(this.data, nkey)) {
+            resolve(this.data[nkey]);
+            return;
+        }
+
+        /*
+         * Plus le nom est long, plus on peut tolérer de fautes
+         * sans risquer de confondre deux noms.
+         */
+        let threshold;
+
+        if (nkey.length <= 3) {
+            threshold = 0.92;
+        } else if (nkey.length <= 5) {
+            threshold = 0.86;
+        } else if (nkey.length <= 8) {
+            threshold = 0.80;
+        } else {
+            threshold = 0.75;
+        }
+
+        const results = this.fuzzyset.get(
+            nkey,
+            null,
+            threshold
+        );
+
+        if (!results || results.length === 0) {
+            resolve(null);
+            return;
+        }
+
+        const bestMatch = results[0][1];
+        resolve(this.data[bestMatch]);
+    });
+}
 
 	_normalizeKey(str) {
-		return str
-			.normalize("NFD")
-			.replace(/[\u0300-\u036f]/g, "")
-			.replace(/-/g, ' ')
-			.replace(/\s+/g, ' ')
-			.toLowerCase();
-	}
+    return String(str ?? "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[’']/g, " ")
+        .replace(/[-–—]/g, " ")
+        .replace(/[.,;:!?()[\]{}]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toLowerCase();
+}
 }
 
 // Add post-loading operations
