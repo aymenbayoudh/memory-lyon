@@ -3369,22 +3369,6 @@ const $gameplayReady = join($dom, dataLoader.$stationMemory, dataLoader.$commune
 ///////////////////////////////////////////////////////////
 // Map
 // Map
-let isPerspective3DEnabled = false;
-
-function updateStandard3DMode(map) {
-    const shouldEnable3D = map.getPitch() > 8;
-
-    if (shouldEnable3D === isPerspective3DEnabled) return;
-    isPerspective3DEnabled = shouldEnable3D;
-
-    if (typeof map.setConfigProperty !== 'function') return;
-
-    map.setConfigProperty('basemap', 'show3dObjects', shouldEnable3D);
-    map.setConfigProperty('basemap', 'show3dBuildings', shouldEnable3D);
-    map.setConfigProperty('basemap', 'show3dLandmarks', shouldEnable3D);
-    map.setConfigProperty('basemap', 'show3dTrees', shouldEnable3D);
-    map.setConfigProperty('basemap', 'show3dFacades', shouldEnable3D);
-}
 
 const $map = new Promise((resolve, reject) => {
     if (config.DISABLE_MAP) {
@@ -3401,7 +3385,7 @@ const $map = new Promise((resolve, reject) => {
             basemap: {
                 lightPreset: 'day',
                  theme: 'default',
-                 show3dObjects: true,
+                 //show3dObjects: true,
                  showPlaceLabels: false,
                  showRoadLabels: false,
                  showPointOfInterestLabels: false,
@@ -3420,15 +3404,7 @@ const $map = new Promise((resolve, reject) => {
         bearing: 0
     });
 
-    map.on('style.load', () => {
-        if (!map.getSource('mapbox-dem')) {
-            map.addSource('mapbox-dem', {
-                type: 'raster-dem',
-                url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-                tileSize: 512,
-                maxzoom: 14
-            });
-        }
+   
 
         const style = map.getStyle();
         for (const layer of style.layers) {
@@ -3464,6 +3440,7 @@ const $map = new Promise((resolve, reject) => {
     id: 'found-communes',
     type: 'fill',
     source: 'found-communes',
+	slot: "middle",
     paint: {
         //couleur_communes
 		//'fill-color': '#ACD26E', //vert
@@ -3585,6 +3562,7 @@ function addTraceLayer(map, trainline) {
         id: `trace-${trainline}`,
         type: "line",
         source: "traces",
+		slot: "middle",
         filter,
         paint: {
             "line-color": ["get", "color"],
@@ -3701,6 +3679,7 @@ map.addSource('stations', {
     id: 'found-stations-hitbox',
     type: 'circle',
     source: 'found-stations',
+	slot: "middle",
     paint: {
         'circle-radius': 7,
         'circle-opacity': 0,
@@ -3711,6 +3690,7 @@ map.addSource('stations', {
 		id: 'found-stations',
 		type: 'circle',
 		source: 'found-stations',
+		slot: "middle",
 		paint: {
 			'circle-radius': ["case",
 				["boolean", ["feature-state", "active"], false],
@@ -3746,6 +3726,7 @@ map.addSource('stations', {
 		id: 'found-stations-labels',
 		type: 'symbol',
 		source: 'found-stations',
+		slot: "middle",
 		layout: {
 			'text-anchor': 'bottom',
 			'text-offset': [0, -0.5],
@@ -3770,11 +3751,7 @@ map.addSource('stations', {
 
 	renderMap(map, state);
 
-    updateStandard3DMode(map);
-
-map.on('move', () => {
-    updateStandard3DMode(map);
-});
+    
 
 	return map;
 });
