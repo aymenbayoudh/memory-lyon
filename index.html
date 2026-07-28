@@ -1208,8 +1208,8 @@ body {
 
     animation:
         page-loader-metro-shuttle
-        7s
-        ease-in-out
+        2s
+        linear
         infinite;
 
     will-change: left;
@@ -1226,36 +1226,33 @@ body {
 */
 
 @keyframes page-loader-metro-shuttle {
+
+    /* La rame est entièrement hors champ à gauche */
     0% {
         left: -58%;
+        animation-timing-function: ease-out;
     }
 
-    22% {
+    /* Elle arrive au centre */
+    37% {
         left: 50%;
+        animation-timing-function: linear;
     }
 
-    36% {
+    /* Arrêt bref au centre */
+    47% {
         left: 50%;
+        animation-timing-function: ease-in;
     }
 
-    56% {
-        left: 158%;
-    }
-
-    57% {
-        left: 158%;
-    }
-
-    76% {
-        left: 50%;
-    }
-
+    /* Elle repart et sort entièrement à droite */
     88% {
-        left: 50%;
+        left: 158%;
     }
 
+    /* Elle reste hors champ jusqu’au redémarrage */
     100% {
-        left: -58%;
+        left: 158%;
     }
 }
 
