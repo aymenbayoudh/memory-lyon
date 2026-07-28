@@ -1088,8 +1088,326 @@ body {
 
 
 	</style>
+/* =========================================================
+   ÉCRAN DE CHARGEMENT GÉNÉRAL
+   ========================================================= */
+
+#page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    padding: 1.5em;
+
+    background: #ffffff;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+#page-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* Fenêtre de déplacement de la rame */
+
+#page-loader-stage {
+    position: relative;
+
+    width: min(900px, 96vw);
+    height: clamp(160px, 23vw, 225px);
+
+    overflow: hidden;
+}
+
+
+/* Blob fixe derrière la rame */
+
+#page-loader-blob {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+
+    width: min(570px, 74vw);
+    height: clamp(110px, 17vw, 155px);
+
+    transform: translate(-50%, -50%);
+
+    border-radius:
+        44% 56% 52% 48%
+        / 58% 43% 57% 42%;
+
+    background: #e7f0f6;
+    opacity: 0.9;
+}
+
+
+/* Voie fixe */
+
+#page-loader-track {
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 68%;
+
+    height: 1px;
+
+    background: rgba(91, 112, 126, 0.55);
+}
+
+
+/* Repère de station central */
+
+#page-loader-stop {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 11px;
+    height: 11px;
+
+    box-sizing: border-box;
+
+    transform: translate(-50%, -50%);
+
+    border: 2px solid #8ca3b2;
+    border-radius: 50%;
+
+    background: #ffffff;
+}
+
+
+/* Rame détourée, extraite du GIF */
+
+#page-loader-train {
+    position: absolute;
+
+    left: -58%;
+    top: 50%;
+
+    width: min(640px, 78vw);
+    max-width: 88%;
+    height: auto;
+
+    display: block;
+
+    transform: translate(-50%, -50%);
+
+    animation:
+        page-loader-metro-shuttle
+        7s
+        ease-in-out
+        infinite;
+
+    will-change: left;
+}
+
+
+/*
+   0–22 %   : arrivée depuis la gauche
+   22–36 %  : arrêt au centre
+   36–56 %  : départ vers la droite
+   57–76 %  : retour depuis la droite
+   76–88 %  : nouvel arrêt au centre
+   88–100 % : départ vers la gauche
+*/
+
+@keyframes page-loader-metro-shuttle {
+    0% {
+        left: -58%;
+    }
+
+    22% {
+        left: 50%;
+    }
+
+    36% {
+        left: 50%;
+    }
+
+    56% {
+        left: 158%;
+    }
+
+    57% {
+        left: 158%;
+    }
+
+    76% {
+        left: 50%;
+    }
+
+    88% {
+        left: 50%;
+    }
+
+    100% {
+        left: -58%;
+    }
+}
+
+
+#page-loader-text {
+    margin: 0.25em 0 0;
+
+    font-family: "Helvetica", sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+
+    color: #6f8797;
+    text-align: center;
+}
+
+
+/* Trois points animés */
+
+#page-loader-dots::after {
+    content: "";
+
+    display: inline-block;
+    width: 1.4em;
+
+    text-align: left;
+
+    animation:
+        page-loader-dots-animation
+        1.2s
+        steps(4, end)
+        infinite;
+}
+
+@keyframes page-loader-dots-animation {
+    0% {
+        content: "";
+    }
+
+    25% {
+        content: ".";
+    }
+
+    50% {
+        content: "..";
+    }
+
+    75%,
+    100% {
+        content: "...";
+    }
+}
+
+
+/* Téléphone */
+
+@media (max-width: 600px) {
+    #page-loader {
+        padding: 0.75em;
+    }
+
+    #page-loader-stage {
+        width: 100%;
+        height: 165px;
+    }
+
+    #page-loader-blob {
+        width: 82vw;
+        height: 110px;
+    }
+
+    #page-loader-track {
+        top: 70%;
+    }
+
+    #page-loader-train {
+        width: 82vw;
+        max-width: 92%;
+    }
+
+    #page-loader-text {
+        margin-top: 0;
+        font-size: 0.9em;
+    }
+}
+
+
+/* Accessibilité */
+
+@media (prefers-reduced-motion: reduce) {
+    #page-loader-train {
+        left: 50%;
+
+        animation:
+            page-loader-metro-breathe
+            1.6s
+            ease-in-out
+            infinite;
+    }
+
+    @keyframes page-loader-metro-breathe {
+        0%,
+        100% {
+            opacity: 0.72;
+        }
+
+        50% {
+            opacity: 1;
+        }
+    }
+}
+
+
+
+
+	
 </head>
 <body>
+	<div
+    id="page-loader"
+    role="status"
+    aria-live="polite"
+    aria-busy="true"
+>
+    <div id="page-loader-stage">
+
+        <div
+            id="page-loader-blob"
+            aria-hidden="true"
+        ></div>
+
+        <div
+            id="page-loader-track"
+            aria-hidden="true"
+        >
+            <span id="page-loader-stop"></span>
+        </div>
+
+        <img
+            id="page-loader-train"
+            src="data/images/metro-loader-transparent.webp"
+            alt=""
+            aria-hidden="true"
+            fetchpriority="high"
+            decoding="async"
+        />
+
+    </div>
+
+    <p id="page-loader-text">
+        Chargement de la carte<span id="page-loader-dots"></span>
+    </p>
+</div>
 
 
 
@@ -3910,6 +4228,133 @@ const description = `
         map.getCanvas().style.cursor = '';
     });
 });
+
+		///////////////////////////////////////////////////////////
+// Écran de chargement général
+
+const pageLoaderStartedAt = performance.now();
+const PAGE_LOADER_MIN_DURATION = 900;
+
+let pageLoaderHidden = false;
+let pageLoaderFallbackTimer = null;
+
+
+function hidePageLoader() {
+    if (pageLoaderHidden) return;
+
+    const loader = document.getElementById("page-loader");
+
+    if (!loader) {
+        pageLoaderHidden = true;
+        return;
+    }
+
+    const elapsed = performance.now() - pageLoaderStartedAt;
+    const remaining = Math.max(
+        0,
+        PAGE_LOADER_MIN_DURATION - elapsed
+    );
+
+    window.setTimeout(() => {
+        if (pageLoaderHidden) return;
+
+        pageLoaderHidden = true;
+
+        if (pageLoaderFallbackTimer !== null) {
+            window.clearTimeout(pageLoaderFallbackTimer);
+        }
+
+        loader.classList.add("is-hidden");
+        loader.setAttribute("aria-busy", "false");
+
+        window.setTimeout(() => {
+            loader.remove();
+        }, 450);
+
+    }, remaining);
+}
+
+
+function showPageLoaderError(error) {
+    console.error(
+        "Erreur pendant le chargement initial :",
+        error
+    );
+
+    const text = document.getElementById(
+        "page-loader-text"
+    );
+
+    if (text) {
+        text.textContent =
+            "Le chargement prend plus de temps que prévu…";
+    }
+}
+
+
+function finishPageLoadingWhenMapIsIdle(map) {
+    const finish = () => {
+        /*
+         * On laisse le navigateur dessiner la dernière image
+         * de la carte avant de retirer l'écran blanc.
+         */
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(
+                hidePageLoader
+            );
+        });
+    };
+
+    if (!map) {
+        finish();
+        return;
+    }
+
+    const mapIsLoaded =
+        typeof map.loaded !== "function" ||
+        map.loaded();
+
+    const tilesAreLoaded =
+        typeof map.areTilesLoaded !== "function" ||
+        map.areTilesLoaded();
+
+    if (mapIsLoaded && tilesAreLoaded) {
+        finish();
+        return;
+    }
+
+    map.once("idle", finish);
+}
+
+
+/*
+ * $map doit désormais attendre style.load grâce à la
+ * correction précédente.
+ *
+ * $gameplayReady attend les données nécessaires au jeu.
+ */
+
+Promise.all([
+    $map,
+    $gameplayReady
+])
+.then(([map]) => {
+    finishPageLoadingWhenMapIsIdle(map);
+})
+.catch(error => {
+    showPageLoaderError(error);
+});
+
+
+/*
+ * Sécurité : aucune ressource Mapbox ne peut laisser
+ * définitivement l'utilisateur devant le loader.
+ */
+
+pageLoaderFallbackTimer = window.setTimeout(
+    hidePageLoader,
+    15000
+);
 
 
 	</script>
