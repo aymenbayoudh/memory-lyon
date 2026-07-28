@@ -4071,7 +4071,7 @@ map.addSource('stations', {
     id: 'found-stations-hitbox',
     type: 'circle',
     source: 'found-stations',
-	slot: "middle",
+	//slot: "middle",
     paint: {
         'circle-radius': 7,
         'circle-opacity': 0,
@@ -4082,7 +4082,7 @@ map.addSource('stations', {
 		id: 'found-stations',
 		type: 'circle',
 		source: 'found-stations',
-		slot: "middle",
+		//slot: "middle",
 		paint: {
 			'circle-radius': ["case",
 				["boolean", ["feature-state", "active"], false],
@@ -4118,7 +4118,7 @@ map.addSource('stations', {
 		id: 'found-stations-labels',
 		type: 'symbol',
 		source: 'found-stations',
-		slot: "middle",
+		//slot: "middle",
 		layout: {
 			'text-anchor': 'bottom',
 			'text-offset': [0, -0.5],
