@@ -2163,7 +2163,7 @@ const Action = {
 },
 
 	_updateStationStats: (state) => {
-		state.cache.stats.stations = 100 * state.cache.counts.stations / (state.cache.totalCounts.stations+2);
+		state.cache.stats.stations = 100 * state.cache.counts.stations / (state.cache.totalCounts.stations+1);
 	},
 	_updateCommuneStats: (state) => {
 		state.cache.stats.communes = 100 * state.cache.counts.communes / state.cache.totalCounts.communes;
@@ -2540,7 +2540,7 @@ const terTotalStats = stationData.meta.trainlines["TER"]?.["station-count"] || 0
 
         const metroPct = familyStats.metro.total > 0 ? (100 * familyStats.metro.found / familyStats.metro.total).toFixed(1) : "0.0";
         const funiPct  = familyStats.funi.total  > 0 ? (100 * familyStats.funi.found  / familyStats.funi.total ).toFixed(1) : "0.0";
-        const tramPct  = familyStats.tram.total  > 0 ? (100 * familyStats.tram.found  / familyStats.tram.total ).toFixed(1) : "0.0";
+        const tramPct  = familyStats.tram.total  > 0 ? (100 * familyStats.tram.found  / (familyStats.tram.total+1) ).toFixed(1) : "0.0";
         const tbPct    = familyStats.tb.total    > 0 ? (100 * familyStats.tb.found    / familyStats.tb.total   ).toFixed(1) : "0.0";
         const naviPct  = familyStats.navi.total  > 0 ? (100 * familyStats.navi.found  / familyStats.navi.total ).toFixed(1) : "0.0";
 
