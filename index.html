@@ -2156,14 +2156,19 @@ const Action = {
 	},
 
 	AppendMultipleStationItems: (entries) => (dom, state) => {
+    let added = false;
     for (const [item, geoFeature] of entries) {
-        Action._appendStationItemWithoutRender(item, geoFeature, state);
+        if (Action._appendStationItemWithoutRender(item, geoFeature, state)) {
+            added = true;
+        }
     }
-    Action._renderAfterNewStationItem(dom, state);
+    if (added) {
+        Action._renderAfterNewStationItem(dom, state);
+    }
 },
 
 	_updateStationStats: (state) => {
-		state.cache.stats.stations = 100 * state.cache.counts.stations / (state.cache.totalCounts.stations+1);
+		state.cache.stats.stations = 100 * state.cache.counts.stations / state.cache.totalCounts.stations;
 	},
 	_updateCommuneStats: (state) => {
 		state.cache.stats.communes = 100 * state.cache.counts.communes / state.cache.totalCounts.communes;
@@ -2213,7 +2218,21 @@ const Action = {
 		const stations = stationData.stations;
 //state.found = newState.found;
 const newFound = Array.isArray(newState.found) ? newState.found : [];
-state.found = newFound;
+const stationIdAliases = stationData.meta['station-id-aliases'] || {};
+const seenFoundKeys = new Set();
+// Reconnaître les anciens identifiants avant de dédupliquer la progression.
+state.found = newFound.map(item => {
+    if (item.id[0] !== 'STATION') return item;
+    const canonicalId = stationIdAliases[item.id[1]];
+    return canonicalId === undefined
+        ? item
+        : { ...item, id: ['STATION', canonicalId] };
+}).filter(item => {
+    const key = `${item.id[0]}:${item.id[1]}`;
+    if (seenFoundKeys.has(key)) return false;
+    seenFoundKeys.add(key);
+    return true;
+});
 state.showAnswers = newState.showAnswers !== undefined ? newState.showAnswers : true;
 state.cheats = Array.isArray(newState.cheats) ? newState.cheats : [];
 state.hoveredCommuneId = null;
@@ -2540,7 +2559,7 @@ const terTotalStats = stationData.meta.trainlines["TER"]?.["station-count"] || 0
 
         const metroPct = familyStats.metro.total > 0 ? (100 * familyStats.metro.found / familyStats.metro.total).toFixed(1) : "0.0";
         const funiPct  = familyStats.funi.total  > 0 ? (100 * familyStats.funi.found  / familyStats.funi.total ).toFixed(1) : "0.0";
-        const tramPct  = familyStats.tram.total  > 0 ? (100 * familyStats.tram.found  / (familyStats.tram.total+1) ).toFixed(1) : "0.0";
+        const tramPct  = familyStats.tram.total  > 0 ? (100 * familyStats.tram.found  / familyStats.tram.total ).toFixed(1) : "0.0";
         const tbPct    = familyStats.tb.total    > 0 ? (100 * familyStats.tb.found    / familyStats.tb.total   ).toFixed(1) : "0.0";
         const naviPct  = familyStats.navi.total  > 0 ? (100 * familyStats.navi.found  / familyStats.navi.total ).toFixed(1) : "0.0";
 
@@ -3733,17 +3752,16 @@ const $gameplayReady = join($dom, dataLoader.$stationMemory, dataLoader.$commune
 						allDuplicates = false;
 						const connected_ids = stationData.meta['connected-stations'][props.id_gares] || [props.id_gares];
 
-						connected_ids.map(id => {
-
-							const index = stationData.idToIndex[id];
-							if (index === undefined) return; // happens when the statino has been removed because on an ignored train line
-							const props = stations.features[index].properties;
-							dispatch(dom, Action.AppendFoundStationItem({
-								id: ['STATION', props.id_gares],
-								name: props.nom_zdc,
-							}, stations.features[index]));
-
-						});
+                        const entries = connected_ids.map(id => {
+                            const index = stationData.idToIndex[id];
+                            if (index === undefined) return null;
+                            const feature = stations.features[index];
+                            return [{
+                                id: ['STATION', feature.properties.id_gares],
+                                name: feature.properties.nom_zdc,
+                            }, feature];
+                        }).filter(Boolean);
+                        dispatch(dom, Action.AppendMultipleStationItems(entries));
 					}
 				} else if (result.type == 'COMMUNE') {
 
