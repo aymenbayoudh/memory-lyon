@@ -3406,6 +3406,20 @@ const dataLoader = {
 };
 
 
+// Les couleurs des lignes sont définies dans les métadonnées.
+function applyTrainlineColors(data, meta) {
+    data.features.forEach(feature => {
+        const color = meta.trainlines[feature.properties.trainline]?.color;
+        if (color) {
+            feature.properties.color = color;
+        }
+    });
+    return data;
+}
+
+dataLoader.$stations = join(dataLoader.$stations, dataLoader.$meta, applyTrainlineColors);
+dataLoader.$traces = join(dataLoader.$traces, dataLoader.$meta, applyTrainlineColors);
+
 // Just bundle stations and meta together
 dataLoader.$stationData = join(dataLoader.$stations, dataLoader.$meta, (stations, meta) => {
 	const idToIndex = {};

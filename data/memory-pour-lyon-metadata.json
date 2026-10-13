@@ -812,6 +812,7 @@
   ,
   "trainlines": {
     "F1": {
+      "color": "#992358",
       "station-count": 3,
       "logo": "F1.svg",
       "logo-style": {
@@ -820,6 +821,7 @@
       }
     },
     "F2": {
+      "color": "#006F9E",
       "station-count": 2,
       "logo": "F2.svg",
       "logo-style": {
@@ -828,6 +830,7 @@
       }
     },
     "MA": {
+      "color": "#E8308A",
       "station-count": 14,
       "logo": "MA.svg",
       "logo-style": {
@@ -836,6 +839,7 @@
       }
     },
     "MB": {
+      "color": "#0075BF",
       "station-count": 12,
       "logo": "MB.svg",
       "logo-style": {
@@ -844,6 +848,7 @@
       }
     },
     "MC": {
+      "color": "#EC6608",
       "station-count": 5,
       "logo": "MC.svg",
       "logo-style": {
@@ -852,6 +857,7 @@
       }
     },
     "MD": {
+      "color": "#009E3D",
       "station-count": 15,
       "logo": "MD.svg",
       "logo-style": {
@@ -876,6 +882,7 @@
       }
     },
     "T1": {
+      "color": "#004F9F",
       "station-count": 27,
       "logo": "T1.svg",
       "logo-style": {
@@ -884,6 +891,7 @@
       }
     },
     "T2": {
+      "color": "#6BA230",
       "station-count": 32,
       "logo": "T2.svg",
       "logo-style": {
@@ -892,6 +900,7 @@
       }
     },
     "T3": {
+      "color": "#00A3A6",
       "station-count": 13,
       "logo": "T3.svg",
       "logo-style": {
@@ -900,6 +909,7 @@
       }
     },
     "T4": {
+      "color": "#662483",
       "station-count": 29,
       "logo": "T4.svg",
       "logo-style": {
@@ -908,6 +918,7 @@
       }
     },
     "T5": {
+      "color": "#EC6608",
       "station-count": 12,
       "logo": "T5.svg",
       "logo-style": {
@@ -916,6 +927,7 @@
       }
     },
     "T6": {
+      "color": "#F191A3",
       "station-count": 25,
       "logo": "T6.svg",
       "logo-style": {
@@ -924,6 +936,7 @@
       }
     },
     "T7": {
+      "color": "#992358",
       "station-count": 5,
       "logo": "T7.svg",
       "logo-style": {
