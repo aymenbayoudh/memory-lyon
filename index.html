@@ -868,7 +868,7 @@ body {
 
     /* On garde la liste */
     #scoreboard.minimized #found {
-        display: block !important;
+        display: block;
     }
 }
 
@@ -1930,6 +1930,139 @@ const $dom = $DOMContentLoaded.then(() => {
 });
 
 
+const SAVE_FORMAT_VERSION = 1;
+let saveWarningShown = false;
+
+function getPersistentState(state) {
+    return {
+        version: SAVE_FORMAT_VERSION,
+        found: state.found.map(item => ({ id: [...item.id], name: item.name })),
+        showAnswers: state.showAnswers,
+        cheats: [...state.cheats],
+        scoreboardMinimized: state.scoreboardMinimized,
+    };
+}
+
+function saveGameState(state) {
+    try {
+        localStorage.setItem('savedState', JSON.stringify(getPersistentState(state)));
+        saveWarningShown = false;
+        return true;
+    } catch (error) {
+        console.warn('Enregistrement de la partie impossible :', error);
+        if (!saveWarningShown) {
+            saveWarningShown = true;
+            window.alert('La partie reste jouable, mais sa sauvegarde a échoué. Exportez-la depuis le menu pour conserver votre progression.');
+        }
+        return false;
+    }
+}
+
+function normalizeSavedState(input, stationData, communes) {
+    if (!input || typeof input !== 'object' || Array.isArray(input) || !Array.isArray(input.found)) {
+        throw new Error('Ce fichier ne contient pas une partie valide.');
+    }
+    if (input.version !== undefined && input.version !== 0 && input.version !== SAVE_FORMAT_VERSION) {
+        throw new Error('Cette version de sauvegarde n’est pas prise en charge.');
+    }
+    for (const key of ['showAnswers', 'scoreboardMinimized']) {
+        if (input[key] !== undefined && typeof input[key] !== 'boolean') {
+            throw new Error('Les préférences de cette partie ne sont pas valides.');
+        }
+    }
+    const allowedCheats = new Set([...Object.keys(stationData.meta.trainlines), 'COMMUNES']);
+    const cheats = input.cheats === undefined ? [] : input.cheats;
+    if (!Array.isArray(cheats) || cheats.some(choice => typeof choice !== 'string' || !allowedCheats.has(choice))) {
+        throw new Error('Les corrections de cette partie ne sont pas valides.');
+    }
+    const communeById = new Map(communes.features.map(feature => [String(feature.properties.code), feature]));
+    const aliases = stationData.meta['station-id-aliases'] || {};
+    const seen = new Set();
+    const found = [];
+    for (const item of input.found) {
+        if (!item || !Array.isArray(item.id) || item.id.length !== 2 || !['STATION', 'COMMUNE'].includes(item.id[0])) {
+            throw new Error('Une réponse de ce fichier est mal formée.');
+        }
+        const [type, oldId] = item.id;
+        if (!['string', 'number'].includes(typeof oldId) || !/^\d+$/.test(String(oldId))) {
+            throw new Error('Un identifiant de réponse est invalide.');
+        }
+        const requestedId = type === 'STATION' ? (aliases[oldId] ?? oldId) : oldId;
+        const feature = type === 'STATION'
+            ? stationData.stations.features[stationData.idToIndex[requestedId]]
+            : communeById.get(String(requestedId));
+        // Des anciennes parties peuvent référencer une station retirée des données.
+        if (!feature) continue;
+        const props = feature.properties;
+        const id = type === 'STATION' ? props.id_gares : props.code;
+        const key = `${type}:${id}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        found.push({ id: [type, id], name: type === 'STATION' ? (props.nom_zdc || props.nom_gares) : props.nom });
+    }
+    if (input.found.length > 0 && found.length === 0) {
+        throw new Error('Aucune réponse de ce fichier ne correspond aux données du jeu.');
+    }
+    return {
+        version: SAVE_FORMAT_VERSION,
+        found,
+        showAnswers: input.showAnswers ?? true,
+        cheats: [...new Set(cheats)],
+        scoreboardMinimized: input.scoreboardMinimized ?? false,
+    };
+}
+
+function setElementText(element, value) {
+    const text = String(value);
+    if (element && element.textContent !== text) element.textContent = text;
+}
+
+function updateMobileSummary(container, items, renderer) {
+    if (!container.__summaryInitialized || container.children.length !== items.length) {
+        container.innerHTML = items.map(item => renderer(...item)).join('');
+        container.__summaryInitialized = true;
+        return;
+    }
+    items.forEach((item, index) => {
+        setElementText(container.children[index].querySelector('.mobile-stat-value'), item[1]);
+    });
+}
+
+function updateFoundList(dom, state, stationData, communeData, newIndex, cache) {
+    if (cache.found !== state.found || cache.connections !== stationData.meta['connected-stations']) {
+        const groups = buildFoundGroups(state.found, stationData);
+        const next = new Map();
+        for (const group of groups) {
+            const signature = group.items.map(item => `${item.id[0]}:${item.id[1]}`).join('|');
+            let entry = cache.groups.get(group.key);
+            if (!entry || entry.signature !== signature) {
+                const element = renderScorboardFoundGroupEntry(group, stationData, communeData, false);
+                if (entry) entry.element.replaceWith(element);
+                entry = { signature, element };
+            }
+            next.set(group.key, entry);
+        }
+        for (const [key, entry] of cache.groups) {
+            if (!next.has(key)) entry.element.remove();
+        }
+        let cursor = dom.found.firstChild;
+        for (const { element } of next.values()) {
+            if (element === cursor) cursor = cursor.nextSibling;
+            else dom.found.insertBefore(element, cursor);
+        }
+        cache.groups = next;
+        cache.groupKeys = [...next.keys()];
+        cache.found = state.found;
+        cache.connections = stationData.meta['connected-stations'];
+    }
+    const newKey = newIndex === undefined ? null : cache.groupKeys[newIndex];
+    if (cache.newKey !== newKey) {
+        cache.groups.get(cache.newKey)?.element.classList.remove('new');
+        cache.groups.get(newKey)?.element.classList.add('new');
+        cache.newKey = newKey;
+    }
+}
+
 const COMPLETE_MILESTONE_TCL = "__COMPLETE_TCL__";
 const COMPLETE_MILESTONE_ALL = "__COMPLETE_ALL__";
 
@@ -2022,7 +2155,7 @@ const Action = {
 		renderMenu(dom, state);
 		renderScoreboard(dom, state);
 
-		localStorage.setItem("savedState", JSON.stringify(state));
+		saveGameState(state);
 	},
 
 	ToggleAnswers: () => (dom, state) => {
@@ -2147,7 +2280,7 @@ const Action = {
     });
 
     renderScoreboard(dom, state, 0);
-    localStorage.setItem("savedState", JSON.stringify(state));
+    saveGameState(state);
 },
 
 	AppendFoundStationItem: (item, geoFeature) => (dom, state) => {
@@ -2209,7 +2342,7 @@ const Action = {
 
 		renderScoreboard(dom, state);
 
-		localStorage.setItem("savedState", JSON.stringify(state));
+		saveGameState(state);
 	},
 
 	// This loads a brand new state and recomputes the cached values
@@ -2217,24 +2350,11 @@ const Action = {
 	LoadState: (newState, stationData, communes) => (dom, state) => {
 		const stations = stationData.stations;
 //state.found = newState.found;
-const newFound = Array.isArray(newState.found) ? newState.found : [];
-const stationIdAliases = stationData.meta['station-id-aliases'] || {};
-const seenFoundKeys = new Set();
-// Reconnaître les anciens identifiants avant de dédupliquer la progression.
-state.found = newFound.map(item => {
-    if (item.id[0] !== 'STATION') return item;
-    const canonicalId = stationIdAliases[item.id[1]];
-    return canonicalId === undefined
-        ? item
-        : { ...item, id: ['STATION', canonicalId] };
-}).filter(item => {
-    const key = `${item.id[0]}:${item.id[1]}`;
-    if (seenFoundKeys.has(key)) return false;
-    seenFoundKeys.add(key);
-    return true;
-});
-state.showAnswers = newState.showAnswers !== undefined ? newState.showAnswers : true;
-state.cheats = Array.isArray(newState.cheats) ? newState.cheats : [];
+const normalized = normalizeSavedState(newState, stationData, communes);
+state.found = normalized.found;
+state.showAnswers = normalized.showAnswers;
+state.cheats = normalized.cheats;
+state.scoreboardMinimized = normalized.scoreboardMinimized;
 state.hoveredCommuneId = null;
 
 state.cache = {
@@ -2363,7 +2483,7 @@ $map.then(map => {
     renderMap(map, state);
 });
 
-localStorage.setItem("savedState", JSON.stringify(state));
+saveGameState(state);
 
 	},
 };
@@ -2402,197 +2522,103 @@ function renderMobileHeaderLineSmall(iconFile, value, alt = "") {
 
 
 function renderScoreboard(dom, state, newIndex) {
-    // --- Desktop / stats générales ---
-    dom["stat-communes"].innerText = state.cache.stats.communes.toFixed(1);
-    dom["stat-surface"].innerText = state.cache.stats.surface.toFixed(1);
-    dom["stat-inhabitants"].innerText = state.cache.stats.inhabitants.toFixed(1);
-    dom["stat-stations"].innerText = state.cache.stats.stations.toFixed(1);
-	
-
-    dom["count-communes"].innerText = state.cache.counts.communes;
-    dom["count-surface"].innerText = state.cache.counts.surface.toFixed(1);
-    dom["count-inhabitants"].innerText = (state.cache.counts.inhabitants / 1000.0).toFixed(1);
-    dom["count-stations"].innerText = state.cache.counts.stations;
-
-    dom["btn-show-answers"].style.display = state.showAnswers ? "none" : "inline";
-    dom["found"].style.display = state.showAnswers ? "block" : "none";
-
-    // applique l'état plié/déplié
-    dom["scoreboard"].setAttribute("class", state.scoreboardMinimized ? "minimized" : "");
-    updateMobileScoreboardOffset(dom);
+    setElementText(dom['stat-communes'], state.cache.stats.communes.toFixed(1));
+    setElementText(dom['stat-surface'], state.cache.stats.surface.toFixed(1));
+    setElementText(dom['stat-inhabitants'], state.cache.stats.inhabitants.toFixed(1));
+    setElementText(dom['stat-stations'], state.cache.stats.stations.toFixed(1));
+    setElementText(dom['count-communes'], state.cache.counts.communes);
+    setElementText(dom['count-surface'], state.cache.counts.surface.toFixed(1));
+    setElementText(dom['count-inhabitants'], (state.cache.counts.inhabitants / 1000.0).toFixed(1));
+    setElementText(dom['count-stations'], state.cache.counts.stations);
+    const answersDisplay = state.showAnswers ? 'block' : 'none';
+    const buttonDisplay = state.showAnswers ? 'none' : 'inline';
+    if (dom.found.style.display !== answersDisplay) dom.found.style.display = answersDisplay;
+    if (dom['btn-show-answers'].style.display !== buttonDisplay) dom['btn-show-answers'].style.display = buttonDisplay;
+    dom.scoreboard.classList.toggle('minimized', state.scoreboardMinimized);
 
     join(dataLoader.$stationData, dataLoader.$communeData, (stationData, communeData) => {
-        
-const terTotalStats = stationData.meta.trainlines["TER"]?.["station-count"] || 0;
-    const terFoundStats = state.cache.counts.stationsPerLine["TER"] || 0;
-    const terPctStats = terTotalStats > 0
-        ? (100 * terFoundStats / terTotalStats).toFixed(1)
-        : "0.0";
-
-    if (dom["stat-stations-ter"]) {
-        dom["stat-stations-ter"].innerText = terPctStats;
-    }
-
-		
-		const requiredIds = [
-            "scoreboard",
-            "scoreboard-mobile-summary",
-            "scoreboard-mobile-lines-summary",
-            "scoreboard-mobile-progress",
-            "count-stations-per-line",
-            "found",
-        ];
-
-        const missingIds = requiredIds.filter(id => !dom[id]);
-        if (missingIds.length > 0) {
-            console.warn("DOM mobiles manquants :", missingIds);
-            return;
-        }
-
-        // --- Construction des badges / progressions desktop ---
-        const lineItems = [];
-
-        let insertedMetroIcon = false;
-        let insertedFuniIcon = false;
-        let insertedTramIcon = false;
-        let insertedTBIcon = false;
-        let insertedNaviIcon = false;
-
-       for (const trainline_key of state.cache.orderedTrainlines) {
-    if (trainline_key === "TER") continue;
-
-    const count = state.cache.counts.stationsPerLine[trainline_key];
-
-    const isMetro = /^M[A-D]$/.test(trainline_key);
-    const isFuni = /^F[12]$/.test(trainline_key);
-    const isTram = /^T\d+$/.test(trainline_key);
-    const isTB = /^TB\d+$/.test(trainline_key);
-    const isNavi = /^NAVI?1$/.test(trainline_key);
-
-    // Ligne 1 : M ... F ...
-    if (isMetro && !insertedMetroIcon) {
-        lineItems.push(renderScorboardSectionIcon("logo_M.svg", "Métro"));
-        insertedMetroIcon = true;
-    }
-    if (isFuni && !insertedFuniIcon) {
-        lineItems.push(renderScorboardLineBreak());
-        lineItems.push(renderScorboardSectionIcon("logo_F.svg", "Funiculaire"));
-        insertedFuniIcon = true;
-    }
-
-    // Ligne 2 : T ...
-    if (isTram && !insertedTramIcon) {
-        lineItems.push(renderScorboardLineBreak());
-        lineItems.push(renderScorboardSectionIcon("logo_T.svg", "Tram"));
-        insertedTramIcon = true;
-    }
-
-    // Ligne 3 : TB ... NAVI ...
-    if (isTB && !insertedTBIcon) {
-        lineItems.push(renderScorboardLineBreak());
-        lineItems.push(renderScorboardSectionIcon("logo_TB.svg", "TramBus"));
-        insertedTBIcon = true;
-    }
-    if (isNavi && !insertedNaviIcon) {
-        lineItems.push(renderScorboardLineBreak());
-        lineItems.push(renderScorboardSectionIcon("logo_N.svg", "Navigône"));
-        insertedNaviIcon = true;
-    }
-
-    lineItems.push(renderScorboardLineCounter(trainline_key, count, stationData, state));
-}
-
-
-        // desktop
-        dom["count-stations-per-line"].replaceChildren(...lineItems);
-
-        // mobile progress réduit
-        const mobileProgressContainer = document.createElement("ul");
-        mobileProgressContainer.setAttribute("id", "count-stations-per-line-mobile");
-        mobileProgressContainer.replaceChildren(...lineItems.map(node => node.cloneNode(true)));
-        dom["scoreboard-mobile-progress"].replaceChildren(mobileProgressContainer);
-
-        // --- Ligne 1 compacte : TCL / communes / train ---
-        const terTotal = stationData.meta.trainlines["TER"]?.["station-count"] || 0;
-		const terFound = state.cache.counts.stationsPerLine["TER"] || 0;
-		const terPct = terTotal > 0
-		? (100 * terFound / terTotal).toFixed(1)
-		: "0.0";
-
-		dom["scoreboard-mobile-summary"].innerHTML = [
-			renderMobileHeaderLine("logo_TCL.svg", state.cache.stats.stations.toFixed(1), "TCL"),
-			renderMobileHeaderLine("communes.jpg", state.cache.stats.communes.toFixed(1), "Communes"),
-			renderMobileHeaderLine("train.svg", terPct, "TER"),
-		].join("");
-
-
-        // --- Ligne 2 compacte : M / F / T / TB / N ---
-        const familyStats = {
-            metro: { found: 0, total: 0 },
-            funi:  { found: 0, total: 0 },
-            tram:  { found: 0, total: 0 },
-            tb:    { found: 0, total: 0 },
-            navi:  { found: 0, total: 0 },
-        };
-
-        for (const trainline of state.cache.orderedTrainlines) {
-            const total = stationData.meta.trainlines[trainline]?.["station-count"] || 0;
-            const found = state.cache.counts.stationsPerLine[trainline] || 0;
-
-            if (/^M[A-D]$/.test(trainline)) {
-                familyStats.metro.total += total;
-                familyStats.metro.found += found;
-            } else if (/^F[12]$/.test(trainline)) {
-                familyStats.funi.total += total;
-                familyStats.funi.found += found;
-            } else if (/^T\d+$/.test(trainline)) {
-                familyStats.tram.total += total;
-                familyStats.tram.found += found;
-            } else if (/^TB\d+$/.test(trainline)) {
-                familyStats.tb.total += total;
-                familyStats.tb.found += found;
-            } else if (/^NAVI?1$/.test(trainline)) {
-                familyStats.navi.total += total;
-                familyStats.navi.found += found;
+        const cache = dom.__scoreboardCache || (dom.__scoreboardCache = { lines: new Map(), groups: new Map(), groupKeys: [] });
+        const layoutKey = state.cache.orderedTrainlines.join('|');
+        if (cache.layoutKey !== layoutKey) {
+            const lineItems = [];
+            const inserted = new Set();
+            const families = [
+                [/^M[A-D]$/, 'logo_M.svg', 'Métro'],
+                [/^F[12]$/, 'logo_F.svg', 'Funiculaire'],
+                [/^T\d+$/, 'logo_T.svg', 'Tram'],
+                [/^TB\d+$/, 'logo_TB.svg', 'TramBus'],
+                [/^NAVI?1$/, 'logo_N.svg', 'Navigône'],
+            ];
+            cache.lines.clear();
+            for (const key of state.cache.orderedTrainlines) {
+                if (key === 'TER') continue;
+                const family = families.find(([pattern]) => pattern.test(key));
+                if (family && !inserted.has(family[1])) {
+                    if (inserted.size > 0) lineItems.push(renderScorboardLineBreak());
+                    lineItems.push(renderScorboardSectionIcon(family[1], family[2]));
+                    inserted.add(family[1]);
+                }
+                const element = renderScorboardLineCounter(key, state.cache.counts.stationsPerLine[key] || 0, stationData, state);
+                lineItems.push(element);
+                cache.lines.set(key, { desktop: element });
             }
+            dom['count-stations-per-line'].replaceChildren(...lineItems);
+            const mobile = document.createElement('ul');
+            mobile.id = 'count-stations-per-line-mobile';
+            for (const element of lineItems) {
+                const copy = element.cloneNode(true);
+                mobile.appendChild(copy);
+                if (element.dataset.trainline) cache.lines.get(element.dataset.trainline).mobile = copy;
+            }
+            dom['scoreboard-mobile-progress'].replaceChildren(mobile);
+            cache.layoutKey = layoutKey;
         }
-
-        const metroPct = familyStats.metro.total > 0 ? (100 * familyStats.metro.found / familyStats.metro.total).toFixed(1) : "0.0";
-        const funiPct  = familyStats.funi.total  > 0 ? (100 * familyStats.funi.found  / familyStats.funi.total ).toFixed(1) : "0.0";
-        const tramPct  = familyStats.tram.total  > 0 ? (100 * familyStats.tram.found  / familyStats.tram.total ).toFixed(1) : "0.0";
-        const tbPct    = familyStats.tb.total    > 0 ? (100 * familyStats.tb.found    / familyStats.tb.total   ).toFixed(1) : "0.0";
-        const naviPct  = familyStats.navi.total  > 0 ? (100 * familyStats.navi.found  / familyStats.navi.total ).toFixed(1) : "0.0";
-
-        dom["scoreboard-mobile-lines-summary"].innerHTML = [
-            renderMobileHeaderLineSmall("logo_M.svg", metroPct, "Métro"),
-            renderMobileHeaderLineSmall("logo_F.svg", funiPct, "Funiculaire"),
-            renderMobileHeaderLineSmall("logo_T.svg", tramPct, "Tram"),
-            renderMobileHeaderLineSmall("logo_TB.svg", tbPct, "TramBus"),
-            renderMobileHeaderLineSmall("logo_N.svg", naviPct, "Navigône"),
-        ].join("");
-
-        // --- liste des stations trouvées ---
-        const foundGroups = buildFoundGroups(state.found, stationData);
-        dom["found"].replaceChildren(...foundGroups.map((group, index) => {
-            const isNew = index == newIndex;
-            return renderScorboardFoundGroupEntry(group, stationData, communeData, isNew);
-        }));
-
-        updateMobileScoreboardOffset(dom);
+        for (const [key, elements] of cache.lines) {
+            const count = state.cache.counts.stationsPerLine[key] || 0;
+            renderScorboardLineCounter(key, count, stationData, state, elements.desktop);
+            renderScorboardLineCounter(key, count, stationData, state, elements.mobile);
+        }
+        const terTotal = stationData.meta.trainlines.TER?.['station-count'] || 0;
+        const terFound = state.cache.counts.stationsPerLine.TER || 0;
+        const terPct = terTotal > 0 ? (100 * terFound / terTotal).toFixed(1) : '0.0';
+        setElementText(dom['stat-stations-ter'], terPct);
+        updateMobileSummary(dom['scoreboard-mobile-summary'], [
+            ['logo_TCL.svg', state.cache.stats.stations.toFixed(1), 'TCL'],
+            ['communes.jpg', state.cache.stats.communes.toFixed(1), 'Communes'],
+            ['train.svg', terPct, 'TER'],
+        ], renderMobileHeaderLine);
+        const families = [
+            [/^M[A-D]$/, 'logo_M.svg', 'Métro'],
+            [/^F[12]$/, 'logo_F.svg', 'Funiculaire'],
+            [/^T\d+$/, 'logo_T.svg', 'Tram'],
+            [/^TB\d+$/, 'logo_TB.svg', 'TramBus'],
+            [/^NAVI?1$/, 'logo_N.svg', 'Navigône'],
+        ];
+        updateMobileSummary(dom['scoreboard-mobile-lines-summary'], families.map(([pattern, icon, name]) => {
+            let total = 0, found = 0;
+            for (const key of state.cache.orderedTrainlines) {
+                if (!pattern.test(key)) continue;
+                total += stationData.meta.trainlines[key]?.['station-count'] || 0;
+                found += state.cache.counts.stationsPerLine[key] || 0;
+            }
+            return [icon, total > 0 ? (100 * found / total).toFixed(1) : '0.0', name];
+        }), renderMobileHeaderLineSmall);
+        updateFoundList(dom, state, stationData, communeData, newIndex, cache);
+        scheduleMobileScoreboardOffset(dom);
     });
 }
 
-
-
-
-
-
-function renderScorboardLineCounter(trainline_key, count, stationData, state) {
+function renderScorboardLineCounter(trainline_key, count, stationData, state, element = document.createElement('li')) {
     const trainline = stationData.meta.trainlines[trainline_key];
     const total = trainline['station-count'];
 
     // 1) Est-ce que cette ligne est marquée comme "trichée" ?
     const cheated = Array.isArray(state.cheats) && state.cheats.includes(trainline_key);
+
+    const renderKey = JSON.stringify([count, total, cheated, trainline.logo, trainline['logo-style']]);
+    if (element.__renderKey === renderKey) return element;
+    element.__renderKey = renderKey;
+    element.dataset.trainline = trainline_key;
 
     // 2) Choix de l’icône :
     //    - normale si pas de triche
@@ -2604,7 +2630,6 @@ function renderScorboardLineCounter(trainline_key, count, stationData, state) {
     const logo = `<img src="data/images/${logoFilename}" class="logo" alt="${trainline_key}" />`;
 
     // 3) Création de l’élément <li>
-    const element = document.createElement('li');
     element.setAttribute("title", `${trainline_key}: ${count} / ${total}`);
 
     // 4) Si trichée : on met seulement l’icône, sans anneau
@@ -2737,13 +2762,14 @@ function renderScorboardFoundEntry(item, stationData, communeData, isNew) {
             center: [commune.center.lon, commune.center.lat],
             zoom: 12,
         };
-        logo = `<span class="found-logos"><img src="data/images/communes.jpg" class="logo" /></span>`;
+        logo = `<span class="found-logos"><img src="data/images/communes.jpg" class="logo" alt="Commune" /></span>`;
     }
 
     const element = document.createElement('li');
     element.setAttribute("class", isNew ? "new" : "");
-    element.setAttribute("title", "Trouvé le XXX à XXXh");
-    element.innerHTML = `${logo}${item.name}`;
+    element.setAttribute("title", item.name);
+    element.innerHTML = logo;
+    element.appendChild(document.createTextNode(item.name));
 
     $map.then(map => {
         const source = item.id[0] == 'STATION' ? 'found-stations' : 'found-communes';
@@ -2921,15 +2947,21 @@ function renderMap(map, state) {
 		);
 	}
 }
+let mobileScoreboardFrame = null;
+function scheduleMobileScoreboardOffset(dom) {
+    if (mobileScoreboardFrame !== null) return;
+    mobileScoreboardFrame = window.requestAnimationFrame(() => {
+        mobileScoreboardFrame = null;
+        updateMobileScoreboardOffset(dom);
+    });
+}
 function updateMobileScoreboardOffset(dom) {
-    if (!dom["scoreboard"]) return;
-
-    if (window.innerWidth <= 1000) {
-        const h = dom["scoreboard"].offsetHeight;
-        document.documentElement.style.setProperty("--mobile-scoreboard-height", `${h}px`);
-    } else {
-        document.documentElement.style.removeProperty("--mobile-scoreboard-height");
-    }
+    if (!dom.scoreboard) return;
+    const value = window.innerWidth <= 1000 ? `${dom.scoreboard.offsetHeight}px` : '';
+    const style = document.documentElement.style;
+    if (style.getPropertyValue('--mobile-scoreboard-height') === value) return;
+    if (value) style.setProperty('--mobile-scoreboard-height', value);
+    else style.removeProperty('--mobile-scoreboard-height');
 }
 ///////////////////////////////////////////////////////////
 // Utils
@@ -3097,6 +3129,7 @@ function buildCheatStateFromSelection(selected, state, stationData, communes) {
     return {
         found: [...importedFound, ...state.found],
         showAnswers: state.showAnswers,
+        scoreboardMinimized: state.scoreboardMinimized,
         cheats: Array.from(new Set([
             ...(Array.isArray(state.cheats) ? state.cheats : []),
             ...selected
@@ -3278,16 +3311,8 @@ function makeFoundStationCamembertSVG(leftColor, rightColor, angleDeg = 90, visi
 }
 
 function renderFoundStationCamemberts(map, stationData, state) {
-    // Nettoyage anciens marqueurs
-    if (!map.__foundCamembertMarkers) {
-        map.__foundCamembertMarkers = [];
-    }
-    for (const marker of map.__foundCamembertMarkers) {
-        marker.remove();
-    }
-    map.__foundCamembertMarkers = [];
-
-    // On garde aussi en mémoire des zones de hover pour le curseur
+    const previous = map.__foundCamembertEntries || new Map();
+    const next = new Map();
     map.__foundCamembertHoverZones = [];
 
     // Grouper les stations trouvées par coordonnée exacte
@@ -3302,7 +3327,7 @@ function renderFoundStationCamemberts(map, stationData, state) {
         buckets.get(key).push(ft);
     }
 
-    for (const entries of buckets.values()) {
+    for (const [key, entries] of buckets) {
         if (entries.length < 2) continue;
 
         const stationIds = entries.map(ft => Number(ft.properties.id_gares));
@@ -3319,21 +3344,21 @@ function renderFoundStationCamemberts(map, stationData, state) {
         const leftColor = leftFt.properties.color;
         const rightColor = rightFt.properties.color;
 
-        const el = document.createElement("div");
-		el.className = "found-camembert-marker";
-		el.style.pointerEvents = "none";
-		el.style.cursor = "pointer";
-		el.innerHTML = makeFoundStationCamembertSVG(leftColor, rightColor, config.angleDeg, 7, 9.5);
         const lngLat = entries[0].geometry.coordinates;
-
-        const marker = new mapboxgl.Marker({
-            element: el,
-            anchor: "center"
-        })
-            .setLngLat(lngLat)
-            .addTo(map);
-
-        map.__foundCamembertMarkers.push(marker);
+        const signature = JSON.stringify([leftColor, rightColor, config.angleDeg, lngLat]);
+        let entry = previous.get(key);
+        if (!entry || entry.signature !== signature) {
+            if (entry) entry.marker.remove();
+            const el = document.createElement('div');
+            el.className = 'found-camembert-marker';
+            el.style.pointerEvents = 'none';
+            el.style.cursor = 'pointer';
+            el.innerHTML = makeFoundStationCamembertSVG(leftColor, rightColor, config.angleDeg, 7, 9.5);
+            const marker = new mapboxgl.Marker({ element: el, anchor: 'center' })
+                .setLngLat(lngLat).addTo(map);
+            entry = { signature, marker };
+        }
+        next.set(key, entry);
 
         // rayon hover légèrement plus large que le visuel
         map.__foundCamembertHoverZones.push({
@@ -3341,6 +3366,12 @@ function renderFoundStationCamemberts(map, stationData, state) {
             radiusPx: 8
         });
     }
+    for (const [key, entry] of previous) {
+        if (!next.has(key)) entry.marker.remove();
+    }
+    map.__foundCamembertEntries = next;
+    map.__foundCamembertMarkers = [...next.values()].map(entry => entry.marker);
+
 }
 function isPointerOverCamembert(map, point) {
     const zones = map.__foundCamembertHoverZones || [];
@@ -3604,19 +3635,22 @@ $dom.then(dom => {
 	dom["btn-toggle-scoreboard"].addEventListener('click', () => {
         state.scoreboardMinimized = !state.scoreboardMinimized;
         renderScoreboard(dom, state);
-		window.addEventListener("resize", () => {
-        updateMobileScoreboardOffset(dom);
+        saveGameState(state);
     });
-    });
+    window.addEventListener('resize', () => scheduleMobileScoreboardOffset(dom));
+    if (typeof ResizeObserver === 'function') {
+        const observer = new ResizeObserver(() => scheduleMobileScoreboardOffset(dom));
+        observer.observe(dom.scoreboard);
+    }
 
 	
 
 	dom["btn-toggle-menu"].addEventListener('mousedown', () => {
 		dom["btn-toggle-menu"].setAttribute("class", "active");
-		document.addEventListener('mouseup', () => {
-			dom["btn-toggle-menu"].setAttribute("class", "");
-		});
 	});
+    document.addEventListener('mouseup', () => {
+        dom['btn-toggle-menu'].classList.remove('active');
+    });
 	dom["btn-toggle-menu"].addEventListener('click', () => {
 		dispatch(dom, Action.ToggleMenu());
 	});
@@ -3642,29 +3676,31 @@ dom["btn-cancel-import-answers"].addEventListener("click", () => {
 });
 
 join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, communes) => {
-	const savedStateJson = localStorage.getItem("savedState");
-	if (savedStateJson !== null) {
-		let savedState;
-		try {
-			savedState = JSON.parse(savedStateJson);
-		} catch (e) {
-			console.log("Invalid saved state:");
-			console.log(e);
-			return;
-		}
-		dispatch(dom, Action.LoadState(savedState, stationData, communes));
-	}
+    try {
+        const savedStateJson = localStorage.getItem('savedState');
+        if (savedStateJson !== null) {
+            const savedState = JSON.parse(savedStateJson);
+            normalizeSavedState(savedState, stationData, communes);
+            if (savedState.version === undefined && localStorage.getItem('savedStateBackup') === null) {
+                // Copie de secours légère de la progression d’origine, avant migration.
+                const backup = { version: 0, found: savedState.found, showAnswers: savedState.showAnswers,
+                    cheats: savedState.cheats, scoreboardMinimized: savedState.scoreboardMinimized };
+                try { localStorage.setItem('savedStateBackup', JSON.stringify(backup)); }
+                catch (error) { console.warn('Copie de secours non enregistrée :', error); }
+            }
+            dispatch(dom, Action.LoadState(savedState, stationData, communes));
+        }
+    } catch (error) {
+        console.warn('Ancienne sauvegarde non chargée :', error);
+        window.alert('La sauvegarde n’a pas pu être chargée. Elle a été conservée ; vous pouvez importer une partie valide ou recommencer depuis le menu.');
+    }
 
 	dom["btn-export"].addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
 
     dispatch(dom, Action.CloseMenu());
-    exportFile("le_grand_lyon_de_tete.json", JSON.stringify({
-    found: state.found,
-    showAnswers: state.showAnswers,
-    cheats: state.cheats
-}, null, 2));
+    exportFile("le_grand_lyon_de_tete.json", JSON.stringify(getPersistentState(state), null, 2));
 });
 
 
@@ -3678,8 +3714,26 @@ join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, com
     importJsonFile(dom["import-json-input"])
         .then(json => {
             if (json && json['connected-stations']) {
-                stationData.meta['connected-stations'] = json['connected-stations'];
-                console.log('✅ connected-stations importé (meta patch)');
+                const patch = json['connected-stations'];
+                if (!patch || typeof patch !== 'object' || Array.isArray(patch)) {
+                    throw new Error('La liste des correspondances est invalide.');
+                }
+                const aliases = stationData.meta['station-id-aliases'] || {};
+                const normalizedPatch = {};
+                for (const [key, ids] of Object.entries(patch)) {
+                    if (!Array.isArray(ids) || ids.some(id => !/^\d+$/.test(String(id)))) {
+                        throw new Error('Une correspondance est mal formée.');
+                    }
+                    const canonicalKey = aliases[key] ?? key;
+                    if (stationData.idToIndex[canonicalKey] === undefined) continue;
+                    const normalizedIds = [...new Set(ids.map(id => aliases[id] ?? Number(id)))]
+                        .filter(id => stationData.idToIndex[id] !== undefined);
+                    if (!normalizedIds.includes(Number(canonicalKey))) normalizedIds.unshift(Number(canonicalKey));
+                    normalizedPatch[canonicalKey] = normalizedIds;
+                }
+                if (Object.keys(normalizedPatch).length === 0) throw new Error('Aucune correspondance valide dans ce fichier.');
+                stationData.meta['connected-stations'] = normalizedPatch;
+                renderScoreboard(dom, state);
                 dispatch(dom, Action.StopLoading());
                 return;
             }
@@ -3688,6 +3742,9 @@ join($dom, dataLoader.$stationData, dataLoader.$communes, (dom, stationData, com
         })
         .catch(err => {
             console.warn('Import annulé/échoué:', err && err.message ? err.message : err);
+            if (err.message !== 'IMPORT_CANCELLED') {
+                window.alert('Import impossible : ' + (err.message === 'INVALID_JSON' ? 'le fichier JSON est illisible.' : err.message) + ' Votre partie actuelle est conservée.');
+            }
             dispatch(dom, Action.StopLoading());
         });
 });
@@ -3714,8 +3771,8 @@ dom["answers-import-form"].addEventListener("submit", (event) => {
 
     const cheatedState = buildCheatStateFromSelection(selected, state, stationData, communes);
 
-    localStorage.setItem("savedState", JSON.stringify(cheatedState));
-    location.reload();
+    dispatch(dom, Action.LoadState(cheatedState, stationData, communes));
+    closeAnswersImportModal(dom);
 });
 
 	
@@ -3806,6 +3863,7 @@ const $map = new Promise((resolve, reject) => {
 
     const map = new mapboxgl.Map({
         container: 'map',
+        attributionControl: false,
         style: 'mapbox://styles/ayyyyymen/cmmuhe19n000j01s8gjzj7vda',
         config: {
             basemap: {
@@ -3831,6 +3889,8 @@ const $map = new Promise((resolve, reject) => {
     });
 
    
+
+    map.addControl(new mapboxgl.AttributionControl({ compact: true }), 'bottom-right');
 
         map.once('style.load', () => {
     const style = map.getStyle();
