@@ -953,6 +953,7 @@
       }
     },
     "TB12": {
+      "color": "#80682E",
       "station-count": 12,
       "logo": "TB12.svg",
       "logo-style": {
